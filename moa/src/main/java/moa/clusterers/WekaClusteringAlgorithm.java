@@ -27,6 +27,7 @@ import moa.core.AutoExpandVector;
 import moa.core.Measurement;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
 import com.github.javacliparser.StringOption;
 import moa.core.FastVector;
@@ -42,8 +43,7 @@ public class WekaClusteringAlgorithm extends AbstractClusterer {
 
     private static final long serialVersionUID = 1L;
     
-    public IntOption horizonOption = new IntOption("horizon",
-            'h', "Range of the window.", 1000);
+    public IntOption horizonOption = new IntOption(new IntOptionParameter("horizon", 'h', "Range of the window.", 1000));
     
     public MultiChoiceOption wekaAlgorithmOption;
     

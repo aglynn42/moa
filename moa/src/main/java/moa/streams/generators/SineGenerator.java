@@ -20,7 +20,9 @@
 package moa.streams.generators;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -63,19 +65,16 @@ public class SineGenerator extends AbstractOptionHandler implements
     public static final int NUM_IRRELEVANT_ATTRIBUTES = 2;
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public IntOption functionOption = new IntOption("function", 'f',
             "Classification function used, as defined in the original paper.",
             1, 1, 4);
 
     public FlagOption suppressIrrelevantAttributesOption = new FlagOption(
-            "suppressIrrelevantAttributes", 's',
-            "Reduce the data to only contain 2 relevant numeric attributes.");
+            new FlagOptionParameter("suppressIrrelevantAttributes", 's', "Reduce the data to only contain 2 relevant numeric attributes."));
 
-    public FlagOption balanceClassesOption = new FlagOption("balanceClasses",
-            'b', "Balance the number of instances of each class.");
+    public FlagOption balanceClassesOption = new FlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
 
     protected InstancesHeader streamHeader;
 

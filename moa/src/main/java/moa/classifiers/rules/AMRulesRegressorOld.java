@@ -71,7 +71,9 @@ import moa.core.StringUtils;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
 
 
@@ -87,12 +89,10 @@ public class AMRulesRegressorOld extends AbstractAMRules implements Regressor{
 
 	
 	public FlagOption constantLearningRatioDecayOption = new FlagOption(
-			"learningRatio_Decay_set_constant", 'd',
-			"Learning Ratio Decay in Perceptron set to be constant. (The next parameter).");
+			new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
 	
 	public FloatOption learningRatioOption = new FloatOption(
-			"learningRatio", 's', 
-			"Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025); 
+			new FloatOptionParameter("learningRatio", 's', "Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025)); 
 	
 	public MultiChoiceOption predictionFunctionOption = new MultiChoiceOption(
 			"predictionFunctionOption", 'P', "The prediction function to use.", new String[]{

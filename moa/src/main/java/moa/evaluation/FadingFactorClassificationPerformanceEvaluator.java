@@ -24,6 +24,7 @@ import moa.core.Measurement;
 import moa.core.ObjectRepository;
 
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 
 import moa.options.AbstractOptionHandler;
 import moa.tasks.TaskMonitor;
@@ -43,8 +44,7 @@ public class FadingFactorClassificationPerformanceEvaluator extends BasicClassif
 
     private static final long serialVersionUID = 1L;
 
-    public FloatOption alphaOption = new FloatOption("alpha",
-            'a', "Fading factor or exponential smoothing factor", .999);
+    public FloatOption alphaOption = new FloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .999));
 
     @Override
     protected Estimator newEstimator() {

@@ -20,7 +20,9 @@
 package moa.streams.generators;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -56,11 +58,9 @@ public class MixedGenerator extends AbstractOptionHandler implements
             1, 1, 2);
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public FlagOption balanceClassesOption = new FlagOption("balanceClasses",
-            'b', "Balance the number of instances of each class.");
+    public FlagOption balanceClassesOption = new FlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
 
     protected InstancesHeader streamHeader;
 

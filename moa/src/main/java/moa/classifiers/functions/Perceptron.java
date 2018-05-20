@@ -24,6 +24,7 @@ import moa.classifiers.MultiClassClassifier;
 import moa.core.Measurement;
 import moa.core.Utils;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 /**
@@ -45,7 +46,7 @@ public class Perceptron extends AbstractClassifier  implements MultiClassClassif
         return "Perceptron classifier: Single perceptron classifier.";
     }
 
-    public FloatOption learningRatioOption = new FloatOption("learningRatio", 'r', "Learning ratio", 1);
+    public FloatOption learningRatioOption = new FloatOption(new FloatOptionParameter("learningRatio", 'r', "Learning ratio", 1));
 
     protected double[][] weightAttribute;
 

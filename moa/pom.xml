@@ -81,6 +81,10 @@
       <version>1.2.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>net.sf.jexample</groupId>
+    	<artifactId>jexample</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

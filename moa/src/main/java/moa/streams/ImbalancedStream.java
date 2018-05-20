@@ -19,6 +19,7 @@
 package moa.streams;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.StringOption;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -69,8 +70,7 @@ public class ImbalancedStream extends AbstractOptionHandler implements
             "0.9;0.1");
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     protected ExampleStream originalStream    = null;
     protected Instances     instancesBuffer[] = null;

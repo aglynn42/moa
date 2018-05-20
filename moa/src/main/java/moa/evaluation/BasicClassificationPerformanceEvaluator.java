@@ -21,6 +21,8 @@
 package moa.evaluation;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
+
 import moa.AbstractMOAObject;
 import moa.core.Example;
 import moa.core.Measurement;
@@ -73,20 +75,13 @@ public class BasicClassificationPerformanceEvaluator extends AbstractOptionHandl
 
     private double totalWeightObserved;
 
-    public FlagOption precisionRecallOutputOption = new FlagOption("precisionRecallOutput",
-            'o',
-            "Outputs average precision, recall and F1 scores.");
+    public FlagOption precisionRecallOutputOption = new FlagOption(new FlagOptionParameter("precisionRecallOutput", 'o', "Outputs average precision, recall and F1 scores."));
     
-    public FlagOption precisionPerClassOption = new FlagOption("precisionPerClass",
-            'p',
-            "Report precision per class.");
+    public FlagOption precisionPerClassOption = new FlagOption(new FlagOptionParameter("precisionPerClass", 'p', "Report precision per class."));
 
-    public FlagOption recallPerClassOption = new FlagOption("recallPerClass",
-            'r',
-            "Report recall per class.");
+    public FlagOption recallPerClassOption = new FlagOption(new FlagOptionParameter("recallPerClass", 'r', "Report recall per class."));
 
-    public FlagOption f1PerClassOption = new FlagOption("f1PerClass", 'f',
-            "Report F1 per class.");
+    public FlagOption f1PerClassOption = new FlagOption(new FlagOptionParameter("f1PerClass", 'f', "Report F1 per class."));
 
     @Override
     public void reset() {

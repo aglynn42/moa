@@ -28,8 +28,11 @@ import java.io.InputStreamReader;
 
 import moa.core.ObjectRepository;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.ListOption;
 import com.github.javacliparser.MultiChoiceOption;
 import com.github.javacliparser.StringOption;
@@ -58,8 +61,7 @@ public class Plot extends MainTask {
     /**
      * FileOption for selecting the plot output file.
      */
-    public FileOption plotOutputOption = new FileOption("plotOutputFile", 'r',
-	    "File with the result plot (image).", null, "eps", true);
+    public FileOption plotOutputOption = new FileOption(new FileOptionParameter("plotOutputFile", 'r', "File with the result plot (image).", null, "eps", true));
 
     /**
      * Comma separated list of input *csv files. The file paths can be absolute
@@ -106,10 +108,7 @@ public class Plot extends MainTask {
      * Index of the csv column from which values for the x-axis should be taken.
      */
     public IntOption xColumnOption = new IntOption(
-	    "xColumn",
-	    'x',
-	    "Index of the csv column from which values for the x-axis should be taken.",
-	    1);
+	    new IntOptionParameter("xColumn", 'x', "Index of the csv column from which values for the x-axis should be taken.", 1));
 
     /**
      * Title of the plots' x-axis.
@@ -127,10 +126,7 @@ public class Plot extends MainTask {
      * Index of the csv column from which values for the y-axis should be taken.
      */
     public IntOption yColumnOption = new IntOption(
-	    "yColumn",
-	    'y',
-	    "Index of the column from which values for the y-axis should be taken",
-	    9);
+	    new IntOptionParameter("yColumn", 'y', "Index of the column from which values for the y-axis should be taken", 9));
 
     /**
      * Title of the plots' y-axis.
@@ -147,8 +143,7 @@ public class Plot extends MainTask {
     /**
      * Plotted line width.
      */
-    public IntOption lineWidthOption = new IntOption("lineWidth", 'w',
-	    "Determines the thickness of plotted lines", 2);
+    public IntOption lineWidthOption = new IntOption(new IntOptionParameter("lineWidth", 'w', "Determines the thickness of plotted lines", 2));
 
     /**
      * Interval between plotted data points.
@@ -161,13 +156,11 @@ public class Plot extends MainTask {
     /**
      * Determines whether to smooth the plot with bezier curves.
      */
-    public FlagOption smoothOption = new FlagOption("smooth", 's',
-	    "Determines whether to smooth the plot with bezier curves.");
+    public FlagOption smoothOption = new FlagOption(new FlagOptionParameter("smooth", 's', "Determines whether to smooth the plot with bezier curves."));
     /**
      * Determines whether to delete gnuplot scripts after plotting.
      */
-    public FlagOption deleteScriptsOption = new FlagOption("deleteScripts",
-	    'd', "Determines whether to delete gnuplot scripts after plotting.");
+    public FlagOption deleteScriptsOption = new FlagOption(new FlagOptionParameter("deleteScripts", 'd', "Determines whether to delete gnuplot scripts after plotting."));
 
     /**
      * Legend (key) location on the plot.

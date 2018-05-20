@@ -27,8 +27,11 @@ import moa.core.DoubleVector;
 import moa.core.Measurement;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 public class Perceptron extends AbstractClassifier implements AMRulesRegressorFunction{
@@ -38,23 +41,19 @@ public class Perceptron extends AbstractClassifier implements AMRulesRegressorFu
 	private static final long serialVersionUID = 1L;
 
 	public FlagOption constantLearningRatioDecayOption = new FlagOption(
-			"learningRatio_Decay_set_constant", 'd',
-			"Learning Ratio Decay in Perceptron set to be constant. (The next parameter).");
+			new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
 
 	public FloatOption learningRatioOption = new FloatOption(
-			"learningRatio", 'l', 
-			"Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025);
+			new FloatOptionParameter("learningRatio", 'l', "Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025));
 
 	public FloatOption learningRateDecayOption = new FloatOption(
-			"learningRateDecay", 'm', 
-			" Learning Rate decay to use for training the Perceptron.", 0.001);
+			new FloatOptionParameter("learningRateDecay", 'm', " Learning Rate decay to use for training the Perceptron.", 0.001));
 
 	public FloatOption fadingFactorOption = new FloatOption(
 			"fadingFactor", 'e', 
 			"Fading factor for the Perceptron accumulated error", 0.99, 0, 1);
 	
-	public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-            "Seed for random behaviour of the classifier.", 1);
+	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
 	
 	private double nError;
 	protected double fadingFactor;

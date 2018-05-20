@@ -20,6 +20,7 @@
 package moa.classifiers.meta;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -69,12 +70,12 @@ public class OnlineAccuracyUpdatedEnsemble extends AbstractClassifier implements
 	/**
 	 * Determines whether additional information should be sent to the output.
 	 */
-	public FlagOption verboseOption = new FlagOption("verbose", 'v', "When checked the algorithm outputs additional information about component classifier weights.");
+	public FlagOption verboseOption = new FlagOption(new FlagOptionParameter("verbose", 'v', "When checked the algorithm outputs additional information about component classifier weights."));
 	
 	/**
 	 * Determines whether additional information should be sent to the output.
 	 */
-	public FlagOption linearOption = new FlagOption("linearFunction", 'f', "When checked the algorithm uses a linear weighting function.");
+	public FlagOption linearOption = new FlagOption(new FlagOptionParameter("linearFunction", 'f', "When checked the algorithm uses a linear weighting function."));
 
 	
 	/**

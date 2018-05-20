@@ -27,6 +27,8 @@ import com.yahoo.labs.samoa.instances.InstancesHeader;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
+
 import moa.clusterers.kmeanspm.CoresetKMeans;
 /**
  * Self Adjusting Memory (SAM) coupled with the k Nearest Neighbor classifier (kNN) .<p>
@@ -67,8 +69,7 @@ public class SAMkNN extends AbstractClassifier implements MultiClassClassifier {
             "The allowed LTM size relative to the total limit.",
             0.4, 0.0, 1.0);
 
-    public FlagOption recalculateSTMErrorOption = new FlagOption("recalculateError", 'r',
-            "Recalculates the error rate of the STM for size adaption (Costly operation). Otherwise, an approximation is used.");
+    public FlagOption recalculateSTMErrorOption = new FlagOption(new FlagOptionParameter("recalculateError", 'r', "Recalculates the error rate of the STM for size adaption (Costly operation). Otherwise, an approximation is used."));
 	private int maxClassValue = 0;
 
     @Override

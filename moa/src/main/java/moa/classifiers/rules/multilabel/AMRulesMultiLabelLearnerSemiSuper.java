@@ -50,8 +50,11 @@ import moa.core.StringUtils;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
 import com.yahoo.labs.samoa.instances.MultiLabelPrediction;
@@ -103,10 +106,8 @@ public abstract class AMRulesMultiLabelLearnerSemiSuper extends AbstractMultiLab
     public IntOption gracePeriodOption = new IntOption("gracePeriod",
                         'g', "Hoeffding Bound Parameter. The number of instances a leaf should observe between split attempts.",200, 1, Integer.MAX_VALUE);   
     public ClassOption learnerOption;
-    public FlagOption unorderedRulesOption = new FlagOption("setUnorderedRulesOn",
-                        'U',"unorderedRules.");
-    public FlagOption dropOldRuleAfterExpansionOption = new FlagOption("dropOldRuleAfterExpansion",
-                        'D',"Drop old rule if it expanded (by default the rule is kept for the set of outputs not selected for expansion.)");
+    public FlagOption unorderedRulesOption = new FlagOption(new FlagOptionParameter("setUnorderedRulesOn", 'U', "unorderedRules."));
+    public FlagOption dropOldRuleAfterExpansionOption = new FlagOption(new FlagOptionParameter("dropOldRuleAfterExpansion", 'D', "Drop old rule if it expanded (by default the rule is kept for the set of outputs not selected for expansion.)"));
     public ClassOption changeDetector;
 
     public ClassOption anomalyDetector = new ClassOption("anomalyDetector",
@@ -143,12 +144,9 @@ public abstract class AMRulesMultiLabelLearnerSemiSuper extends AbstractMultiLab
 			'F', "Feature ranking algorithm.", 
 			FeatureRanking.class,
 			NoFeatureRanking.class.getName());
-    public FloatOption scoreThreshold = new FloatOption("scoreThreshold",
-                        'h', "Initial dataset (%)", 1);
-    public IntOption  slidingWindowSize= new IntOption("slidingWindowSize",
-                        'W', "slidingWindowSize", 1000);
-    public IntOption  slidingWindowStep= new IntOption("slidingWindowStep",
-                        'j', "slidingWindowStep", 1);
+    public FloatOption scoreThreshold = new FloatOption(new FloatOptionParameter("scoreThreshold", 'h', "Initial dataset (%)", 1));
+    public IntOption  slidingWindowSize= new IntOption(new IntOptionParameter("slidingWindowSize", 'W', "slidingWindowSize", 1000));
+    public IntOption  slidingWindowStep= new IntOption(new IntOptionParameter("slidingWindowStep", 'j', "slidingWindowStep", 1));
     
     private int nAttributes=0;
 	

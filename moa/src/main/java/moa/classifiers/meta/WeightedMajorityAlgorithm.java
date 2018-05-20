@@ -27,6 +27,7 @@ import moa.core.Measurement;
 import moa.core.ObjectRepository;
 import moa.options.ClassOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.ListOption;
 import com.github.javacliparser.Option;
@@ -71,8 +72,7 @@ public class WeightedMajorityAlgorithm extends AbstractClassifier implements Mul
     public FloatOption gammaOption = new FloatOption("gamma", 'g',
             "Minimum fraction of weight per model.", 0.01, 0.0, 0.5);
 
-    public FlagOption pruneOption = new FlagOption("prune", 'p',
-            "Prune poorly performing models from ensemble.");
+    public FlagOption pruneOption = new FlagOption(new FlagOptionParameter("prune", 'p', "Prune poorly performing models from ensemble."));
 
     protected Classifier[] ensemble;
 

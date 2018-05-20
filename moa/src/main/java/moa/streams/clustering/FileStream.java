@@ -39,8 +39,11 @@ import moa.core.InstanceExample;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.ObjectRepository;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.ListOption;
 import com.github.javacliparser.Option;
 import moa.tasks.TaskMonitor;
@@ -60,8 +63,7 @@ public class FileStream extends ClusteringStream{
 
     String defaultfile = "KDDCup99.arff";
 
-	public FileOption arffFileOption = new FileOption("arffFile", 'f',
-			"ARFF file to load.", defaultfile, "arff", false);
+	public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'f', "ARFF file to load.", defaultfile, "arff", false));
 
 	public IntOption classIndexOption = new IntOption(
 			"classIndex",
@@ -70,22 +72,20 @@ public class FileStream extends ClusteringStream{
 			-1, -1, Integer.MAX_VALUE);
 
     public FlagOption normalizeOption = 
-    		new FlagOption("normalize", 'n', 
-    				"Numerical data will be normalized to 0-1 " +
-    				"for the visualization to work. The complete arff file needs to be read upfront.");
+    		new FlagOption(new FlagOptionParameter("normalize", 'n', "Numerical data will be normalized to 0-1 " +
+			"for the visualization to work. The complete arff file needs to be read upfront."));
 
     public ListOption removeAttributesOption = new ListOption("removeAttributes", 'r',
             "Attributes to remove. Enter comma seperated list, " +
             "starting with 1 for first attribute.", 
-            new IntOption("removeAttribute", ' ', "Attribute to remove.",-1),
+            new IntOption(new IntOptionParameter("removeAttribute", ' ', "Attribute to remove.", -1)),
             new Option[0], ',');	
 	
     public FlagOption keepNonNumericalAttrOption = 
-    		new FlagOption("keepNonNumericalAttr", 'K',
-    		"Non-numerical attributes are being filtered by default " +
+    		new FlagOption(new FlagOptionParameter("keepNonNumericalAttr", 'K', "Non-numerical attributes are being filtered by default " +
     		"(except the class attribute). " +
     		"Check to keep all attributes. This option is being " +
-    		"overwritten by the manual attribute removal filter.");
+    		"overwritten by the manual attribute removal filter."));
 	
 
     
@@ -195,7 +195,7 @@ public class FileStream extends ClusteringStream{
 			Arrays.sort(removeAttributes);
 			
 			//set updated number of attributes (class attribute included)
-			numAttsOption = new IntOption("numAtts", 'a',"", instances.numAttributes() - removeAttributes.length);
+			numAttsOption = new IntOption(new IntOptionParameter("numAtts", 'a', "", instances.numAttributes() - removeAttributes.length));
 			
 			if(removeAttributes.length > 0){
 				System.out.println("Removing the following attributes:");

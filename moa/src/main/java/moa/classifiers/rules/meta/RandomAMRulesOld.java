@@ -33,8 +33,10 @@ import moa.core.MiscUtils;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
@@ -58,8 +60,7 @@ public class RandomAMRulesOld extends AbstractClassifier implements Regressor {
 	public FloatOption numAttributesPercentageOption = new FloatOption("numAttributesPercentage", 'n',
 			"The number of attributes to use per model.", 63.2, 0, 100); 
 
-	public FlagOption useBaggingOption = new FlagOption("useBagging", 'p',
-			"Use Bagging.");
+	public FlagOption useBaggingOption = new FlagOption(new FlagOptionParameter("useBagging", 'p', "Use Bagging."));
 	
 	public ClassOption votingFunctionOption = new ClassOption("votingFunction",
 			'V', "Voting Function.", 
@@ -75,8 +76,7 @@ public class RandomAMRulesOld extends AbstractClassifier implements Regressor {
 			"fadingErrorFactor", 'e', 
 			"Fading error factor for the accumulated error", 0.99, 0, 1);
 	
-	public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-            "Seed for random behaviour of the classifier.", 1);
+	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
 	protected AbstractAMRules[] ensemble;
 	protected double[] sumError;
 	protected double[] nError;

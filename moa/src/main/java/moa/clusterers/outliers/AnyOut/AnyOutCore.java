@@ -22,6 +22,7 @@
 package moa.clusterers.outliers.AnyOut;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.DenseInstance;
@@ -63,7 +64,7 @@ public class AnyOutCore extends ClusTree {
 	public IntOption oScoreKOption = new IntOption("OScorek", 'o', "Size of Oscore aggregate.", 2, 1, 10);
 	public IntOption confKOption = new IntOption("Confidencek", 'c', "Size of confidence aggregate.", 2, 1, 10);
 	public IntOption confidenceChoiceOption = new IntOption("confidence", 'd', "Confidence Measure.", 4, 1, 6);
-	public FlagOption UseMeanScoreOption = new FlagOption("UseMeanScore", 'm', "Use Mean score or Density score.");
+	public FlagOption UseMeanScoreOption = new FlagOption(new FlagOptionParameter("UseMeanScore", 'm', "Use Mean score or Density score."));
 	public FloatOption threshholdOption = new FloatOption("Threshold", 'z', "Threshold", 0.07, 0, 1);
 	
 	public AnyOutCore() {

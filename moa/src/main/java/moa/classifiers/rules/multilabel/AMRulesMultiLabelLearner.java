@@ -50,6 +50,7 @@ import moa.core.StringUtils;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
@@ -91,11 +92,9 @@ public abstract class AMRulesMultiLabelLearner extends AbstractMultiLabelLearner
 
 	public ClassOption learnerOption;
 
-	public FlagOption unorderedRulesOption = new FlagOption("setUnorderedRulesOn", 'U',
-			"unorderedRules.");
+	public FlagOption unorderedRulesOption = new FlagOption(new FlagOptionParameter("setUnorderedRulesOn", 'U', "unorderedRules."));
 	
-	public FlagOption dropOldRuleAfterExpansionOption = new FlagOption("dropOldRuleAfterExpansion", 'D',
-			"Drop old rule if it expanded (by default the rule is kept for the set of outputs not selected for expansion.)");
+	public FlagOption dropOldRuleAfterExpansionOption = new FlagOption(new FlagOptionParameter("dropOldRuleAfterExpansion", 'D', "Drop old rule if it expanded (by default the rule is kept for the set of outputs not selected for expansion.)"));
 
 	public ClassOption changeDetector = new ClassOption("changeDetector",
 			'H', "Change Detector.", 

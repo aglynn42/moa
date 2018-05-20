@@ -39,6 +39,7 @@ import moa.cluster.SphereCluster;
 import moa.clusterers.AbstractClusterer;
 import moa.core.Measurement;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 
@@ -46,20 +47,16 @@ public class WithKmeans extends AbstractClusterer {
 	
 	private static final long serialVersionUID = 1L;
 
-	public IntOption timeWindowOption = new IntOption("horizon",
-			'h', "Rang of the window.", 1000);
+	public IntOption timeWindowOption = new IntOption(new IntOptionParameter("horizon", 'h', "Rang of the window.", 1000));
 
 	public IntOption maxNumKernelsOption = new IntOption(
-			"maxNumKernels", 'm',
-			"Maximum number of micro kernels to use.", 100);
+			new IntOptionParameter("maxNumKernels", 'm', "Maximum number of micro kernels to use.", 100));
 
 	public IntOption kernelRadiFactorOption = new IntOption(
-			"kernelRadiFactor", 't',
-			"Multiplier for the kernel radius", 2);
+			new IntOptionParameter("kernelRadiFactor", 't', "Multiplier for the kernel radius", 2));
 	
 	public IntOption kOption = new IntOption(
-			"k", 'k',
-			"k of macro k-means (number of clusters)", 5);
+			new IntOptionParameter("k", 'k', "k of macro k-means (number of clusters)", 5));
 
 	private int timeWindow;
 	private long timestamp = -1;

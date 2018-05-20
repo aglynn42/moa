@@ -20,6 +20,7 @@
 package moa.classifiers.trees;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.MultiClassClassifier;
@@ -61,8 +62,7 @@ public class DecisionStump extends AbstractClassifier implements MultiClassClass
             "The number of instances to observe between model changes.", 1000,
             0, Integer.MAX_VALUE);
 
-    public FlagOption binarySplitsOption = new FlagOption("binarySplits", 'b',
-            "Only allow binary splits.");
+    public FlagOption binarySplitsOption = new FlagOption(new FlagOptionParameter("binarySplits", 'b', "Only allow binary splits."));
 
     public ClassOption splitCriterionOption = new ClassOption("splitCriterion",
             'c', "Split criterion to use.", SplitCriterion.class,

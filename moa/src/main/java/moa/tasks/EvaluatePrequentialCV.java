@@ -21,7 +21,9 @@
 package moa.tasks;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
 import moa.classifiers.Classifier;
 import moa.classifiers.MultiClassClassifier;
@@ -91,8 +93,7 @@ public class EvaluatePrequentialCV extends ClassificationMainTask {
             "How many instances between memory bound checks.", 100000, 0,
             Integer.MAX_VALUE);
 
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv results to.", null, "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
     public IntOption numFoldsOption = new IntOption("numFolds", 'w',
             "The number of folds (e.g. distributed models) to be used.", 10, 1, Integer.MAX_VALUE);
@@ -105,8 +106,7 @@ public class EvaluatePrequentialCV extends ClassificationMainTask {
                     "k-fold distributed Split Validation"
             }, 0);
 
-    public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-            "Seed for random behaviour of the task.", 1);
+    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the task.", 1));
 
 
     @Override

@@ -34,6 +34,7 @@ import moa.options.AbstractOptionHandler;
 import moa.tasks.TaskMonitor;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 
 /**
  * Function for determination of splitting points for nominal variables
@@ -49,8 +50,7 @@ public class MultiLabelNominalAttributeObserver extends AbstractOptionHandler
 	/**
 	 * 
 	 */
-	protected FlagOption addUndeclaredValuesOption = new FlagOption("addUndeclaredValues", 'a',
-			"Add to the domain values not declared? If false, the value is not used.");
+	protected FlagOption addUndeclaredValuesOption = new FlagOption(new FlagOptionParameter("addUndeclaredValues", 'a', "Add to the domain values not declared? If false, the value is not used."));
 	protected HashMap<Integer, DoubleVector[]> statisticsByNominalValue;
 	
 	

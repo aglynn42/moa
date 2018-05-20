@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
 
@@ -89,8 +90,7 @@ public class ALPrequentialEvaluationTask extends ALMainTask {
             "How many instances between samples of the learning performance.",
             100000, 0, Integer.MAX_VALUE);
 	
-	public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv results to.", null, "csv", true);
+	public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 	
 	
 	/**

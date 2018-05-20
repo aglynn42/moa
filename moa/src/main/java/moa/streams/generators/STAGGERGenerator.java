@@ -32,7 +32,10 @@ import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
 
@@ -61,15 +64,13 @@ public class STAGGERGenerator extends AbstractOptionHandler implements
     private static final long serialVersionUID = 1L;
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public IntOption functionOption = new IntOption("function", 'f',
             "Classification function used, as defined in the original paper.",
             1, 1, 3);
 
-    public FlagOption balanceClassesOption = new FlagOption("balanceClasses",
-            'b', "Balance the number of instances of each class.");
+    public FlagOption balanceClassesOption = new FlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
 
     protected interface ClassFunction {
 

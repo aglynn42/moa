@@ -35,6 +35,8 @@ import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
 
@@ -54,12 +56,10 @@ public class RandomTreeGenerator extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption treeRandomSeedOption = new IntOption("treeRandomSeed",
-            'r', "Seed for random generation of tree.", 1);
+    public IntOption treeRandomSeedOption = new IntOption(new IntOptionParameter("treeRandomSeed", 'r', "Seed for random generation of tree.", 1));
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public IntOption numClassesOption = new IntOption("numClasses", 'c',
             "The number of classes to generate.", 2, 2, Integer.MAX_VALUE);

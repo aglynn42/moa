@@ -27,6 +27,7 @@ import moa.core.Utils;
 import moa.options.AbstractOptionHandler;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstanceImpl;
@@ -49,11 +50,10 @@ public class BasicAUCImbalancedPerformanceEvaluator extends AbstractOptionHandle
 
 	private static final long serialVersionUID = 1L;
 
-	public FlagOption calculateAUC = new FlagOption("calculateAUC", 'a',
-			"Determines whether AUC should be calculated. To calculate AUC, "
-					+ "predictions need to be remembered, therefore setting "
-					+ "this option for large streams can cause substantial "
-					+ "memory usage.");
+	public FlagOption calculateAUC = new FlagOption(new FlagOptionParameter("calculateAUC", 'a', "Determines whether AUC should be calculated. To calculate AUC, "
+			+ "predictions need to be remembered, therefore setting "
+			+ "this option for large streams can cause substantial "
+			+ "memory usage."));
 
 	protected double totalObservedInstances = 0;
 	private Estimator aucEstimator;

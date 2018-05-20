@@ -46,6 +46,7 @@ import moa.core.Measurement;
 import moa.core.MiscUtils;
 import moa.options.ClassOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -61,11 +62,9 @@ public class BOLE extends AbstractClassifier implements MultiClassClassifier {
     public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
             "The number of models to boost.", 10, 1, Integer.MAX_VALUE);
 
-    public FlagOption pureBoostOption = new FlagOption("pureBoost", 
-            'p', "Boost with weights only; no poisson.");
+    public FlagOption pureBoostOption = new FlagOption(new FlagOptionParameter("pureBoost", 'p', "Boost with weights only; no poisson."));
 
-    public FlagOption breakVotesOption = new FlagOption("breakVotes",
-            'b', "Break Votes? unchecked=no, checked=yes");
+    public FlagOption breakVotesOption = new FlagOption(new FlagOptionParameter("breakVotes", 'b', "Break Votes? unchecked=no, checked=yes"));
 
     public FloatOption errorBoundOption = new FloatOption("errorBound", 
             'e', "Error bound percentage for allowing experts to vote.",

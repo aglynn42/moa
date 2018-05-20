@@ -32,6 +32,8 @@ import java.util.logging.Logger;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
+
 import moa.tasks.TaskMonitor;
 
 public class MovielensDataset extends AbstractOptionHandler implements Dataset {
@@ -40,8 +42,7 @@ public class MovielensDataset extends AbstractOptionHandler implements Dataset {
     
     private BufferedReader br;
     
-    public FileOption fileOption = new FileOption("file", 'f',
-            "File to load.", "/Users/abifet/Downloads/ml-1M/ratings.dat", "dat", false);
+    public FileOption fileOption = new FileOption(new FileOptionParameter("file", 'f', "File to load.", "/Users/abifet/Downloads/ml-1M/ratings.dat", "dat", false));
 
     @Override
     public String getPurposeString() {

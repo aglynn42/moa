@@ -14,7 +14,9 @@ import moa.evaluation.preview.LearningCurve;
 import moa.gui.BatchCmd;
 import moa.options.ClassOption;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import moa.streams.clustering.ClusteringStream;
 
@@ -44,24 +46,21 @@ public class EvaluateClustering extends AuxiliarMainTask {
             "Maximum number of instances to test/train on  (-1 = no limit).",
             100000, -1, Integer.MAX_VALUE);
 
-    public FlagOption generalEvalOption = new FlagOption("General", 'g',
-			"GPrecision, GRecall, Redundancy, numCluster, numClasses");
+    public FlagOption generalEvalOption = new FlagOption(new FlagOptionParameter("General", 'g', "GPrecision, GRecall, Redundancy, numCluster, numClasses"));
    
-    public FlagOption f1Option = new FlagOption("F1", 'f', "F1-P, F1-R, Purity.");
+    public FlagOption f1Option = new FlagOption(new FlagOptionParameter("F1", 'f', "F1-P, F1-R, Purity."));
     
-    public FlagOption entropyOption = new FlagOption("Entropy", 'e',
-			"GT cross entropy, FC cross entropy, Homogeneity, Completeness, V-Measure, VarInformation.");
+    public FlagOption entropyOption = new FlagOption(new FlagOptionParameter("Entropy", 'e', "GT cross entropy, FC cross entropy, Homogeneity, Completeness, V-Measure, VarInformation."));
     
-    public FlagOption cmmOption = new FlagOption("CMM", 'c',
-			"CMM, CMM Basic, CMM Missed, CMM Misplaced, CMM Noise, CA Seperability, CA Noise, CA Model.");
+    public FlagOption cmmOption = new FlagOption(new FlagOptionParameter("CMM", 'c', "CMM, CMM Basic, CMM Missed, CMM Misplaced, CMM Noise, CA Seperability, CA Noise, CA Model."));
 
-    public FlagOption ssqOption = new FlagOption("SSQ", 'q', "SSQ.");
+    public FlagOption ssqOption = new FlagOption(new FlagOptionParameter("SSQ", 'q', "SSQ."));
     
-    public FlagOption separationOption = new FlagOption("Separation", 'p', "BSS, BSS-GT, BSS-Ratio.");
+    public FlagOption separationOption = new FlagOption(new FlagOptionParameter("Separation", 'p', "BSS, BSS-GT, BSS-Ratio."));
     
-    public FlagOption silhouetteOption = new FlagOption("Silhouette", 'h', "SilhCoeff.");
+    public FlagOption silhouetteOption = new FlagOption(new FlagOptionParameter("Silhouette", 'h', "SilhCoeff."));
     
-    public FlagOption statisticalOption = new FlagOption("Statistical", 't', "van Dongen, Rand statistic.");
+    public FlagOption statisticalOption = new FlagOption(new FlagOptionParameter("Statistical", 't', "van Dongen, Rand statistic."));
        
     /*public ClassOption evaluatorOption = new ClassOption("evaluator", 'e',
     "Performance evaluation method.",
@@ -85,8 +84,7 @@ public class EvaluateClustering extends AuxiliarMainTask {
     "memCheckFrequency", 'q',
     "How many instances between memory bound checks.", 100000, 0,
     Integer.MAX_VALUE);*/
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv reslts to.", "dumpClustering.csv", "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv reslts to.", "dumpClustering.csv", "csv", true));
 
     @Override
     public Class<?> getTaskResultType() {

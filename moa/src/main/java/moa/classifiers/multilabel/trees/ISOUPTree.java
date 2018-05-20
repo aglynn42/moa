@@ -31,7 +31,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
@@ -131,31 +133,19 @@ public class ISOUPTree extends AbstractMultiLabelLearner implements MultiTargetR
 			1500, 0, Integer.MAX_VALUE);
 
 	public FlagOption regressionTreeOption = new FlagOption(
-			"regressionTree",
-			'r',
-			"Build a regression tree instead of a model tree.");
+			new FlagOptionParameter("regressionTree", 'r', "Build a regression tree instead of a model tree."));
 
 	public FloatOption learningRatioOption = new FloatOption(
-			"learningRatio", 
-			'l',
-			"Learning ratio to use for training the Perceptrons in the leaves.",
-			0.02);
+			new FloatOptionParameter("learningRatio", 'l', "Learning ratio to use for training the Perceptrons in the leaves.", 0.02));
 
 	public FloatOption learningRateDecayFactorOption = new FloatOption(
-			"learningRatioDecayFactor",
-			'd',
-			"Learning rate decay factor (not used when learning rate is constant).",
-			0.001);
+			new FloatOptionParameter("learningRatioDecayFactor", 'd', "Learning rate decay factor (not used when learning rate is constant).", 0.001));
 
 	public FlagOption learningRatioConstOption = new FlagOption(
-			"learningRatioConst",
-			'o',
-			"Keep learning rate constant instead of decaying (if kept constant learning ratio is suggested to be 0.001).");
+			new FlagOptionParameter("learningRatioConst", 'o', "Keep learning rate constant instead of decaying (if kept constant learning ratio is suggested to be 0.001)."));
 
 	public FlagOption doNotNormalizeOption = new FlagOption(
-			"doNotNormalize",
-			'n',
-			"Don't normalize.");
+			new FlagOptionParameter("doNotNormalize", 'n', "Don't normalize."));
 
 
 	//endregion ================ OPTIONS ================

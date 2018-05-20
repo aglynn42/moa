@@ -38,6 +38,7 @@ import moa.learners.Learner;
 import moa.options.AbstractOptionHandler;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 
 import moa.tasks.TaskMonitor;
 
@@ -80,8 +81,7 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
      */
     public AbstractClassifier() {
         if (isRandomizable()) {
-            this.randomSeedOption = new IntOption("randomSeed", 'r',
-                    "Seed for random behaviour of the classifier.", 1);
+            this.randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
         }
     }
 

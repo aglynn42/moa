@@ -26,6 +26,7 @@ import java.io.Serializable;
 import moa.core.ObjectRepository;
 import moa.core.SerializeUtils;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 
 /**
  * Abstract Main Task. All tasks that want to write their result 
@@ -42,8 +43,7 @@ public abstract class MainTask extends AbstractTask {
     protected static final int INSTANCES_BETWEEN_MONITOR_UPDATES = 10;
 
     /** File option to save the final result of the task to. */
-    public FileOption outputFileOption = new FileOption("taskResultFile", 'O',
-            "File to save the final result of the task to.", null, "moa", true);
+    public FileOption outputFileOption = new FileOption(new FileOptionParameter("taskResultFile", 'O', "File to save the final result of the task to.", null, "moa", true));
 
     @Override
     protected Object doTaskImpl(TaskMonitor monitor, ObjectRepository repository) {

@@ -25,6 +25,8 @@ import com.yahoo.labs.samoa.instances.Instances;
 import moa.core.ObjectRepository;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.CachedInstancesStream;
 import moa.streams.InstanceStream;
 
@@ -52,8 +54,7 @@ public class CacheShuffledStream extends AbstractTask {
             Integer.MAX_VALUE);
 
     public IntOption shuffleRandomSeedOption = new IntOption(
-            "shuffleRandomSeed", 'r',
-            "Seed for random shuffling of instances.", 1);
+            new IntOptionParameter("shuffleRandomSeed", 'r', "Seed for random shuffling of instances.", 1));
 
     @Override
     protected Object doTaskImpl(TaskMonitor monitor, ObjectRepository repository) {

@@ -31,6 +31,7 @@ import moa.options.ClassOption;
 import moa.tasks.TaskMonitor;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 
@@ -51,7 +52,7 @@ public class BootstrappedStream extends AbstractOptionHandler implements
     public ClassOption streamOption = new ClassOption("stream", 's',
             "Stream to filter.", MultiTargetInstanceStream.class,
             MultiTargetArffFileStream.class.getName());
-    public IntOption randomSeedOption = new IntOption("randomSeed",'r',"Seed for the random generator",1);
+    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for the random generator", 1));
     
     protected MultiTargetInstanceStream originalStream;
     protected int waitingToSend;

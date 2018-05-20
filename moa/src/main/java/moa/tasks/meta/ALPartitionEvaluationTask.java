@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.Option;
 
 import moa.core.ObjectRepository;
@@ -63,11 +64,9 @@ public class ALPartitionEvaluationTask extends ALMainTask {
 			"Multi param task to be performed for each partition", 
 			ALMultiParamTask.class, "moa.tasks.meta.ALMultiParamTask");
 
-	public IntOption numPartitionsOption = new IntOption("numPartitions", 'k', 
-			"Number of data set partitions.", 10);
+	public IntOption numPartitionsOption = new IntOption(new IntOptionParameter("numPartitions", 'k', "Number of data set partitions.", 10));
 
-	public IntOption randomSeedOption = new IntOption("randomSeed", 'r', 
-			"random seed which is used for partitioning of the stream.", 0);
+	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "random seed which is used for partitioning of the stream.", 0));
 	
 	
 	private ArrayList<ALTaskThread> subtaskThreads = new ArrayList<>();

@@ -656,9 +656,8 @@ public class DiffUtils {
    * Usage: DiffUtils &lt;unified|side-by-side|brief&gt; &lt;file1&gt; &lt;file2&gt;
    *
    * @param args	the files to compare
-   * @throws Exception	if comparison fails
    */
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     if (args.length == 3) {
       File file1 = new File(args[1]);
       if (file1.isDirectory()) {

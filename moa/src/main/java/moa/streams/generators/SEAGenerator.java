@@ -32,7 +32,10 @@ import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
 
@@ -65,11 +68,9 @@ public class SEAGenerator extends AbstractOptionHandler implements
             1, 1, 4);
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public FlagOption balanceClassesOption = new FlagOption("balanceClasses",
-            'b', "Balance the number of instances of each class.");
+    public FlagOption balanceClassesOption = new FlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
 
     public IntOption numInstancesConcept = new IntOption("numInstancesConcept", 'n',
             "The number of instances for each concept.", 0, 0, Integer.MAX_VALUE);

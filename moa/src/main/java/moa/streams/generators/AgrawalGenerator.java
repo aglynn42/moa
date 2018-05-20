@@ -33,8 +33,11 @@ import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
@@ -74,16 +77,14 @@ public class AgrawalGenerator extends AbstractOptionHandler implements
             1, 1, 10);
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public FloatOption peturbFractionOption = new FloatOption("peturbFraction",
             'p',
             "The amount of peturbation (noise) introduced to numeric values.",
             0.05, 0.0, 1.0);
 
-    public FlagOption balanceClassesOption = new FlagOption("balanceClasses",
-            'b', "Balance the number of instances of each class.");
+    public FlagOption balanceClassesOption = new FlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
 
     protected interface ClassFunction {
 

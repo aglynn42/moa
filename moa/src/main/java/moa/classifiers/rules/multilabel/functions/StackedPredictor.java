@@ -28,8 +28,11 @@ import moa.classifiers.rules.core.Utils;
 import moa.core.Measurement;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
 import com.yahoo.labs.samoa.instances.MultiLabelPrediction;
 import com.yahoo.labs.samoa.instances.Prediction;
@@ -49,31 +52,24 @@ MultiTargetRegressor, AMRulesFunction {
 
 	// Parameters and options
 	public FlagOption constantLearningRatioDecayOption = new FlagOption(
-			"learningRatio_Decay_set_constant", 'd',
-			"Learning Ratio Decay in Perceptron set to be constant. (The next parameter).");
+			new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
 
 	public FloatOption learningRatioOption = new FloatOption(
-			"learningRatio", 'l', 
-			"Learning Ratio to use for training the 1st layer.", 0.025);
+			new FloatOptionParameter("learningRatio", 'l', "Learning Ratio to use for training the 1st layer.", 0.025));
 
 	public FloatOption learningRatio2ndLayerOption = new FloatOption(
-			"learningRatio2ndLayer", 'n', 
-			"Learning Ratio to use in the second layer.", 0.001);
+			new FloatOptionParameter("learningRatio2ndLayer", 'n', "Learning Ratio to use in the second layer.", 0.001));
 
 	public FloatOption learningRateDecayOption = new FloatOption(
-			"learningRateDecay", 'm', 
-			" Learning Rate decay to use for training the 1st layer.", 0.001);
+			new FloatOptionParameter("learningRateDecay", 'm', " Learning Rate decay to use for training the 1st layer.", 0.001));
 
 	public FlagOption skipStackingOption = new FlagOption(
-			"skipStackingOption", 's',
-			"Predicts the outputs of the first layer (no dependence among output is computed)");
+			new FlagOptionParameter("skipStackingOption", 's', "Predicts the outputs of the first layer (no dependence among output is computed)"));
 
-	public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-			"Seed for random behaviour of the classifier.", 1);
+	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
 
 	public FlagOption printWeightsOption = new FlagOption(
-			"printWeights", 'p',
-			"Outputs the 2nd layer weights as measurements.");
+			new FlagOptionParameter("printWeights", 'p', "Outputs the 2nd layer weights as measurements."));
 
 
 	/*

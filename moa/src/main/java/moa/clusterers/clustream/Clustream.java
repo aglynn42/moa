@@ -30,6 +30,7 @@ import moa.cluster.SphereCluster;
 import moa.clusterers.AbstractClusterer;
 import moa.core.Measurement;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 
@@ -40,16 +41,13 @@ public class Clustream extends AbstractClusterer{
 
 	private static final long serialVersionUID = 1L;
 
-	public IntOption timeWindowOption = new IntOption("horizon",
-			'h', "Rang of the window.", 1000);
+	public IntOption timeWindowOption = new IntOption(new IntOptionParameter("horizon", 'h', "Rang of the window.", 1000));
 
 	public IntOption maxNumKernelsOption = new IntOption(
-			"maxNumKernels", 'k',
-			"Maximum number of micro kernels to use.", 100);
+			new IntOptionParameter("maxNumKernels", 'k', "Maximum number of micro kernels to use.", 100));
 
 	public IntOption kernelRadiFactorOption = new IntOption(
-			"kernelRadiFactor", 't',
-			"Multiplier for the kernel radius", 2);
+			new IntOptionParameter("kernelRadiFactor", 't', "Multiplier for the kernel radius", 2));
 
 	private int timeWindow;
 	private long timestamp = -1;

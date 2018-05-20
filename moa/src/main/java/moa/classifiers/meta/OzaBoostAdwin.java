@@ -28,6 +28,7 @@ import moa.core.Measurement;
 import moa.core.MiscUtils;
 import moa.options.ClassOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -53,17 +54,14 @@ public class OzaBoostAdwin extends AbstractClassifier implements MultiClassClass
     public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
             "The number of models to boost.", 10, 1, Integer.MAX_VALUE);
 
-    public FlagOption pureBoostOption = new FlagOption("pureBoost", 'p',
-            "Boost with weights only; no poisson.");
+    public FlagOption pureBoostOption = new FlagOption(new FlagOptionParameter("pureBoost", 'p', "Boost with weights only; no poisson."));
 
     public FloatOption deltaAdwinOption = new FloatOption("deltaAdwin", 'a',
             "Delta of Adwin change detection", 0.002, 0.0, 1.0);
 
-    public FlagOption outputCodesOption = new FlagOption("outputCodes", 'o',
-            "Use Output Codes to use binary classifiers.");
+    public FlagOption outputCodesOption = new FlagOption(new FlagOptionParameter("outputCodes", 'o', "Use Output Codes to use binary classifiers."));
 
-    public FlagOption sammeOption = new FlagOption("same", 'e',
-            "Use Samme Algorithm.");
+    public FlagOption sammeOption = new FlagOption(new FlagOptionParameter("same", 'e', "Use Samme Algorithm."));
 
     protected Classifier[] ensemble;
 

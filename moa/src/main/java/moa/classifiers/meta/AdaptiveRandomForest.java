@@ -30,6 +30,7 @@ import moa.options.ClassOption;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.MultiChoiceOption;
 import java.util.ArrayList;
@@ -117,14 +118,11 @@ public class AdaptiveRandomForest extends AbstractClassifier implements MultiCla
     public ClassOption warningDetectionMethodOption = new ClassOption("warningDetectionMethod", 'p',
         "Change detector for warnings (start training bkg learner)", ChangeDetector.class, "ADWINChangeDetector -a 1.0E-4");
     
-    public FlagOption disableWeightedVote = new FlagOption("disableWeightedVote", 'w', 
-            "Should use weighted voting?");
+    public FlagOption disableWeightedVote = new FlagOption(new FlagOptionParameter("disableWeightedVote", 'w', "Should use weighted voting?"));
     
-    public FlagOption disableDriftDetectionOption = new FlagOption("disableDriftDetection", 'u',
-        "Should use drift detection? If disabled then bkg learner is also disabled");
+    public FlagOption disableDriftDetectionOption = new FlagOption(new FlagOptionParameter("disableDriftDetection", 'u', "Should use drift detection? If disabled then bkg learner is also disabled"));
 
-    public FlagOption disableBackgroundLearnerOption = new FlagOption("disableBackgroundLearner", 'q', 
-        "Should use bkg learner? If disabled then reset tree immediately.");
+    public FlagOption disableBackgroundLearnerOption = new FlagOption(new FlagOptionParameter("disableBackgroundLearner", 'q', "Should use bkg learner? If disabled then reset tree immediately."));
     
     protected static final int FEATURES_M = 0;
     protected static final int FEATURES_SQRT = 1;

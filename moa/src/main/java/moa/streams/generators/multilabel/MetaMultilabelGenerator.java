@@ -27,6 +27,8 @@ import moa.options.AbstractOptionHandler;
 import moa.options.ClassOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
 import com.yahoo.labs.samoa.instances.Attribute;
@@ -51,7 +53,7 @@ public class MetaMultilabelGenerator extends AbstractOptionHandler implements In
             "binaryGenerator", 's', "Binary Generator (specify the number of attributes here, but only two classes!).", InstanceStream.class, "generators.RandomTreeGenerator");
 
     public IntOption metaRandomSeedOption = new IntOption(
-            "metaRandomSeed", 'm', "Random seed (for the meta process). Use two streams with the same seed and r > 0.0 in the second stream if you wish to introduce drift to the label dependencies without changing the underlying concept.", 1);
+            new IntOptionParameter("metaRandomSeed", 'm', "Random seed (for the meta process). Use two streams with the same seed and r > 0.0 in the second stream if you wish to introduce drift to the label dependencies without changing the underlying concept.", 1));
 
     public IntOption numLabelsOption = new IntOption(
             "numLabels", 'c', "Number of labels.", 10, 2, Integer.MAX_VALUE);

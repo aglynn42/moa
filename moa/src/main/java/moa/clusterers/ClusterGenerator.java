@@ -25,6 +25,8 @@ import java.util.Arrays;
 import java.util.Random;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.cluster.Clustering;
 import moa.cluster.SphereCluster;
 import moa.core.Measurement;
@@ -35,8 +37,7 @@ public class ClusterGenerator extends AbstractClusterer{
 
 	private static final long serialVersionUID = 1L;
 
-	public IntOption timeWindowOption = new IntOption("timeWindow",
-			't', "Rang of the window.", 1000);
+	public IntOption timeWindowOption = new IntOption(new IntOptionParameter("timeWindow", 't', "Rang of the window.", 1000));
 
     public FloatOption radiusDecreaseOption = new FloatOption("radiusDecrease", 'r',
                 "The average radii of the centroids in the model.", 0, 0, 1);

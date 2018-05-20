@@ -35,8 +35,8 @@ public class IntOption extends AbstractOption {
 
     protected int maxVal;
 
-    public IntOption(String name, char cliChar, String purpose, int defaultVal) {
-        this(name, cliChar, purpose, defaultVal, Integer.MIN_VALUE,
+    public IntOption(IntOptionParameter parameterObject) {
+        this(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultVal, Integer.MIN_VALUE,
                 Integer.MAX_VALUE);
     }
 

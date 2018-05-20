@@ -21,6 +21,7 @@
 package moa.tasks;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.io.File;
@@ -87,8 +88,7 @@ public class EvaluateConceptDrift extends ConceptDriftMainTask{
             "How many instances between memory bound checks.", 100000, 0,
             Integer.MAX_VALUE);*/
 
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv results to.", null, "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
     /*public FileOption outputPredictionFileOption = new FileOption("outputPredictionFile", 'o',
             "File to append output predictions to.", null, "pred", true);*/

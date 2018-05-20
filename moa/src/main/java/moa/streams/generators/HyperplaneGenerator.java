@@ -22,6 +22,8 @@ package moa.streams.generators;
 import java.util.Random;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.core.FastVector;
 import moa.core.InstanceExample;
 import moa.core.ObjectRepository;
@@ -51,8 +53,7 @@ public class HyperplaneGenerator extends AbstractOptionHandler implements
     private static final long serialVersionUID = 1L;
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public IntOption numClassesOption = new IntOption("numClasses", 'c',
             "The number of classes to generate.", 2, 2, Integer.MAX_VALUE);

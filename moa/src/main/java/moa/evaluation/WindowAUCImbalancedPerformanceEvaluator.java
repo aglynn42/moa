@@ -27,6 +27,7 @@ import moa.core.Utils;
 import moa.options.AbstractOptionHandler;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstanceImpl;
 import com.yahoo.labs.samoa.instances.Prediction;
@@ -51,8 +52,7 @@ public class WindowAUCImbalancedPerformanceEvaluator extends
 
 	private static final long serialVersionUID = 1L;
 
-	public IntOption widthOption = new IntOption("width", 'w',
-			"Size of Window", 500);
+	public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Size of Window", 500));
 
 	protected double totalObservedInstances = 0;
 	private Estimator aucEstimator;

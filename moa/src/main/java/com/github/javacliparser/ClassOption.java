@@ -33,9 +33,8 @@ public class ClassOption extends AbstractClassOption {
 
     private static final long serialVersionUID = 1L;
 
-    public ClassOption(String name, char cliChar, String purpose,
-            Class<?> requiredType, String defaultCLIString) {
-        super(name, cliChar, purpose, requiredType, defaultCLIString);
+    public ClassOption(ClassOptionParameter parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.requiredType, parameterObject.defaultCLIString);
     }
 
     public ClassOption(String name, char cliChar, String purpose,

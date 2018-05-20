@@ -32,7 +32,10 @@ import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
 
@@ -62,15 +65,13 @@ public class LEDGenerator extends AbstractOptionHandler implements
         {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 0, 1, 1}};
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public IntOption noisePercentageOption = new IntOption("noisePercentage",
             'n', "Percentage of noise to add to the data.", 10, 0, 100);
 
     public FlagOption suppressIrrelevantAttributesOption = new FlagOption(
-            "suppressIrrelevantAttributes", 's',
-            "Reduce the data to only contain 7 relevant binary attributes.");
+            new FlagOptionParameter("suppressIrrelevantAttributes", 's', "Reduce the data to only contain 7 relevant binary attributes."));
 
     protected InstancesHeader streamHeader;
 

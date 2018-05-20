@@ -34,8 +34,11 @@ import moa.classifiers.Classifier;
 import moa.core.Measurement;
 import moa.options.ClassOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 
 /**
  * Ensemble Combining Restricted Hoeffding Trees using Stacking.
@@ -215,17 +218,14 @@ public class LimAttClassifier extends AbstractClassifier implements MultiClassCl
     public FloatOption oddsOffsetOption = new FloatOption("oddsOffset", 'o',
             "Offset for odds to avoid probabilities that are zero.", 0.001, 0.0, Float.MAX_VALUE);
 
-    public FlagOption pruneOption = new FlagOption("prune", 'x',
-            "Enable pruning.");
+    public FlagOption pruneOption = new FlagOption(new FlagOptionParameter("prune", 'x', "Enable pruning."));
 
-    public FlagOption bigTreesOption = new FlagOption("bigTrees", 'b',
-            "Use m-n attributes on the trees.");
+    public FlagOption bigTreesOption = new FlagOption(new FlagOptionParameter("bigTrees", 'b', "Use m-n attributes on the trees."));
 
     public IntOption numEnsemblePruningOption = new IntOption("numEnsemblePruning", 'm',
             "The pruned number of classifiers to use to predict.", 10, 1, Integer.MAX_VALUE);
 
-    public FlagOption adwinReplaceWorstClassifierOption = new FlagOption("adwinReplaceWorstClassifier", 'z',
-            "When one Adwin detects change, replace worst classifier.");
+    public FlagOption adwinReplaceWorstClassifierOption = new FlagOption(new FlagOptionParameter("adwinReplaceWorstClassifier", 'z', "When one Adwin detects change, replace worst classifier."));
 
     protected Classifier[] ensemble;
 
@@ -464,11 +464,11 @@ public class LimAttClassifier extends AbstractClassifier implements MultiClassCl
     }
 
     //Perceptron
-    public FloatOption learningRatioOption = new FloatOption("learningRatio", 'r', "Learning ratio", 1);
+    public FloatOption learningRatioOption = new FloatOption(new FloatOptionParameter("learningRatio", 'r', "Learning ratio", 1));
 
-    public FloatOption penaltyFactorOption = new FloatOption("lambda", 'p', "Lambda", 0.0);
+    public FloatOption penaltyFactorOption = new FloatOption(new FloatOptionParameter("lambda", 'p', "Lambda", 0.0));
 
-    public IntOption initialNumInstancesOption = new IntOption("initialNumInstances", 'i', "initialNumInstances", 10);
+    public IntOption initialNumInstancesOption = new IntOption(new IntOptionParameter("initialNumInstances", 'i', "initialNumInstances", 10));
 
     protected double[][] weightAttribute;
 

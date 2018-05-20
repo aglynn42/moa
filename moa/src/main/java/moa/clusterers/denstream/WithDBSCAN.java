@@ -33,6 +33,7 @@ import moa.clusterers.macro.dbscan.DBScan;
 import moa.core.Measurement;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 
@@ -40,8 +41,7 @@ public class WithDBSCAN extends AbstractClusterer {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public IntOption horizonOption = new IntOption("horizon", 'h',
-			"Range of the window.", 1000);
+	public IntOption horizonOption = new IntOption(new IntOptionParameter("horizon", 'h', "Range of the window.", 1000));
 	public FloatOption epsilonOption = new FloatOption("epsilon", 'e',
 			"Defines the epsilon neighbourhood", 0.02, 0, 1);
 	// public IntOption minPointsOption = new IntOption("minPoints", 'p',
@@ -51,8 +51,7 @@ public class WithDBSCAN extends AbstractClusterer {
 			1);
 	public FloatOption muOption = new FloatOption("mu", 'm', "", 1, 0,
 			Double.MAX_VALUE);
-	public IntOption initPointsOption = new IntOption("initPoints", 'i',
-			"Number of points to use for initialization.", 1000);
+	public IntOption initPointsOption = new IntOption(new IntOptionParameter("initPoints", 'i', "Number of points to use for initialization.", 1000));
 
 	 public FloatOption offlineOption = new FloatOption("offline", 'o',
 	 "offline multiplier for epsilion.", 2, 2, 20);

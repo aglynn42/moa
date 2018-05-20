@@ -19,6 +19,7 @@
 package moa.streams;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.*;
 import moa.core.Example;
 import moa.core.InstanceExample;
@@ -64,8 +65,7 @@ public class IrrelevantFeatureAppenderStream extends AbstractOptionHandler imple
     public IntOption numValuesCategoricalFeatureOption = new IntOption("numValuesCategoricalFeature", 'v',
             "Number of values for each categorical feature.", 2, 1, 1000);
 
-    public IntOption instanceRandomSeedOption          = new IntOption("instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+    public IntOption instanceRandomSeedOption          = new IntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     /**
      * The original stream.

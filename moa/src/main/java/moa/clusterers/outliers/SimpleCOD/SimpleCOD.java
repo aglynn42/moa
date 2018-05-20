@@ -24,7 +24,9 @@ import java.util.Vector;
 import moa.clusterers.outliers.SimpleCOD.ISBIndex.ISBNode;
 import moa.clusterers.outliers.SimpleCOD.ISBIndex.ISBSearchResult;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 
@@ -34,8 +36,8 @@ import com.yahoo.labs.samoa.instances.Instance;
 //In ICDE, pages 135–146, 2011.
 
 public class SimpleCOD extends SimpleCODBase {
-    public FloatOption radiusOption = new FloatOption("radius", 'r', "Search radius.", 0.1);
-    public IntOption kOption = new IntOption("k", 't', "Parameter k.", 50);
+    public FloatOption radiusOption = new FloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
+    public IntOption kOption = new IntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
     
     public SimpleCOD()
     {

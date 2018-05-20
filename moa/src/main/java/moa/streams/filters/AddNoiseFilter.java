@@ -28,6 +28,7 @@ import moa.core.InstanceExample;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 /**
@@ -46,8 +47,7 @@ public class AddNoiseFilter extends AbstractStreamFilter {
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-            "Seed for random noise.", 1);
+    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
 
     public FloatOption attNoiseFractionOption = new FloatOption("attNoise",
             'a', "The fraction of attribute values to disturb.", 0.1, 0.0, 1.0);

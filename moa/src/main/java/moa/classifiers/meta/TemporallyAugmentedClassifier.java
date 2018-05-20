@@ -20,6 +20,7 @@
 package moa.classifiers.meta;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,8 +67,7 @@ public class TemporallyAugmentedClassifier extends AbstractClassifier implements
     
     protected Instances header;
 
-    public FlagOption labelDelayOption = new FlagOption("labelDelay", 'd',
-        "Labels arrive with Delay. Use predictions instead of true Labels.");
+    public FlagOption labelDelayOption = new FlagOption(new FlagOptionParameter("labelDelay", 'd', "Labels arrive with Delay. Use predictions instead of true Labels."));
     
     @Override
     public void resetLearningImpl() {

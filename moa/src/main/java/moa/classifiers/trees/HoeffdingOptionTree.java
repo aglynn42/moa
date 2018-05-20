@@ -29,9 +29,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
 import moa.AbstractMOAObject;
 import moa.classifiers.AbstractClassifier;
@@ -161,20 +164,15 @@ public class HoeffdingOptionTree extends AbstractClassifier implements MultiClas
             't', "Threshold below which a split will be forced to break ties.",
             0.05, 0.0, 1.0);
 
-    public FlagOption binarySplitsOption = new FlagOption("binarySplits", 'b',
-            "Only allow binary splits.");
+    public FlagOption binarySplitsOption = new FlagOption(new FlagOptionParameter("binarySplits", 'b', "Only allow binary splits."));
 
-    public FlagOption removePoorAttsOption = new FlagOption("removePoorAtts",
-            'r', "Disable poor attributes.");
+    public FlagOption removePoorAttsOption = new FlagOption(new FlagOptionParameter("removePoorAtts", 'r', "Disable poor attributes."));
 
-    public FlagOption noPrePruneOption = new FlagOption("noPrePrune", 'p',
-            "Disable pre-pruning.");
+    public FlagOption noPrePruneOption = new FlagOption(new FlagOptionParameter("noPrePrune", 'p', "Disable pre-pruning."));
 
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'f',
-            "File to append option table to.", null, "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'f', "File to append option table to.", null, "csv", true));
 
-    public IntOption memoryStrategyOption = new IntOption("memStrategy", 'z',
-            "Memory strategy to use.", 2);
+    public IntOption memoryStrategyOption = new IntOption(new IntOptionParameter("memStrategy", 'z', "Memory strategy to use.", 2));
 
     public static class FoundNode {
 

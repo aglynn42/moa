@@ -35,7 +35,10 @@ import moa.evaluation.preview.LearningCurve;
 import moa.learners.Learner;
 import moa.options.ClassOption;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -63,8 +66,7 @@ public class EvaluateInterleavedTestThenTrain extends ClassificationMainTask {
             "generators.RandomTreeGenerator");
 
     public IntOption randomSeedOption = new IntOption(
-            "instanceRandomSeed", 'r',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'r', "Seed for random generation of instances.", 1));
 
     public ClassOption evaluatorOption = new ClassOption("evaluator", 'e',
             "Classification performance evaluation method.",
@@ -89,8 +91,7 @@ public class EvaluateInterleavedTestThenTrain extends ClassificationMainTask {
             "How many instances between memory bound checks.", 100000, 0,
             Integer.MAX_VALUE);
 
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv reslts to.", null, "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv reslts to.", null, "csv", true));
 
     @Override
     public Class<?> getTaskResultType() {

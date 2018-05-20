@@ -42,6 +42,7 @@ import moa.core.StringUtils;
 import moa.core.Utils;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.MultiChoiceOption;
@@ -177,17 +178,13 @@ public class RuleClassifier extends AbstractClassifier implements MultiClassClas
 	            "firstHit", "weightedSum", "weightedMax"}, new String[]{
 	            "first Hit",  "weighted Sum", "weighted Max"}, 0);
 	  
-	 public FlagOption orderedRulesOption = new FlagOption("orderedRules", 'r',
-	            "orderedRules.");
+	 public FlagOption orderedRulesOption = new FlagOption(new FlagOptionParameter("orderedRules", 'r', "orderedRules."));
 	  
-	public FlagOption anomalyDetectionOption = new FlagOption("anomalyDetection", 'u',
-				"anomaly Detection.");
+	public FlagOption anomalyDetectionOption = new FlagOption(new FlagOptionParameter("anomalyDetection", 'u', "anomaly Detection."));
 	
-	public FlagOption Supervised = new FlagOption("supervised", 'n',
-			"supervised.");
+	public FlagOption Supervised = new FlagOption(new FlagOptionParameter("supervised", 'n', "supervised."));
 	
-	public FlagOption Unsupervised = new FlagOption("unsupervised", 'm',
-			"unsupervised.");
+	public FlagOption Unsupervised = new FlagOption(new FlagOptionParameter("unsupervised", 'm', "unsupervised."));
 		
 		
 	  

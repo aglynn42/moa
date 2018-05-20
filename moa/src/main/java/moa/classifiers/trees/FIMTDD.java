@@ -27,6 +27,7 @@ import java.util.List;
 
 import com.yahoo.labs.samoa.instances.Instance;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 
@@ -105,7 +106,7 @@ public class FIMTDD extends AbstractClassifier implements Regressor {
 			1500, 0, Integer.MAX_VALUE);
 
 	public FlagOption regressionTreeOption = new FlagOption(
-			"regressionTree", 'e', "Build a regression tree instead of a model tree.");
+			new FlagOptionParameter("regressionTree", 'e', "Build a regression tree instead of a model tree."));
 
 	public FloatOption learningRatioOption = new FloatOption(
 			"learningRatio", 'l', "Learning ratio to used for training the Perceptrons in the leaves.",
@@ -116,7 +117,7 @@ public class FIMTDD extends AbstractClassifier implements Regressor {
 			0.001, 0, 1.00);
 
 	public FlagOption learningRatioConstOption = new FlagOption(
-			"learningRatioConst", 'p', "Keep learning rate constant instead of decaying.");
+			new FlagOptionParameter("learningRatioConst", 'p', "Keep learning rate constant instead of decaying."));
 
 	//endregion ================ OPTIONS ================
 

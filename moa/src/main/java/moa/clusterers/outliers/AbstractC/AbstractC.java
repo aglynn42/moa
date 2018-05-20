@@ -24,8 +24,11 @@ import java.util.Vector;
 import moa.clusterers.outliers.AbstractC.ISBIndex.ISBNode;
 import moa.clusterers.outliers.AbstractC.ISBIndex.ISBSearchResult;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 //The algorithm is presented in:
@@ -35,10 +38,10 @@ import com.yahoo.labs.samoa.instances.Instance;
 
 
 public class AbstractC extends AbstractCBase {    
-    public FloatOption radiusOption = new FloatOption("radius", 'r', "Search radius.", 0.1);
+    public FloatOption radiusOption = new FloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
     //public FloatOption fractionOption = new FloatOption("fraction", 'f', "Parameter fraction.", 0.05);
-    public IntOption kOption = new IntOption("k", 't', "Parameter k.", 50);
-    public FlagOption waitWinFullOption = new FlagOption("waitWinFull", 'a', "Output outliers when windows is full.");
+    public IntOption kOption = new IntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
+    public FlagOption waitWinFullOption = new FlagOption(new FlagOptionParameter("waitWinFull", 'a', "Output outliers when windows is full."));
     
     public AbstractC()
     {

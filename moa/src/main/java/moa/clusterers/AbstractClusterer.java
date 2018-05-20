@@ -31,7 +31,10 @@ import moa.core.StringUtils;
 import moa.gui.AWTRenderer;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.tasks.TaskMonitor;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -60,14 +63,12 @@ public abstract class AbstractClusterer extends AbstractOptionHandler
     
 	public AbstractClusterer() {
 		if (isRandomizable()) {
-			this.randomSeedOption = new IntOption("randomSeed", 'r',
-					"Seed for random behaviour of the Clusterer.", 1);
+			this.randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the Clusterer.", 1));
 		}
 
         if( implementsMicroClusterer()){
             this.evaluateMicroClusteringOption =
-                    new FlagOption("evaluateMicroClustering", 'M',
-                    "Evaluate the underlying microclustering instead of the macro clustering");
+                    new FlagOption(new FlagOptionParameter("evaluateMicroClustering", 'M', "Evaluate the underlying microclustering instead of the macro clustering"));
         }
 	}
 

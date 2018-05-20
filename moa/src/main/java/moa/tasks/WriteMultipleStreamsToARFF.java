@@ -25,7 +25,9 @@ import java.io.FileWriter;
 import java.io.Writer;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.StringOption;
 
@@ -66,27 +68,23 @@ public class WriteMultipleStreamsToARFF extends AuxiliarMainTask
 			"Stream to write.", InstanceStream.class,
 			"generators.RandomTreeGenerator");
 
-	public FileOption arffFileOption = new FileOption("arffFile", 'a',
-			"Destination ARFF file.", null, "arff", true);
+	public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'a', "Destination ARFF file.", null, "arff", true));
 
 	public IntOption maxInstancesOption = new IntOption("maxInstances", 'm',
 			"Maximum number of instances to write to file.", 10000000, 0,
 			Integer.MAX_VALUE);
 
-	public FlagOption suppressHeaderOption = new FlagOption("suppressHeader",
-			'h', "Suppress header from output.");
+	public FlagOption suppressHeaderOption = new FlagOption(new FlagOptionParameter("suppressHeader", 'h', "Suppress header from output."));
 
 	public IntOption numStreamsOption = new IntOption("numStreams", 'n',
 			"Number of streams to generate and write to file.", 100, 0, Integer.MAX_VALUE);
 	
-	public FlagOption randomFlagOne = new FlagOption("randomFlagOne", 'f',
-			"Check in order to provide the first random option with different seeds.");
+	public FlagOption randomFlagOne = new FlagOption(new FlagOptionParameter("randomFlagOne", 'f', "Check in order to provide the first random option with different seeds."));
 	
 	public StringOption randomOneOption = new StringOption("randomOptionOne", '1',
             "Random option to provide with different seed values.", "m");
 	
-	public FlagOption randomFlagTwo = new FlagOption("randomFlagTwo", 'F',
-			"Check in order to provide the second random option with different seeds.");
+	public FlagOption randomFlagTwo = new FlagOption(new FlagOptionParameter("randomFlagTwo", 'F', "Check in order to provide the second random option with different seeds."));
 	
 	public StringOption randomTwoOption = new StringOption("randomOptionTwo", '2',
             "Random option to provide with different seed values.", "i");

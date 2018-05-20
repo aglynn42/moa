@@ -35,9 +35,8 @@ public class FloatOption extends AbstractOption {
 
     protected double maxVal;
 
-    public FloatOption(String name, char cliChar, String purpose,
-            double defaultVal) {
-        this(name, cliChar, purpose, defaultVal, Double.NEGATIVE_INFINITY,
+    public FloatOption(FloatOptionParameter parameterObject) {
+        this(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultVal, Double.NEGATIVE_INFINITY,
                 Double.POSITIVE_INFINITY);
     }
 

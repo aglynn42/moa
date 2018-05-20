@@ -47,6 +47,7 @@ import moa.core.StringUtils;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -71,8 +72,7 @@ public abstract class AbstractAMRules extends AbstractClassifier {
 	public IntOption gracePeriodOption = new IntOption("gracePeriod",
 			'g', "Hoeffding Bound Parameter. The number of instances a leaf should observe between split attempts.",
 			200, 1, Integer.MAX_VALUE);
-	public FlagOption DriftDetectionOption = new FlagOption("DoNotDetectChanges", 'H',
-			"Drift Detection. Page-Hinkley.");
+	public FlagOption DriftDetectionOption = new FlagOption(new FlagOptionParameter("DoNotDetectChanges", 'H', "Drift Detection. Page-Hinkley."));
 	public FloatOption pageHinckleyAlphaOption = new FloatOption(
 			"pageHinckleyAlpha",
 			'a',
@@ -83,8 +83,7 @@ public abstract class AbstractAMRules extends AbstractClassifier {
 			'l',
 			"The threshold value (Lambda) to be used in the Page Hinckley change detection tests.",
 			35, 0, Integer.MAX_VALUE);
-	public FlagOption noAnomalyDetectionOption = new FlagOption("noAnomalyDetection", 'A',
-			"Disable anomaly Detection.");
+	public FlagOption noAnomalyDetectionOption = new FlagOption(new FlagOptionParameter("noAnomalyDetection", 'A', "Disable anomaly Detection."));
 	public FloatOption multivariateAnomalyProbabilityThresholdOption = new FloatOption(
 			"multivariateAnomalyProbabilityThresholdd",
 			'm',
@@ -100,8 +99,7 @@ public abstract class AbstractAMRules extends AbstractClassifier {
 			'n',
 			"The threshold value of anomalies to be used in the anomaly detection.",
 			30, 0, Integer.MAX_VALUE);
-	public FlagOption unorderedRulesOption = new FlagOption("setUnorderedRulesOn", 'U',
-			"unorderedRules.");
+	public FlagOption unorderedRulesOption = new FlagOption(new FlagOptionParameter("setUnorderedRulesOn", 'U', "unorderedRules."));
 
 	public IntOption VerbosityOption = new IntOption(
 			"verbosity",

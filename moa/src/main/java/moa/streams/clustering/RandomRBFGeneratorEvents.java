@@ -39,8 +39,11 @@ import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.ObjectRepository;
 import moa.gui.visualization.DataPoint;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
 import com.yahoo.labs.samoa.instances.Attribute;
@@ -55,12 +58,10 @@ public class RandomRBFGeneratorEvents extends ClusteringStream {
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption modelRandomSeedOption = new IntOption("modelRandomSeed",
-                    'm', "Seed for random generation of model.", 1);
+    public IntOption modelRandomSeedOption = new IntOption(new IntOptionParameter("modelRandomSeed", 'm', "Seed for random generation of model.", 1));
 
     public IntOption instanceRandomSeedOption = new IntOption(
-                    "instanceRandomSeed", 'i',
-                    "Seed for random generation of instances.", 5);
+                    new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 5));
 
     public IntOption numClusterOption = new IntOption("numCluster", 'K',
                     "The average number of centroids in the model.", 5, 1, Integer.MAX_VALUE);
@@ -87,17 +88,14 @@ public class RandomRBFGeneratorEvents extends ClusteringStream {
     public FloatOption noiseLevelOption = new FloatOption("noiseLevel", 'N',
                     "Noise level", 0.1, 0, 1);
 
-    public FlagOption noiseInClusterOption = new FlagOption("noiseInCluster", 'n',
-                    "Allow noise to be placed within a cluster");
+    public FlagOption noiseInClusterOption = new FlagOption(new FlagOptionParameter("noiseInCluster", 'n', "Allow noise to be placed within a cluster"));
 
     public IntOption eventFrequencyOption = new IntOption("eventFrequency", 'E',
                     "Event frequency. Enable at least one of the events below and set numClusterRange!", 30000, 0, Integer.MAX_VALUE);
 
-    public FlagOption eventMergeSplitOption = new FlagOption("eventMergeSplitOption", 'M',
-                    "Enable merging and splitting of clusters. Set eventFrequency and numClusterRange!");
+    public FlagOption eventMergeSplitOption = new FlagOption(new FlagOptionParameter("eventMergeSplitOption", 'M', "Enable merging and splitting of clusters. Set eventFrequency and numClusterRange!"));
 
-    public FlagOption eventDeleteCreateOption = new FlagOption("eventDeleteCreate", 'C',
-    				"Enable emering and disapperaing of clusters. Set eventFrequency and numClusterRange!");
+    public FlagOption eventDeleteCreateOption = new FlagOption(new FlagOptionParameter("eventDeleteCreate", 'C', "Enable emering and disapperaing of clusters. Set eventFrequency and numClusterRange!"));
 
     
     private double merge_threshold = 0.7;

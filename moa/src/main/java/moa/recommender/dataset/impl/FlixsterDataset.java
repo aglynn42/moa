@@ -31,6 +31,7 @@ import java.util.logging.Logger;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 
 import moa.recommender.dataset.Dataset;
 import moa.tasks.TaskMonitor;
@@ -38,8 +39,7 @@ import moa.tasks.TaskMonitor;
 public class FlixsterDataset extends AbstractOptionHandler implements Dataset  {
     private String strLine;
     private BufferedReader br;
-        public FileOption fileOption = new FileOption("file", 'f',
-            "File to load.", "/home/alex/datasets/ratings.txt", "txt", false);
+        public FileOption fileOption = new FileOption(new FileOptionParameter("file", 'f', "File to load.", "/home/alex/datasets/ratings.txt", "txt", false));
     
     /*public FlixsterDataset() throws IOException {
         super();

@@ -27,6 +27,7 @@ import moa.core.DoubleVector;
 import moa.core.MiscUtils;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.classifiers.AbstractClassifier;
 import moa.core.Measurement;
@@ -101,11 +102,9 @@ public class OzaBagASHT extends AbstractClassifier implements MultiClassClassifi
     public IntOption firstClassifierSizeOption = new IntOption("firstClassifierSize", 'f',
             "The size of first classifier in the bag.", 1, 1, Integer.MAX_VALUE);
 
-    public FlagOption useWeightOption = new FlagOption("useWeight",
-            'u', "Enable weight classifiers.");
+    public FlagOption useWeightOption = new FlagOption(new FlagOptionParameter("useWeight", 'u', "Enable weight classifiers."));
 
-    public FlagOption resetTreesOption = new FlagOption("resetTrees",
-            'e', "Reset trees when size is higher than the max.");
+    public FlagOption resetTreesOption = new FlagOption(new FlagOptionParameter("resetTrees", 'e', "Reset trees when size is higher than the max."));
 
         public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
     		"ASHoeffdingTree to train.", ASHoeffdingTree.class,

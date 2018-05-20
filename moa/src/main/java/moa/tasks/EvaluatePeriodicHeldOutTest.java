@@ -26,7 +26,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import moa.classifiers.Classifier;
 import moa.classifiers.MultiClassClassifier;
@@ -88,11 +90,9 @@ public class EvaluatePeriodicHeldOutTest extends ClassificationMainTask {
             "Number of training examples between samples of learning performance.",
             100000, 0, Integer.MAX_VALUE);
 
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv results to.", null, "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
-    public FlagOption cacheTestOption = new FlagOption("cacheTest", 'c',
-            "Cache test instances in memory.");
+    public FlagOption cacheTestOption = new FlagOption(new FlagOptionParameter("cacheTest", 'c', "Cache test instances in memory."));
 
     @Override
     protected Object doMainTask(TaskMonitor monitor, ObjectRepository repository) {

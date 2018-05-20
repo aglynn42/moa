@@ -33,6 +33,7 @@ import moa.cluster.SphereCluster;
 import moa.clusterers.AbstractClusterer;
 import moa.core.Measurement;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 public abstract class MyBaseOutlierDetector extends AbstractClusterer { 
@@ -73,7 +74,7 @@ public abstract class MyBaseOutlierDetector extends AbstractClusterer {
         }
     }
     
-    public IntOption windowSizeOption = new IntOption("windowSize", 'w', "Size of the window.", 1000);
+    public IntOption windowSizeOption = new IntOption(new IntOptionParameter("windowSize", 'w', "Size of the window.", 1000));
     
     public OutlierNotifier outlierNotifier = null;   
     

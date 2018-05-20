@@ -20,6 +20,7 @@
 package moa.streams.filters;
 
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
@@ -79,8 +80,7 @@ public class ReplacingMissingValuesFilter extends AbstractStreamFilter {
 					     "Replaces with the mode of the processed instances so far (most frequent value)"}
 			, 0);
 
-	public FloatOption numericalConstantValueOption = new FloatOption("numericalConstantValue", 'c', 
-			"Value used to replace missing values during the numerical constant strategy", 0.0);
+	public FloatOption numericalConstantValueOption = new FloatOption(new FloatOptionParameter("numericalConstantValue", 'c', "Value used to replace missing values during the numerical constant strategy", 0.0));
 	
 	protected int numAttributes = -1;
 	

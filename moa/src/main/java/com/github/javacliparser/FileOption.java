@@ -33,11 +33,10 @@ public class FileOption extends StringOption {
 
     protected boolean isOutputFile;
 
-    public FileOption(String name, char cliChar, String purpose,
-            String defaultFileName, String defaultExtension, boolean isOutput) {
-        super(name, cliChar, purpose, defaultFileName);
-        this.defaultFileExtension = defaultExtension;
-        this.isOutputFile = isOutput;
+    public FileOption(FileOptionParameter parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultFileName);
+        this.defaultFileExtension = parameterObject.defaultExtension;
+        this.isOutputFile = parameterObject.isOutput;
     }
 
     public String getDefaultFileExtension() {

@@ -28,8 +28,11 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.StringOption;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
@@ -52,14 +55,12 @@ public class SimpleCSVStream extends ClusteringStream {
 
 	String defaultfile = "/Users/kokomo40/Dropbox/BT Kim/Datasets/KDDCUP99/KDDCup99.arff";
 
-	public FileOption csvFileOption = new FileOption("csvFile", 'f',
-			"CSV file to load.", defaultfile, "csv", false);
+	public FileOption csvFileOption = new FileOption(new FileOptionParameter("csvFile", 'f', "CSV file to load.", defaultfile, "csv", false));
 
 	public StringOption splitCharOption = new StringOption("splitChar", 's',
 			"Input CSV split character", ",");
 
-	public FlagOption classIndexOption = new FlagOption("classIndex", 'c',
-			"Last attribute is class index.");
+	public FlagOption classIndexOption = new FlagOption(new FlagOptionParameter("classIndex", 'c', "Last attribute is class index."));
 
 	protected Instances dataset;
 
@@ -255,8 +256,7 @@ public class SimpleCSVStream extends ClusteringStream {
 				this.dataset = new Instances(csvFileOption.getFile().getName(),
 						attributes, 0);
 				this.dataset.setClassIndex(this.numAttributes - 1);
-				numAttsOption = new IntOption("numAtts", 'a', "",
-						this.numAttributes);
+				numAttsOption = new IntOption(new IntOptionParameter("numAtts", 'a', "", this.numAttributes));
 
 				double[] value = new double[this.numAttributes];
 				for (int i = 0; i < this.numTokens && token.hasMoreTokens(); i++) {

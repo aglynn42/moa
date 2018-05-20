@@ -17,6 +17,7 @@ package moa.streams.generators;
  */
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.*;
 import moa.core.InstanceExample;
 import moa.core.ObjectRepository;
@@ -38,8 +39,7 @@ public class TextGenerator extends AbstractOptionHandler implements InstanceStre
             "The number of attributes to generate.", 1000, 0, Integer.MAX_VALUE);
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     protected InstancesHeader streamHeader;
 

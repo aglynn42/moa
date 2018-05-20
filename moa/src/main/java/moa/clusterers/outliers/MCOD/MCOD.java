@@ -27,7 +27,9 @@ import moa.clusterers.outliers.MCOD.ISBIndex.ISBNode;
 import moa.clusterers.outliers.MCOD.ISBIndex.ISBNode.NodeType;
 import moa.clusterers.outliers.MCOD.ISBIndex.ISBSearchResult;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 
@@ -38,8 +40,8 @@ import com.yahoo.labs.samoa.instances.Instance;
 
 
 public class MCOD extends MCODBase {
-    public FloatOption radiusOption = new FloatOption("radius", 'r', "Search radius.", 0.1);
-    public IntOption kOption = new IntOption("k", 't', "Parameter k.", 50);
+    public FloatOption radiusOption = new FloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
+    public IntOption kOption = new IntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
     
     public MCOD()
     {

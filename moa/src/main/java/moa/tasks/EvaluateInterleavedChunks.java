@@ -34,6 +34,7 @@ import moa.evaluation.preview.LearningCurve;
 import moa.learners.Learner;
 import moa.options.ClassOption;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
@@ -117,8 +118,7 @@ public class EvaluateInterleavedChunks extends ClassificationMainTask {
 	/**
 	 * Allows to define the output file name and location.
 	 */
-	public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-			"File to append intermediate csv reslts to.", null, "csv", true);
+	public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv reslts to.", null, "csv", true));
 
 	/**
 	 * Defines the task's result type.

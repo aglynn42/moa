@@ -24,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Prediction;
@@ -74,8 +75,7 @@ public class EvaluateModelMultiLabel extends MultiLabelMainTask {
             "Maximum number of instances to test.", 1000000, 0,
             Integer.MAX_VALUE);
 
-    public FileOption outputPredictionFileOption = new FileOption("outputPredictionFile", 'o',
-            "File to append output predictions to.", null, "pred", true);
+    public FileOption outputPredictionFileOption = new FileOption(new FileOptionParameter("outputPredictionFile", 'o', "File to append output predictions to.", null, "pred", true));
 
     public EvaluateModelMultiLabel() {
     }

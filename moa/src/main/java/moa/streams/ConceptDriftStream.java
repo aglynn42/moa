@@ -28,6 +28,8 @@ import moa.options.AbstractOptionHandler;
 import moa.options.ClassOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.tasks.TaskMonitor;
 
 /**
@@ -67,14 +69,11 @@ public class ConceptDriftStream extends AbstractOptionHandler implements
     public FloatOption alphaOption = new FloatOption("alpha",
             'a', "Angle alpha of change grade.", 0.0, 0.0, 90.0);
 
-    public IntOption positionOption = new IntOption("position",
-            'p', "Central position of concept drift change.", 0);
+    public IntOption positionOption = new IntOption(new IntOptionParameter("position", 'p', "Central position of concept drift change.", 0));
 
-    public IntOption widthOption = new IntOption("width",
-            'w', "Width of concept drift change.", 1000);
+    public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Width of concept drift change.", 1000));
 
-    public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-            "Seed for random noise.", 1);
+    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
 
     protected ExampleStream inputStream;
 

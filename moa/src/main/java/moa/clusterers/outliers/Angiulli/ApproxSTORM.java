@@ -29,7 +29,9 @@ import java.util.Vector;
 import moa.clusterers.outliers.Angiulli.ISBIndex.ISBNode;
 import moa.clusterers.outliers.Angiulli.ISBIndex.ISBSearchResult;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 
@@ -47,10 +49,10 @@ public class ApproxSTORM extends STORMBase {
         }
     }
     
-    public FloatOption radiusOption = new FloatOption("radius", 'r', "Search radius.", 0.1);
-    public IntOption kOption = new IntOption("k", 't', "Parameter k.", 50);
-    public IntOption queryFreqOption = new IntOption("queryFreq", 'q', "Query frequency.", 1);
-    public FloatOption pOption = new FloatOption("p", 'p', "Parameter p.", 0.1);
+    public FloatOption radiusOption = new FloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
+    public IntOption kOption = new IntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
+    public IntOption queryFreqOption = new IntOption(new IntOptionParameter("queryFreq", 'q', "Query frequency.", 1));
+    public FloatOption pOption = new FloatOption(new FloatOptionParameter("p", 'p', "Parameter p.", 0.1));
     
     Set<ISBNode> safe_inliers; // list of safe inliers
     int m_FractWindowSize;  

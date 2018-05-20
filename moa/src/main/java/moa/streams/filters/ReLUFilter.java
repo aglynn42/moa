@@ -8,6 +8,7 @@ import moa.core.InstanceExample;
 import moa.streams.MultiTargetInstanceStream;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstanceImpl;
@@ -23,8 +24,8 @@ public class ReLUFilter extends AbstractStreamFilter {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected InstancesHeader dataset;
-	public IntOption randomSeedOption = new IntOption("randomSeed", 'r', "Seed for random noise.", 1);
-	public IntOption numLatentOption = new IntOption("numLatent", 'h', "Percent of basis functions (wrt number of input attributes).", 10);
+	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
+	public IntOption numLatentOption = new IntOption(new IntOptionParameter("numLatent", 'h', "Percent of basis functions (wrt number of input attributes).", 10));
 	private int H = 200;
 	protected Random random;
 	protected double W[][];

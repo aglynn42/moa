@@ -34,6 +34,8 @@ import moa.core.MiscUtils;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
 
@@ -53,12 +55,10 @@ public class RandomRBFGenerator extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption modelRandomSeedOption = new IntOption("modelRandomSeed",
-            'r', "Seed for random generation of model.", 1);
+    public IntOption modelRandomSeedOption = new IntOption(new IntOptionParameter("modelRandomSeed", 'r', "Seed for random generation of model.", 1));
 
     public IntOption instanceRandomSeedOption = new IntOption(
-            "instanceRandomSeed", 'i',
-            "Seed for random generation of instances.", 1);
+            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public IntOption numClassesOption = new IntOption("numClasses", 'c',
             "The number of classes to generate.", 2, 2, Integer.MAX_VALUE);

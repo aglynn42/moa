@@ -28,6 +28,8 @@ import moa.core.Measurement;
 import moa.core.StringUtils;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.core.FastVector;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -50,8 +52,7 @@ public class CobWeb extends AbstractClusterer {
             'a', "Acuity (minimum standard deviation)", 1.0, 0.0, 90.0);
     public FloatOption cutoffOption = new FloatOption("cutoff",
             'c', "Cutoff (minimum category utility)", 0.002, 0.0, 90.0); //0.01 * Cobweb.m_normal
-    public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-            "Seed for random noise.", 1);	//42
+    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));	//42
 
     /**
      * Inner class handling node operations for Cobweb.

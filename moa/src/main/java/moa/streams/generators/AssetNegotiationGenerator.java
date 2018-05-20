@@ -22,6 +22,7 @@ package moa.streams.generators;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -66,8 +67,7 @@ public class AssetNegotiationGenerator
 	    "% of class noise.", 0.05, 0.0, 1.0f);
 
     public IntOption instanceRandomSeedOption = new IntOption(
-	    "instanceRandomSeed", 'i',
-	    "Seed for random generation of instances.", 1);
+	    new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     /*
      * INTERNALS

@@ -27,7 +27,9 @@ import java.io.Writer;
 import moa.core.ObjectRepository;
 import moa.options.ClassOption;
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.InstanceImpl;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
@@ -52,15 +54,13 @@ public class WriteStreamToARFFFile extends AuxiliarMainTask {
             "Stream to write.", InstanceStream.class,
             "generators.RandomTreeGenerator");
 
-    public FileOption arffFileOption = new FileOption("arffFile", 'f',
-            "Destination ARFF file.", null, "arff", true);
+    public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'f', "Destination ARFF file.", null, "arff", true));
 
     public IntOption maxInstancesOption = new IntOption("maxInstances", 'm',
             "Maximum number of instances to write to file.", 10000000, 0,
             Integer.MAX_VALUE);
 
-    public FlagOption suppressHeaderOption = new FlagOption("suppressHeader",
-            'h', "Suppress header from output.");
+    public FlagOption suppressHeaderOption = new FlagOption(new FlagOptionParameter("suppressHeader", 'h', "Suppress header from output."));
 
     @Override
     protected Object doMainTask(TaskMonitor monitor, ObjectRepository repository) {

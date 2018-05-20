@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.ListOption;
 import com.github.javacliparser.Option;
@@ -93,8 +94,7 @@ public abstract class HeterogeneousEnsembleAbstract extends AbstractClassifier i
 			Integer.MAX_VALUE);
 
 	public FlagOption weightClassifiersOption = new FlagOption(
-			"weightClassifiers", 'p',
-			"Uses online performance estimation to weight the classifiers");
+			new FlagOptionParameter("weightClassifiers", 'p', "Uses online performance estimation to weight the classifiers"));
 
 	protected Classifier[] ensemble;
 

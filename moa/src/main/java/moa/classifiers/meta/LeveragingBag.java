@@ -22,6 +22,8 @@ package moa.classifiers.meta;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
+
 import moa.classifiers.MultiClassClassifier;
 import moa.options.ClassOption;
 import com.github.javacliparser.MultiChoiceOption;
@@ -68,8 +70,7 @@ public class LeveragingBag extends AbstractClassifier implements MultiClassClass
             "Delta of Adwin change detection", 0.002, 0.0, 1.0);
 
     // Leveraging Bagging MC: uses this option to use Output Codes
-    public FlagOption outputCodesOption = new FlagOption("outputCodes", 'o',
-            "Use Output Codes to use binary classifiers.");
+    public FlagOption outputCodesOption = new FlagOption(new FlagOptionParameter("outputCodes", 'o', "Use Output Codes to use binary classifiers."));
 
     public MultiChoiceOption leveraginBagAlgorithmOption = new MultiChoiceOption(
             "leveraginBagAlgorithm", 'm', "Leveraging Bagging to use.", new String[]{

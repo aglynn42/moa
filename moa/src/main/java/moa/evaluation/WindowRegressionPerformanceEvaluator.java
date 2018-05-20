@@ -25,6 +25,7 @@ import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 
 import moa.tasks.TaskMonitor;
 
@@ -43,8 +44,7 @@ public class WindowRegressionPerformanceEvaluator extends AbstractOptionHandler
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption widthOption = new IntOption("width",
-            'w', "Size of Window", 1000);
+    public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Size of Window", 1000));
 
     protected double TotalweightObserved = 0;
 

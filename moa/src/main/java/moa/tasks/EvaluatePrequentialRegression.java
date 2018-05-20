@@ -38,8 +38,11 @@ import moa.learners.Learner;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 
 import moa.classifiers.Regressor;
 import moa.streams.ExampleStream;
@@ -96,18 +99,14 @@ public class EvaluatePrequentialRegression extends RegressionMainTask {
             "How many instances between memory bound checks.", 100000, 0,
             Integer.MAX_VALUE);
 
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv results to.", null, "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
-    public FileOption outputPredictionFileOption = new FileOption("outputPredictionFile", 'o',
-            "File to append output predictions to.", null, "pred", true);
+    public FileOption outputPredictionFileOption = new FileOption(new FileOptionParameter("outputPredictionFile", 'o', "File to append output predictions to.", null, "pred", true));
 
     //New for prequential method DEPRECATED
-    public IntOption widthOption = new IntOption("width",
-            'w', "Size of Window", 1000);
+    public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Size of Window", 1000));
 
-    public FloatOption alphaOption = new FloatOption("alpha",
-            'a', "Fading factor or exponential smoothing factor", .01);
+    public FloatOption alphaOption = new FloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
     //End New for prequential methods
 
     @Override

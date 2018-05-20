@@ -22,6 +22,7 @@ package moa.streams;
 import java.util.Random;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 
@@ -48,16 +49,13 @@ public class PartitioningStream extends AbstractOptionHandler  implements Exampl
             "generators.RandomTreeGenerator");
 
     public IntOption partitionIndexOption = new IntOption(
-            "partitionIndex", 'i',
-            "The index of the partition, which should be used as output.", 0);
+            new IntOptionParameter("partitionIndex", 'i', "The index of the partition, which should be used as output.", 0));
 
     public IntOption numPartitionsOption = new IntOption(
-            "numPartitions", 'n',
-            "The number of total streams the base stream is split into.", 1);
+            new IntOptionParameter("numPartitions", 'n', "The number of total streams the base stream is split into.", 1));
     
     public IntOption randomSeedOption = new IntOption(
-            "randomSeed", 'r',
-            "The seed which is used (all other partitions should use the same one to guarentee).", 0);
+            new IntOptionParameter("randomSeed", 'r', "The seed which is used (all other partitions should use the same one to guarentee).", 0));
 	
     protected ExampleStream baseStream;
     protected int partitionIndex;

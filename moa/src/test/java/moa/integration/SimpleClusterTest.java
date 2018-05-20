@@ -13,6 +13,7 @@ import moa.tasks.TaskThread;
 import org.junit.Test;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.Option;
 
@@ -57,11 +58,9 @@ public class SimpleClusterTest extends TestCase {
             }
             // create standard options
             FlagOption suppressStatusOutputOption = new FlagOption(
-                    "suppressStatusOutput", 'S',
-                    "Suppress the task status output that is normally send to stderr.");
+                    new FlagOptionParameter("suppressStatusOutput", 'S', "Suppress the task status output that is normally send to stderr."));
             FlagOption suppressResultOutputOption = new FlagOption(
-                    "suppressResultOutput", 'R',
-                    "Suppress the task result output that is normally send to stdout.");
+                    new FlagOptionParameter("suppressResultOutput", 'R', "Suppress the task result output that is normally send to stdout."));
             IntOption statusUpdateFrequencyOption = new IntOption(
                     "statusUpdateFrequency",
                     'F',

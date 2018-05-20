@@ -20,6 +20,7 @@
 package moa.streams;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.Instances;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
@@ -55,8 +56,7 @@ public class ArffFileStream extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public FileOption arffFileOption = new FileOption("arffFile", 'f',
-            "ARFF file to load.", null, "arff", false);
+    public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'f', "ARFF file to load.", null, "arff", false));
 
     public IntOption classIndexOption = new IntOption(
             "classIndex",

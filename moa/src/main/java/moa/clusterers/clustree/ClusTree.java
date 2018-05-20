@@ -28,7 +28,9 @@ import moa.cluster.Clustering;
 import moa.clusterers.AbstractClusterer;
 import moa.core.Measurement;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 /**
@@ -39,16 +41,13 @@ import com.yahoo.labs.samoa.instances.Instance;
 public class ClusTree extends AbstractClusterer{
 	private static final long serialVersionUID = 1L;
 	
-	public IntOption horizonOption = new IntOption("horizon",
-			'h', "Range of the window.", 1000);
+	public IntOption horizonOption = new IntOption(new IntOptionParameter("horizon", 'h', "Range of the window.", 1000));
 
     public IntOption maxHeightOption = new IntOption(
-			"maxHeight", 'H',
-			"The maximal height of the tree", getDefaultHeight());
+			new IntOptionParameter("maxHeight", 'H', "The maximal height of the tree", getDefaultHeight()));
 
 	public FlagOption breadthFirstStrategyOption = new FlagOption(
-			"breadthFirstStrategy", 'B',
-			"Use breadth first strategy");
+			new FlagOptionParameter("breadthFirstStrategy", 'B', "Use breadth first strategy"));
     
     protected int getDefaultHeight() {
     	return 8;
@@ -460,7 +459,8 @@ public class ClusTree extends AbstractClusterer{
     }
 
 	// TODO: Expand all function that work on entries to work with the Budget.
-    private Entry insert(ClusKernel pointToInsert, ClusKernel carriedBuffer,
+    @SuppressWarnings("null")
+	private Entry insert(ClusKernel pointToInsert, ClusKernel carriedBuffer,
             Node currentNode, Entry parentEntry, Budget budget, long timestamp) {
         assert (currentNode != null);
         assert (currentNode.isLeaf()

@@ -26,6 +26,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.MultiChoiceOption;
@@ -150,18 +151,14 @@ public class HoeffdingTree extends AbstractClassifier implements MultiClassClass
             't', "Threshold below which a split will be forced to break ties.",
             0.05, 0.0, 1.0);
 
-public FlagOption binarySplitsOption = new FlagOption("binarySplits", 'b',
-        "Only allow binary splits.");
+public FlagOption binarySplitsOption = new FlagOption(new FlagOptionParameter("binarySplits", 'b', "Only allow binary splits."));
 
     public FlagOption stopMemManagementOption = new FlagOption(
-            "stopMemManagement", 'z',
-            "Stop growing as soon as memory limit is hit.");
+            new FlagOptionParameter("stopMemManagement", 'z', "Stop growing as soon as memory limit is hit."));
 
-    public FlagOption removePoorAttsOption = new FlagOption("removePoorAtts",
-            'r', "Disable poor attributes.");
+    public FlagOption removePoorAttsOption = new FlagOption(new FlagOptionParameter("removePoorAtts", 'r', "Disable poor attributes."));
 
-    public FlagOption noPrePruneOption = new FlagOption("noPrePrune", 'p',
-            "Disable pre-pruning.");
+    public FlagOption noPrePruneOption = new FlagOption(new FlagOptionParameter("noPrePrune", 'p', "Disable pre-pruning."));
 
     public static class FoundNode {
 

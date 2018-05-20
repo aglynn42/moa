@@ -41,9 +41,14 @@ import moa.learners.Learner;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.FileOption;
+import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.streams.ExampleStream;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.util.LinkedList;
@@ -93,11 +98,9 @@ public class EvaluatePrequentialDelayed extends ClassificationMainTask {
         "Number of instances used for training in the beginning of the stream.",
         1000, 0, Integer.MAX_VALUE);
     
-    public FlagOption trainOnInitialWindowOption = new FlagOption("trainOnInitialWindow", 'm', 
-            "Whether to train or not using instances in the initial window.");
+    public FlagOption trainOnInitialWindowOption = new FlagOption(new FlagOptionParameter("trainOnInitialWindow", 'm', "Whether to train or not using instances in the initial window."));
     
-    public FlagOption trainInBatches = new FlagOption("trainInBatches", 'b', 
-        "If set training will not be interleaved with testing. ");
+    public FlagOption trainInBatches = new FlagOption(new FlagOptionParameter("trainInBatches", 'b', "If set training will not be interleaved with testing. "));
     
     public IntOption instanceLimitOption = new IntOption("instanceLimit", 'i',
             "Maximum number of instances to test/train on  (-1 = no limit).",
@@ -117,18 +120,14 @@ public class EvaluatePrequentialDelayed extends ClassificationMainTask {
             "How many instances between memory bound checks.", 100000, 0,
             Integer.MAX_VALUE);
 
-    public FileOption dumpFileOption = new FileOption("dumpFile", 'd',
-            "File to append intermediate csv results to.", null, "csv", true);
+    public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
-    public FileOption outputPredictionFileOption = new FileOption("outputPredictionFile", 'o',
-            "File to append output predictions to.", null, "pred", true);
+    public FileOption outputPredictionFileOption = new FileOption(new FileOptionParameter("outputPredictionFile", 'o', "File to append output predictions to.", null, "pred", true));
 
     //New for prequential method DEPRECATED
-    public IntOption widthOption = new IntOption("width",
-            'w', "Size of Window", 1000);
+    public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Size of Window", 1000));
 
-    public FloatOption alphaOption = new FloatOption("alpha",
-            'a', "Fading factor or exponential smoothing factor", .01);
+    public FloatOption alphaOption = new FloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
 
     // Buffer of instances to use for training. 
     protected LinkedList<Example> trainInstances;

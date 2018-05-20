@@ -29,8 +29,8 @@ public class FlagOption extends AbstractOption {
 
     protected boolean isSet = false;
 
-    public FlagOption(String name, char cliChar, String purpose) {
-        super(name, cliChar, purpose);
+    public FlagOption(FlagOptionParameter parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose);
     }
 
     public void setValue(boolean v) {

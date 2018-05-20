@@ -1,7 +1,10 @@
 package moa.clusterers.streamkm;
 
 import com.github.javacliparser.FlagOption;
+import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter;
+
 import moa.cluster.Clustering;
 import moa.clusterers.AbstractClusterer;
 import moa.core.Measurement;
@@ -21,21 +24,17 @@ Clustering Algorithms for Data Streams. ALENEX 2010: 173-187
 
 public class StreamKM extends AbstractClusterer {
 
-	public IntOption sizeCoresetOption = new IntOption("sizeCoreset",
-			's', "Size of the coreset (m).", 10000);
+	public IntOption sizeCoresetOption = new IntOption(new IntOptionParameter("sizeCoreset", 's', "Size of the coreset (m).", 10000));
 
 	public IntOption numClustersOption = new IntOption(
-			"numClusters", 'k',
-			"Number of clusters to compute.", 5);
+			new IntOptionParameter("numClusters", 'k', "Number of clusters to compute.", 5));
 
 	public IntOption lengthOption = new IntOption("length",
 			'l', "Length of the data stream (n).", 100000, 0, Integer.MAX_VALUE);
 
-	public FlagOption evaluateOption = new FlagOption("evaluateFinalOnly",
-			'e', "If true, only the final clustering is evaluated.");
+	public FlagOption evaluateOption = new FlagOption(new FlagOptionParameter("evaluateFinalOnly", 'e', "If true, only the final clustering is evaluated."));
 
-	public IntOption randomSeedOption = new IntOption("randomSeed", 'r',
-			"Seed for random behaviour of the classifier.", 1);	
+	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));	
 
 	protected MTRandom clustererRandom;
 	protected Point[] centresStreamingCoreset;
