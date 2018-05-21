@@ -20,6 +20,8 @@
 package moa.tasks;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.classifiers.Classifier;
 import moa.classifiers.MultiTargetRegressor;
 import moa.core.ObjectRepository;
@@ -51,18 +53,11 @@ public class LearnModelMultiTarget extends MultiTargetMainTask {
             "Stream to learn from.", MultiTargetInstanceStream.class,
             "MultiTargetArffFileStream");
 
-    public IntOption maxInstancesOption = new IntOption("maxInstances", 'm',
-            "Maximum number of instances to train on per pass over the data.",
-            10000000, 0, Integer.MAX_VALUE);
+    public IntOption maxInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("maxInstances", 'm', "Maximum number of instances to train on per pass over the data.", 10000000, 0, Integer.MAX_VALUE));
 
-    public IntOption numPassesOption = new IntOption("numPasses", 'p',
-            "The number of passes to do over the data.", 1, 1,
-            Integer.MAX_VALUE);
+    public IntOption numPassesOption = IntOption.createIntOption2(new IntOptionParameter2("numPasses", 'p', "The number of passes to do over the data.", 1, 1, Integer.MAX_VALUE));
 
-    public IntOption memCheckFrequencyOption = new IntOption(
-            "memCheckFrequency", 'q',
-            "How many instances between memory bound checks.", 100000, 0,
-            Integer.MAX_VALUE);
+    public IntOption memCheckFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("memCheckFrequency", 'q', "How many instances between memory bound checks.", 100000, 0, Integer.MAX_VALUE));
 
     public LearnModelMultiTarget() {
     }

@@ -30,6 +30,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.ListOption;
+import com.github.javacliparser.ListOptionParameter;
 import com.github.javacliparser.Option;
 import moa.tasks.TaskMonitor;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -50,21 +51,15 @@ public class WeightedMajorityAlgorithm extends AbstractClassifier implements Mul
         return "Weighted majority algorithm for data streams.";
     }
         
-    public ListOption learnerListOption = new ListOption(
-            "learners",
-            'l',
-            "The learners to combine.",
-            new ClassOption("learner", ' ', "", Classifier.class,
-            "trees.HoeffdingTree"),
-            new Option[]{
-                new ClassOption("", ' ', "", Classifier.class,
-                "trees.HoeffdingTree -l MC"),
-                new ClassOption("", ' ', "", Classifier.class,
-                "trees.HoeffdingTree -l NB"),
-                new ClassOption("", ' ', "", Classifier.class,
-                "trees.HoeffdingTree -l NBAdaptive"),
-                new ClassOption("", ' ', "", Classifier.class, "bayes.NaiveBayes")},
-            ',');
+    public ListOption learnerListOption = ListOption.createListOption(new ListOptionParameter("learners", 'l', "The learners to combine.", new ClassOption("learner", ' ', "", Classifier.class,
+	"trees.HoeffdingTree"), new Option[]{
+	    new ClassOption("", ' ', "", Classifier.class,
+	    "trees.HoeffdingTree -l MC"),
+	    new ClassOption("", ' ', "", Classifier.class,
+	    "trees.HoeffdingTree -l NB"),
+	    new ClassOption("", ' ', "", Classifier.class,
+	    "trees.HoeffdingTree -l NBAdaptive"),
+	    new ClassOption("", ' ', "", Classifier.class, "bayes.NaiveBayes")}, ','));
 
     public FloatOption betaOption = new FloatOption("beta", 'b',
             "Factor to punish mistakes by.", 0.9, 0.0, 1.0);
@@ -72,7 +67,7 @@ public class WeightedMajorityAlgorithm extends AbstractClassifier implements Mul
     public FloatOption gammaOption = new FloatOption("gamma", 'g',
             "Minimum fraction of weight per model.", 0.01, 0.0, 0.5);
 
-    public FlagOption pruneOption = new FlagOption(new FlagOptionParameter("prune", 'p', "Prune poorly performing models from ensemble."));
+    public FlagOption pruneOption = FlagOption.createFlagOption(new FlagOptionParameter("prune", 'p', "Prune poorly performing models from ensemble."));
 
     protected Classifier[] ensemble;
 

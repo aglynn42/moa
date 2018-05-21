@@ -47,16 +47,13 @@ public class WithKmeans extends AbstractClusterer {
 	
 	private static final long serialVersionUID = 1L;
 
-	public IntOption timeWindowOption = new IntOption(new IntOptionParameter("horizon", 'h', "Rang of the window.", 1000));
+	public IntOption timeWindowOption = IntOption.createIntOption(new IntOptionParameter("horizon", 'h', "Rang of the window.", 1000));
 
-	public IntOption maxNumKernelsOption = new IntOption(
-			new IntOptionParameter("maxNumKernels", 'm', "Maximum number of micro kernels to use.", 100));
+	public IntOption maxNumKernelsOption = IntOption.createIntOption(new IntOptionParameter("maxNumKernels", 'm', "Maximum number of micro kernels to use.", 100));
 
-	public IntOption kernelRadiFactorOption = new IntOption(
-			new IntOptionParameter("kernelRadiFactor", 't', "Multiplier for the kernel radius", 2));
+	public IntOption kernelRadiFactorOption = IntOption.createIntOption(new IntOptionParameter("kernelRadiFactor", 't', "Multiplier for the kernel radius", 2));
 	
-	public IntOption kOption = new IntOption(
-			new IntOptionParameter("k", 'k', "k of macro k-means (number of clusters)", 5));
+	public IntOption kOption = IntOption.createIntOption(new IntOptionParameter("k", 'k', "k of macro k-means (number of clusters)", 5));
 
 	private int timeWindow;
 	private long timestamp = -1;

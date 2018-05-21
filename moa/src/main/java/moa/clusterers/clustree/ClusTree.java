@@ -41,13 +41,11 @@ import com.yahoo.labs.samoa.instances.Instance;
 public class ClusTree extends AbstractClusterer{
 	private static final long serialVersionUID = 1L;
 	
-	public IntOption horizonOption = new IntOption(new IntOptionParameter("horizon", 'h', "Range of the window.", 1000));
+	public IntOption horizonOption = IntOption.createIntOption(new IntOptionParameter("horizon", 'h', "Range of the window.", 1000));
 
-    public IntOption maxHeightOption = new IntOption(
-			new IntOptionParameter("maxHeight", 'H', "The maximal height of the tree", getDefaultHeight()));
+    public IntOption maxHeightOption = IntOption.createIntOption(new IntOptionParameter("maxHeight", 'H', "The maximal height of the tree", getDefaultHeight()));
 
-	public FlagOption breadthFirstStrategyOption = new FlagOption(
-			new FlagOptionParameter("breadthFirstStrategy", 'B', "Use breadth first strategy"));
+	public FlagOption breadthFirstStrategyOption = FlagOption.createFlagOption(new FlagOptionParameter("breadthFirstStrategy", 'B', "Use breadth first strategy"));
     
     protected int getDefaultHeight() {
     	return 8;

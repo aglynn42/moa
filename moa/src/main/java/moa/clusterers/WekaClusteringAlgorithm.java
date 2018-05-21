@@ -29,7 +29,10 @@ import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.github.javacliparser.StringOption;
+import com.github.javacliparser.StringOptionParameter;
+
 import moa.core.FastVector;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
@@ -43,12 +46,11 @@ public class WekaClusteringAlgorithm extends AbstractClusterer {
 
     private static final long serialVersionUID = 1L;
     
-    public IntOption horizonOption = new IntOption(new IntOptionParameter("horizon", 'h', "Range of the window.", 1000));
+    public IntOption horizonOption = IntOption.createIntOption(new IntOptionParameter("horizon", 'h', "Range of the window.", 1000));
     
     public MultiChoiceOption wekaAlgorithmOption;
     
-    public StringOption parameterOption = new StringOption("parameter", 'p',
-            "Parameters that will be passed to the weka algorithm. (e.g. '-N 5' for using SimpleKmeans with 5 clusters)", "-N 5 -S 8");
+    public StringOption parameterOption = StringOption.createStringOption(new StringOptionParameter("parameter", 'p', "Parameters that will be passed to the weka algorithm. (e.g. '-N 5' for using SimpleKmeans with 5 clusters)", "-N 5 -S 8"));
     
     private Class<?>[] clustererClasses;
     
@@ -91,9 +93,7 @@ public class WekaClusteringAlgorithm extends AbstractClusterer {
         }
 
         if (clustererClasses != null && clustererClasses.length > 0) {
-            wekaAlgorithmOption = new MultiChoiceOption("clusterer", 'w',
-                    "Weka cluster algorithm to use.",
-                    optionLabels, optionDescriptions, 6);
+            wekaAlgorithmOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("clusterer", 'w', "Weka cluster algorithm to use.", optionLabels, optionDescriptions, 6));
         } else {
             horizonOption = null;
             parameterOption = null;

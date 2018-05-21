@@ -21,6 +21,8 @@ package moa.classifiers.core.driftdetection;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.core.ObjectRepository;
 import moa.tasks.TaskMonitor;
 
@@ -42,10 +44,10 @@ public class SEEDChangeDetector extends AbstractChangeDetector
     protected SEED seed;
     
     public FloatOption deltaSEEDOption = new FloatOption("deltaSEED", 'd', "Delta value of SEED Detector", 0.05, 0.0, 1.0);
-    public IntOption blockSizeSEEDOption = new IntOption("blockSizeSEED", 'b', "BlockSize value of SEED Detector", 32, 32, 256);
+    public IntOption blockSizeSEEDOption = IntOption.createIntOption2(new IntOptionParameter2("blockSizeSEED", 'b', "BlockSize value of SEED Detector", 32, 32, 256));
     public FloatOption epsilonPrimeSEEDOption = new FloatOption("epsilonPrimeSEED", 'e', "EpsilonPrime value of SEED Detector", 0.01, 0.0025, 0.01);
     public FloatOption alphaSEEDOption = new FloatOption("alphaSEED", 'a', "Alpha value of SEED Detector", 0.8, 0.2, 0.8);
-    public IntOption compressTermSEEDOption = new IntOption("compressTermSEED", 'c', "CompressTerm value of SEED Detector", 75, 50, 100);
+    public IntOption compressTermSEEDOption = IntOption.createIntOption2(new IntOptionParameter2("compressTermSEED", 'c', "CompressTerm value of SEED Detector", 75, 50, 100));
 
    
     public void input(double inputValue)

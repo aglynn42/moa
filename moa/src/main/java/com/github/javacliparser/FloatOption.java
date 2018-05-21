@@ -35,7 +35,7 @@ public class FloatOption extends AbstractOption {
 
     protected double maxVal;
 
-    public FloatOption(FloatOptionParameter parameterObject) {
+    private FloatOption(FloatOptionParameter parameterObject) {
         this(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultVal, Double.NEGATIVE_INFINITY,
                 Double.POSITIVE_INFINITY);
     }
@@ -97,6 +97,10 @@ public class FloatOption extends AbstractOption {
     public static String doubleToCLIString(double d) {
         return Double.toString(d);
     }
+
+	public static FloatOption createFloatOption(FloatOptionParameter parameterObject) {
+		return new FloatOption(parameterObject);
+	}
 
     //@Override
     //public JComponent getEditComponent() {

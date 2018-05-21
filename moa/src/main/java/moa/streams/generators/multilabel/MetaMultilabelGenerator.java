@@ -28,6 +28,7 @@ import moa.options.ClassOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
@@ -52,14 +53,11 @@ public class MetaMultilabelGenerator extends AbstractOptionHandler implements In
     public ClassOption binaryGeneratorOption = new ClassOption(
             "binaryGenerator", 's', "Binary Generator (specify the number of attributes here, but only two classes!).", InstanceStream.class, "generators.RandomTreeGenerator");
 
-    public IntOption metaRandomSeedOption = new IntOption(
-            new IntOptionParameter("metaRandomSeed", 'm', "Random seed (for the meta process). Use two streams with the same seed and r > 0.0 in the second stream if you wish to introduce drift to the label dependencies without changing the underlying concept.", 1));
+    public IntOption metaRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("metaRandomSeed", 'm', "Random seed (for the meta process). Use two streams with the same seed and r > 0.0 in the second stream if you wish to introduce drift to the label dependencies without changing the underlying concept.", 1));
 
-    public IntOption numLabelsOption = new IntOption(
-            "numLabels", 'c', "Number of labels.", 10, 2, Integer.MAX_VALUE);
+    public IntOption numLabelsOption = IntOption.createIntOption2(new IntOptionParameter2("numLabels", 'c', "Number of labels.", 10, 2, Integer.MAX_VALUE));
 
-    public IntOption skewOption = new IntOption(
-            "skew", 'k', "Skewed label distribution: 1 (default) = yes; 0 = no (relatively uniform) @NOTE: not currently implemented.", 1, 0, 1);
+    public IntOption skewOption = IntOption.createIntOption2(new IntOptionParameter2("skew", 'k', "Skewed label distribution: 1 (default) = yes; 0 = no (relatively uniform) @NOTE: not currently implemented.", 1, 0, 1));
 
     public FloatOption labelCardinalityOption = new FloatOption(
             "labelCardinality", 'z', "Desired label cardinality (average number of labels per example).", 1.5, 0.0, Integer.MAX_VALUE);

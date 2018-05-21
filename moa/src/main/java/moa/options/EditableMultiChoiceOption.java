@@ -20,6 +20,7 @@
 package moa.options;
 
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 
 import moa.gui.EditableMultiChoiceOptionEditComponent;
 
@@ -45,8 +46,7 @@ public class EditableMultiChoiceOption extends MultiChoiceOption {
 			String purpose, String[] optionLabels,
 			String[] optionDescriptions, int defaultOptionIndex) 
 	{
-		super(name, cliChar, purpose, optionLabels, optionDescriptions, 
-				defaultOptionIndex);
+		super(new MultiChoiceOptionParameter(name, cliChar, purpose, optionLabels, optionDescriptions, defaultOptionIndex));
 		
 		// set initial options and refresh edit component
 		this.setOptions(optionLabels, optionDescriptions, defaultOptionIndex);

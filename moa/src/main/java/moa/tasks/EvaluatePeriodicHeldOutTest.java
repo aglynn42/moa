@@ -30,6 +30,8 @@ import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.classifiers.Classifier;
 import moa.classifiers.MultiClassClassifier;
 import moa.core.Example;
@@ -74,25 +76,17 @@ public class EvaluatePeriodicHeldOutTest extends ClassificationMainTask {
             LearningPerformanceEvaluator.class,
             "BasicClassificationPerformanceEvaluator");
 
-    public IntOption testSizeOption = new IntOption("testSize", 'n',
-            "Number of testing examples.", 1000000, 0, Integer.MAX_VALUE);
+    public IntOption testSizeOption = IntOption.createIntOption2(new IntOptionParameter2("testSize", 'n', "Number of testing examples.", 1000000, 0, Integer.MAX_VALUE));
 
-    public IntOption trainSizeOption = new IntOption("trainSize", 'i',
-            "Number of training examples, <1 = unlimited.", 0, 0,
-            Integer.MAX_VALUE);
+    public IntOption trainSizeOption = IntOption.createIntOption2(new IntOptionParameter2("trainSize", 'i', "Number of training examples, <1 = unlimited.", 0, 0, Integer.MAX_VALUE));
 
-    public IntOption trainTimeOption = new IntOption("trainTime", 't',
-            "Number of training seconds.", 10 * 60 * 60, 0, Integer.MAX_VALUE);
+    public IntOption trainTimeOption = IntOption.createIntOption2(new IntOptionParameter2("trainTime", 't', "Number of training seconds.", 10 * 60 * 60, 0, Integer.MAX_VALUE));
 
-    public IntOption sampleFrequencyOption = new IntOption(
-            "sampleFrequency",
-            'f',
-            "Number of training examples between samples of learning performance.",
-            100000, 0, Integer.MAX_VALUE);
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "Number of training examples between samples of learning performance.", 100000, 0, Integer.MAX_VALUE));
 
     public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
-    public FlagOption cacheTestOption = new FlagOption(new FlagOptionParameter("cacheTest", 'c', "Cache test instances in memory."));
+    public FlagOption cacheTestOption = FlagOption.createFlagOption(new FlagOptionParameter("cacheTest", 'c', "Cache test instances in memory."));
 
     @Override
     protected Object doMainTask(TaskMonitor monitor, ObjectRepository repository) {

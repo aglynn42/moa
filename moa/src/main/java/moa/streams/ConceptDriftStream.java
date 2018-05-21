@@ -69,11 +69,11 @@ public class ConceptDriftStream extends AbstractOptionHandler implements
     public FloatOption alphaOption = new FloatOption("alpha",
             'a', "Angle alpha of change grade.", 0.0, 0.0, 90.0);
 
-    public IntOption positionOption = new IntOption(new IntOptionParameter("position", 'p', "Central position of concept drift change.", 0));
+    public IntOption positionOption = IntOption.createIntOption(new IntOptionParameter("position", 'p', "Central position of concept drift change.", 0));
 
-    public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Width of concept drift change.", 1000));
+    public IntOption widthOption = IntOption.createIntOption(new IntOptionParameter("width", 'w', "Width of concept drift change.", 1000));
 
-    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
+    public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
 
     protected ExampleStream inputStream;
 

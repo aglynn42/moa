@@ -35,6 +35,7 @@ import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
 import com.yahoo.labs.samoa.instances.MultiLabelPrediction;
@@ -84,11 +85,7 @@ public class ISOUPTree extends AbstractMultiLabelLearner implements MultiTargetR
 
 	//region ================ OPTIONS ================
 
-	public IntOption gracePeriodOption = new IntOption(
-			"gracePeriod",
-			'g',
-			"The number of instances a leaf should observe between split attempts.",
-			200, 0, Integer.MAX_VALUE);
+	public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "The number of instances a leaf should observe between split attempts.", 200, 0, Integer.MAX_VALUE));
 
 	public FloatOption splitConfidenceOption = new FloatOption(
 			"splitConfidence",
@@ -120,32 +117,19 @@ public class ISOUPTree extends AbstractMultiLabelLearner implements MultiTargetR
 			"The fading factor to use when deciding if an alternate tree should replace an original.",
 			0.995, 0.0, 1.0);
 
-	public IntOption alternateTreeTMinOption = new IntOption(
-			"alternateTreeTMin",
-			'y',
-			"The Tmin value to use when deciding if an alternate tree should replace an original.",
-			150, 0, Integer.MAX_VALUE);
+	public IntOption alternateTreeTMinOption = IntOption.createIntOption2(new IntOptionParameter2("alternateTreeTMin", 'y', "The Tmin value to use when deciding if an alternate tree should replace an original.", 150, 0, Integer.MAX_VALUE));
 
-	public IntOption alternateTreeTimeOption = new IntOption(
-			"alternateTreeTime",
-			'u',
-			"The 'time' (in terms of number of instances) value to use when deciding if an alternate tree should be discarded.",
-			1500, 0, Integer.MAX_VALUE);
+	public IntOption alternateTreeTimeOption = IntOption.createIntOption2(new IntOptionParameter2("alternateTreeTime", 'u', "The 'time' (in terms of number of instances) value to use when deciding if an alternate tree should be discarded.", 1500, 0, Integer.MAX_VALUE));
 
-	public FlagOption regressionTreeOption = new FlagOption(
-			new FlagOptionParameter("regressionTree", 'r', "Build a regression tree instead of a model tree."));
+	public FlagOption regressionTreeOption = FlagOption.createFlagOption(new FlagOptionParameter("regressionTree", 'r', "Build a regression tree instead of a model tree."));
 
-	public FloatOption learningRatioOption = new FloatOption(
-			new FloatOptionParameter("learningRatio", 'l', "Learning ratio to use for training the Perceptrons in the leaves.", 0.02));
+	public FloatOption learningRatioOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatio", 'l', "Learning ratio to use for training the Perceptrons in the leaves.", 0.02));
 
-	public FloatOption learningRateDecayFactorOption = new FloatOption(
-			new FloatOptionParameter("learningRatioDecayFactor", 'd', "Learning rate decay factor (not used when learning rate is constant).", 0.001));
+	public FloatOption learningRateDecayFactorOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatioDecayFactor", 'd', "Learning rate decay factor (not used when learning rate is constant).", 0.001));
 
-	public FlagOption learningRatioConstOption = new FlagOption(
-			new FlagOptionParameter("learningRatioConst", 'o', "Keep learning rate constant instead of decaying (if kept constant learning ratio is suggested to be 0.001)."));
+	public FlagOption learningRatioConstOption = FlagOption.createFlagOption(new FlagOptionParameter("learningRatioConst", 'o', "Keep learning rate constant instead of decaying (if kept constant learning ratio is suggested to be 0.001)."));
 
-	public FlagOption doNotNormalizeOption = new FlagOption(
-			new FlagOptionParameter("doNotNormalize", 'n', "Don't normalize."));
+	public FlagOption doNotNormalizeOption = FlagOption.createFlagOption(new FlagOptionParameter("doNotNormalize", 'n', "Don't normalize."));
 
 
 	//endregion ================ OPTIONS ================

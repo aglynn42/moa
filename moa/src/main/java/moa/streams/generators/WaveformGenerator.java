@@ -66,10 +66,9 @@ public class WaveformGenerator extends AbstractOptionHandler implements
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 0},
         {0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0}};
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public FlagOption addNoiseOption = new FlagOption(new FlagOptionParameter("addNoise", 'n', "Adds noise, for a total of 40 attributes."));
+    public FlagOption addNoiseOption = FlagOption.createFlagOption(new FlagOptionParameter("addNoise", 'n', "Adds noise, for a total of 40 attributes."));
 
     protected InstancesHeader streamHeader;
 

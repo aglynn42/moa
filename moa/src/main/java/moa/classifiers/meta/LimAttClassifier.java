@@ -39,6 +39,7 @@ import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 /**
  * Ensemble Combining Restricted Hoeffding Trees using Stacking.
@@ -206,8 +207,7 @@ public class LimAttClassifier extends AbstractClassifier implements MultiClassCl
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.LimAttHoeffdingTree");
 
-    public IntOption numAttributesOption = new IntOption("numAttributes", 'n',
-            "The number of attributes to use per model.", 1, 1, Integer.MAX_VALUE);
+    public IntOption numAttributesOption = IntOption.createIntOption2(new IntOptionParameter2("numAttributes", 'n', "The number of attributes to use per model.", 1, 1, Integer.MAX_VALUE));
 
     public FloatOption weightShrinkOption = new FloatOption("weightShrink", 'w',
             "The number to multiply the weight misclassified counts.", 0.5, 0.0, Float.MAX_VALUE);
@@ -218,14 +218,13 @@ public class LimAttClassifier extends AbstractClassifier implements MultiClassCl
     public FloatOption oddsOffsetOption = new FloatOption("oddsOffset", 'o',
             "Offset for odds to avoid probabilities that are zero.", 0.001, 0.0, Float.MAX_VALUE);
 
-    public FlagOption pruneOption = new FlagOption(new FlagOptionParameter("prune", 'x', "Enable pruning."));
+    public FlagOption pruneOption = FlagOption.createFlagOption(new FlagOptionParameter("prune", 'x', "Enable pruning."));
 
-    public FlagOption bigTreesOption = new FlagOption(new FlagOptionParameter("bigTrees", 'b', "Use m-n attributes on the trees."));
+    public FlagOption bigTreesOption = FlagOption.createFlagOption(new FlagOptionParameter("bigTrees", 'b', "Use m-n attributes on the trees."));
 
-    public IntOption numEnsemblePruningOption = new IntOption("numEnsemblePruning", 'm',
-            "The pruned number of classifiers to use to predict.", 10, 1, Integer.MAX_VALUE);
+    public IntOption numEnsemblePruningOption = IntOption.createIntOption2(new IntOptionParameter2("numEnsemblePruning", 'm', "The pruned number of classifiers to use to predict.", 10, 1, Integer.MAX_VALUE));
 
-    public FlagOption adwinReplaceWorstClassifierOption = new FlagOption(new FlagOptionParameter("adwinReplaceWorstClassifier", 'z', "When one Adwin detects change, replace worst classifier."));
+    public FlagOption adwinReplaceWorstClassifierOption = FlagOption.createFlagOption(new FlagOptionParameter("adwinReplaceWorstClassifier", 'z', "When one Adwin detects change, replace worst classifier."));
 
     protected Classifier[] ensemble;
 
@@ -464,11 +463,11 @@ public class LimAttClassifier extends AbstractClassifier implements MultiClassCl
     }
 
     //Perceptron
-    public FloatOption learningRatioOption = new FloatOption(new FloatOptionParameter("learningRatio", 'r', "Learning ratio", 1));
+    public FloatOption learningRatioOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatio", 'r', "Learning ratio", 1));
 
-    public FloatOption penaltyFactorOption = new FloatOption(new FloatOptionParameter("lambda", 'p', "Lambda", 0.0));
+    public FloatOption penaltyFactorOption = FloatOption.createFloatOption(new FloatOptionParameter("lambda", 'p', "Lambda", 0.0));
 
-    public IntOption initialNumInstancesOption = new IntOption(new IntOptionParameter("initialNumInstances", 'i', "initialNumInstances", 10));
+    public IntOption initialNumInstancesOption = IntOption.createIntOption(new IntOptionParameter("initialNumInstances", 'i', "initialNumInstances", 10));
 
     protected double[][] weightAttribute;
 

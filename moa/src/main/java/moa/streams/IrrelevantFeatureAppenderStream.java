@@ -20,6 +20,7 @@ package moa.streams;
 
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.*;
 import moa.core.Example;
 import moa.core.InstanceExample;
@@ -56,16 +57,13 @@ public class IrrelevantFeatureAppenderStream extends AbstractOptionHandler imple
             "Stream to imbalance.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public IntOption numNumericFeaturesOption          = new IntOption("numNumericFeatures", 'n',
-            "Number of numeric features to be appended.", 0, 0, 1000);
+    public IntOption numNumericFeaturesOption          = IntOption.createIntOption2(new IntOptionParameter2("numNumericFeatures", 'n', "Number of numeric features to be appended.", 0, 0, 1000));
 
-    public IntOption numCategoricalFeaturesOption      = new IntOption("numCategoricalFeatures", 'c',
-            "Number of categorical features to be appended.", 0, 0, 1000);
+    public IntOption numCategoricalFeaturesOption      = IntOption.createIntOption2(new IntOptionParameter2("numCategoricalFeatures", 'c', "Number of categorical features to be appended.", 0, 0, 1000));
 
-    public IntOption numValuesCategoricalFeatureOption = new IntOption("numValuesCategoricalFeature", 'v',
-            "Number of values for each categorical feature.", 2, 1, 1000);
+    public IntOption numValuesCategoricalFeatureOption = IntOption.createIntOption2(new IntOptionParameter2("numValuesCategoricalFeature", 'v', "Number of values for each categorical feature.", 2, 1, 1000));
 
-    public IntOption instanceRandomSeedOption          = new IntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption          = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     /**
      * The original stream.

@@ -7,6 +7,7 @@ import moa.core.InstanceExample;
 import moa.streams.MultiTargetInstanceStream;
 
 import com.github.javacliparser.StringOption;
+import com.github.javacliparser.StringOptionParameter;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstanceImpl;
@@ -23,8 +24,8 @@ public class SelectAttributesFilter extends AbstractMultiLabelStreamFilter imple
 	protected Selection inputsSelected; 
 	protected Selection outputsSelected;
 	
-	public StringOption inputStringOption= new StringOption("inputStringOption", 'i', "Selection of attributes to be used as input.", "1") ;
-	public StringOption outputStringOption= new StringOption("outputStringOption", 'o', "Selection of attributes to be used as output.", "-1") ;
+	public StringOption inputStringOption= StringOption.createStringOption(new StringOptionParameter("inputStringOption", 'i', "Selection of attributes to be used as input.", "1")) ;
+	public StringOption outputStringOption= StringOption.createStringOption(new StringOptionParameter("outputStringOption", 'o', "Selection of attributes to be used as output.", "-1")) ;
     @Override
     public String getPurposeString() {
         return "Selects input and output attributes.";

@@ -38,10 +38,10 @@ import com.yahoo.labs.samoa.instances.Instance;
 
 
 public class AbstractC extends AbstractCBase {    
-    public FloatOption radiusOption = new FloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
+    public FloatOption radiusOption = FloatOption.createFloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
     //public FloatOption fractionOption = new FloatOption("fraction", 'f', "Parameter fraction.", 0.05);
-    public IntOption kOption = new IntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
-    public FlagOption waitWinFullOption = new FlagOption(new FlagOptionParameter("waitWinFull", 'a', "Output outliers when windows is full."));
+    public IntOption kOption = IntOption.createIntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
+    public FlagOption waitWinFullOption = FlagOption.createFlagOption(new FlagOptionParameter("waitWinFull", 'a', "Output outliers when windows is full."));
     
     public AbstractC()
     {

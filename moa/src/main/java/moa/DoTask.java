@@ -35,6 +35,7 @@ import moa.tasks.meta.MetaMainTask;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.Option;
 
 /**
@@ -137,15 +138,9 @@ public class DoTask {
                     return;
                 }
                 // create standard options
-                FlagOption suppressStatusOutputOption = new FlagOption(
-                        new FlagOptionParameter("suppressStatusOutput", 'S', "Suppress the task status output that is normally send to stderr."));
-                FlagOption suppressResultOutputOption = new FlagOption(
-                        new FlagOptionParameter("suppressResultOutput", 'R', "Suppress the task result output that is normally send to stdout."));
-                IntOption statusUpdateFrequencyOption = new IntOption(
-                        "statusUpdateFrequency",
-                        'F',
-                        "How many milliseconds to wait between status updates.",
-                        1000, 0, Integer.MAX_VALUE);
+                FlagOption suppressStatusOutputOption = FlagOption.createFlagOption(new FlagOptionParameter("suppressStatusOutput", 'S', "Suppress the task status output that is normally send to stderr."));
+                FlagOption suppressResultOutputOption = FlagOption.createFlagOption(new FlagOptionParameter("suppressResultOutput", 'R', "Suppress the task result output that is normally send to stdout."));
+                IntOption statusUpdateFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("statusUpdateFrequency", 'F', "How many milliseconds to wait between status updates.", 1000, 0, Integer.MAX_VALUE));
                 Option[] extraOptions = new Option[]{
                     suppressStatusOutputOption, suppressResultOutputOption,
                     statusUpdateFrequencyOption};

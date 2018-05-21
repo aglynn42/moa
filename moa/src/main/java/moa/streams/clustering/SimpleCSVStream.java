@@ -34,6 +34,7 @@ import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.StringOption;
+import com.github.javacliparser.StringOptionParameter;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -57,10 +58,9 @@ public class SimpleCSVStream extends ClusteringStream {
 
 	public FileOption csvFileOption = new FileOption(new FileOptionParameter("csvFile", 'f', "CSV file to load.", defaultfile, "csv", false));
 
-	public StringOption splitCharOption = new StringOption("splitChar", 's',
-			"Input CSV split character", ",");
+	public StringOption splitCharOption = StringOption.createStringOption(new StringOptionParameter("splitChar", 's', "Input CSV split character", ","));
 
-	public FlagOption classIndexOption = new FlagOption(new FlagOptionParameter("classIndex", 'c', "Last attribute is class index."));
+	public FlagOption classIndexOption = FlagOption.createFlagOption(new FlagOptionParameter("classIndex", 'c', "Last attribute is class index."));
 
 	protected Instances dataset;
 
@@ -256,7 +256,7 @@ public class SimpleCSVStream extends ClusteringStream {
 				this.dataset = new Instances(csvFileOption.getFile().getName(),
 						attributes, 0);
 				this.dataset.setClassIndex(this.numAttributes - 1);
-				numAttsOption = new IntOption(new IntOptionParameter("numAtts", 'a', "", this.numAttributes));
+				numAttsOption = IntOption.createIntOption(new IntOptionParameter("numAtts", 'a', "", this.numAttributes));
 
 				double[] value = new double[this.numAttributes];
 				for (int i = 0; i < this.numTokens && token.hasMoreTokens(); i++) {

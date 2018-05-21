@@ -23,6 +23,7 @@ package moa.tasks;
 import com.github.javacliparser.FileOption;
 import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -70,18 +71,11 @@ public class EvaluateConceptDrift extends ConceptDriftMainTask{
             LearningPerformanceEvaluator.class,
             "BasicConceptDriftPerformanceEvaluator");
 
-    public IntOption instanceLimitOption = new IntOption("instanceLimit", 'i',
-            "Maximum number of instances to test/train on  (-1 = no limit).",
-            1000, -1, Integer.MAX_VALUE);
+    public IntOption instanceLimitOption = IntOption.createIntOption2(new IntOptionParameter2("instanceLimit", 'i', "Maximum number of instances to test/train on  (-1 = no limit).", 1000, -1, Integer.MAX_VALUE));
 
-    public IntOption timeLimitOption = new IntOption("timeLimit", 't',
-            "Maximum number of seconds to test/train for (-1 = no limit).", -1,
-            -1, Integer.MAX_VALUE);
+    public IntOption timeLimitOption = IntOption.createIntOption2(new IntOptionParameter2("timeLimit", 't', "Maximum number of seconds to test/train for (-1 = no limit).", -1, -1, Integer.MAX_VALUE));
 
-    public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-            'f',
-            "How many instances between samples of the learning performance.",
-            10, 0, Integer.MAX_VALUE);
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 10, 0, Integer.MAX_VALUE));
 
     /*public IntOption memCheckFrequencyOption = new IntOption(
             "memCheckFrequency", 'q',

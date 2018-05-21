@@ -21,6 +21,7 @@ package moa.classifiers.meta;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,9 +59,7 @@ public class DynamicWeightedMajority extends AbstractClassifier implements Multi
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Base classifiers to train.", Classifier.class, "bayes.NaiveBayes");
 
-    public IntOption periodOption = new IntOption("period", 'p',
-            "Period between expert removal, creation, and weight update.", 50,
-            1, Integer.MAX_VALUE);
+    public IntOption periodOption = IntOption.createIntOption2(new IntOptionParameter2("period", 'p', "Period between expert removal, creation, and weight update.", 50, 1, Integer.MAX_VALUE));
 
     public FloatOption betaOption = new FloatOption("beta", 'b',
             "Factor to punish mistakes by.", 0.5, 0.0, 1.0);
@@ -68,9 +67,7 @@ public class DynamicWeightedMajority extends AbstractClassifier implements Multi
     public FloatOption thetaOption = new FloatOption("theta", 't',
             "Minimum fraction of weight per model.", 0.01, 0.0, 1.0);
 
-    public IntOption maxExpertsOption = new IntOption("maxExperts", 'e',
-            "Maximum number of allowed experts.", Integer.MAX_VALUE, 2,
-            Integer.MAX_VALUE);
+    public IntOption maxExpertsOption = IntOption.createIntOption2(new IntOptionParameter2("maxExperts", 'e', "Maximum number of allowed experts.", Integer.MAX_VALUE, 2, Integer.MAX_VALUE));
 
     protected List<Classifier> experts;
     protected List<Double> weights;

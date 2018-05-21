@@ -29,6 +29,8 @@ import moa.core.ObjectRepository;
 import moa.options.ClassOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.tasks.TaskMonitor;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -87,12 +89,12 @@ public class AccuracyWeightedEnsemble extends AbstractClassifier implements Mult
     /**
      * Chunk size.
      */
-    public IntOption chunkSizeOption = new IntOption("chunkSize", 'c', "The chunk size used for classifier creation and evaluation.", 500, 1, Integer.MAX_VALUE);
+    public IntOption chunkSizeOption = IntOption.createIntOption2(new IntOptionParameter2("chunkSize", 'c', "The chunk size used for classifier creation and evaluation.", 500, 1, Integer.MAX_VALUE));
 
     /**
      * Number of folds in candidate classifier cross-validation.
      */
-    public IntOption numFoldsOption = new IntOption("numFolds", 'f', "Number of cross-validation folds for candidate classifier testing.", 10, 1, Integer.MAX_VALUE);
+    public IntOption numFoldsOption = IntOption.createIntOption2(new IntOptionParameter2("numFolds", 'f', "Number of cross-validation folds for candidate classifier testing.", 10, 1, Integer.MAX_VALUE));
 
     protected long[] classDistributions;
 

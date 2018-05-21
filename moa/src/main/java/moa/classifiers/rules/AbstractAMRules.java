@@ -50,6 +50,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 
 
@@ -69,21 +70,15 @@ public abstract class AbstractAMRules extends AbstractClassifier {
 	public FloatOption tieThresholdOption = new FloatOption("tieThreshold",
 			't', "Hoeffding Bound Parameter. Threshold below which a split will be forced to break ties.",
 			0.05, 0.0, 1.0);
-	public IntOption gracePeriodOption = new IntOption("gracePeriod",
-			'g', "Hoeffding Bound Parameter. The number of instances a leaf should observe between split attempts.",
-			200, 1, Integer.MAX_VALUE);
-	public FlagOption DriftDetectionOption = new FlagOption(new FlagOptionParameter("DoNotDetectChanges", 'H', "Drift Detection. Page-Hinkley."));
+	public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "Hoeffding Bound Parameter. The number of instances a leaf should observe between split attempts.", 200, 1, Integer.MAX_VALUE));
+	public FlagOption DriftDetectionOption = FlagOption.createFlagOption(new FlagOptionParameter("DoNotDetectChanges", 'H', "Drift Detection. Page-Hinkley."));
 	public FloatOption pageHinckleyAlphaOption = new FloatOption(
 			"pageHinckleyAlpha",
 			'a',
 			"The alpha value to use in the Page Hinckley change detection tests.",
 			0.005, 0.0, 1.0);
-	public IntOption pageHinckleyThresholdOption = new IntOption(
-			"pageHinckleyThreshold",
-			'l',
-			"The threshold value (Lambda) to be used in the Page Hinckley change detection tests.",
-			35, 0, Integer.MAX_VALUE);
-	public FlagOption noAnomalyDetectionOption = new FlagOption(new FlagOptionParameter("noAnomalyDetection", 'A', "Disable anomaly Detection."));
+	public IntOption pageHinckleyThresholdOption = IntOption.createIntOption2(new IntOptionParameter2("pageHinckleyThreshold", 'l', "The threshold value (Lambda) to be used in the Page Hinckley change detection tests.", 35, 0, Integer.MAX_VALUE));
+	public FlagOption noAnomalyDetectionOption = FlagOption.createFlagOption(new FlagOptionParameter("noAnomalyDetection", 'A', "Disable anomaly Detection."));
 	public FloatOption multivariateAnomalyProbabilityThresholdOption = new FloatOption(
 			"multivariateAnomalyProbabilityThresholdd",
 			'm',
@@ -94,18 +89,10 @@ public abstract class AbstractAMRules extends AbstractClassifier {
 			'u',
 			"Univariate anomaly threshold value.",
 			0.10, 0.0, 1.0);
-	public IntOption anomalyNumInstThresholdOption = new IntOption(
-			"anomalyThreshold",
-			'n',
-			"The threshold value of anomalies to be used in the anomaly detection.",
-			30, 0, Integer.MAX_VALUE);
-	public FlagOption unorderedRulesOption = new FlagOption(new FlagOptionParameter("setUnorderedRulesOn", 'U', "unorderedRules."));
+	public IntOption anomalyNumInstThresholdOption = IntOption.createIntOption2(new IntOptionParameter2("anomalyThreshold", 'n', "The threshold value of anomalies to be used in the anomaly detection.", 30, 0, Integer.MAX_VALUE));
+	public FlagOption unorderedRulesOption = FlagOption.createFlagOption(new FlagOptionParameter("setUnorderedRulesOn", 'U', "unorderedRules."));
 
-	public IntOption VerbosityOption = new IntOption(
-			"verbosity",
-			'v',
-			"Output Verbosity Control Level. 1 (Less) to 5 (More)",
-			1, 1, 5);
+	public IntOption VerbosityOption = IntOption.createIntOption2(new IntOptionParameter2("verbosity", 'v', "Output Verbosity Control Level. 1 (Less) to 5 (More)", 1, 1, 5));
 
 	public ClassOption numericObserverOption = new ClassOption("numericObserver",
 			'z', "Numeric observer.", 

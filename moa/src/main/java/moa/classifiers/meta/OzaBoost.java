@@ -31,6 +31,7 @@ import moa.options.ClassOption;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 /**
  * Incremental on-line boosting of Oza and Russell.
@@ -65,10 +66,9 @@ public class OzaBoost extends AbstractClassifier implements MultiClassClassifier
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
 
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-            "The number of models to boost.", 10, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models to boost.", 10, 1, Integer.MAX_VALUE));
 
-    public FlagOption pureBoostOption = new FlagOption(new FlagOptionParameter("pureBoost", 'p', "Boost with weights only; no poisson."));
+    public FlagOption pureBoostOption = FlagOption.createFlagOption(new FlagOptionParameter("pureBoost", 'p', "Boost with weights only; no poisson."));
 
     protected Classifier[] ensemble;
 

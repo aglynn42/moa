@@ -81,7 +81,7 @@ public abstract class AbstractClassifier extends AbstractOptionHandler
      */
     public AbstractClassifier() {
         if (isRandomizable()) {
-            this.randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
+            this.randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
         }
     }
 

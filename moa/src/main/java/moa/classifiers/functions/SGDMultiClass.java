@@ -35,6 +35,7 @@ import moa.core.Measurement;
 import moa.core.StringUtils;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.core.Utils;
 
@@ -90,12 +91,11 @@ public class SGDMultiClass extends AbstractClassifier implements MultiClassClass
     /** The current loss function to minimize */
     protected int m_loss = HINGE;
 
-    public MultiChoiceOption lossFunctionOption = new MultiChoiceOption(
-            "lossFunction", 'o', "The loss function to use.", new String[]{
-                "HINGE", "LOGLOSS", "SQUAREDLOSS"}, new String[]{
-                "Hinge loss (SVM)",
-                "Log loss (logistic regression)",
-                "Squared loss (regression)"}, 0);
+    public MultiChoiceOption lossFunctionOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("lossFunction", 'o', "The loss function to use.", new String[]{
+	    "HINGE", "LOGLOSS", "SQUAREDLOSS"}, new String[]{
+	"Hinge loss (SVM)",
+	"Log loss (logistic regression)",
+	"Squared loss (regression)"}, 0));
 
     /**
      * Set the value of lambda to use

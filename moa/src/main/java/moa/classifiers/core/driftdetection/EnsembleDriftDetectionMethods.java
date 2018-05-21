@@ -19,8 +19,11 @@
 package moa.classifiers.core.driftdetection;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.ListOption;
+import com.github.javacliparser.ListOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.github.javacliparser.Option;
 import moa.core.ObjectRepository;
 import moa.options.ClassOption;
@@ -39,23 +42,16 @@ public class EnsembleDriftDetectionMethods extends AbstractChangeDetector {
     private static final long serialVersionUID = -3518369648142099719L;
 
     //private static final int DDM_MINNUMINST = 30;
-    public IntOption minNumInstancesOption = new IntOption(
-            "minNumInstances",
-            'n',
-            "The minimum number of instances before permitting detecting change.",
-            30, 0, Integer.MAX_VALUE);
+    public IntOption minNumInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("minNumInstances", 'n', "The minimum number of instances before permitting detecting change.", 30, 0, Integer.MAX_VALUE));
 
-    public ListOption changeDetectorsOption = new ListOption("changeDetectors", 'c',
-            "Change Detectors to use.", new ClassOption("driftDetectionMethod", 'd',
-            "Drift detection method to use.", ChangeDetector.class, "DDM"),
-            new Option[0], ',');
+    public ListOption changeDetectorsOption = ListOption.createListOption(new ListOptionParameter("changeDetectors", 'c', "Change Detectors to use.", new ClassOption("driftDetectionMethod", 'd',
+	"Drift detection method to use.", ChangeDetector.class, "DDM"), new Option[0], ','));
 
-    public MultiChoiceOption predictionOption = new MultiChoiceOption(
-            "prediction", 'l', "Prediction to use.", new String[]{
-                "max", "min", "majority"}, new String[]{
-                "Maximum",
-                "Minimum",
-                "Majority"}, 0);
+    public MultiChoiceOption predictionOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("prediction", 'l', "Prediction to use.", new String[]{
+	    "max", "min", "majority"}, new String[]{
+	"Maximum",
+	"Minimum",
+	"Majority"}, 0));
 
     public EnsembleDriftDetectionMethods() {
         resetLearning();

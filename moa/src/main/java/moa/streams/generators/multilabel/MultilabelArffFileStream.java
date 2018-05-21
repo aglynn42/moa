@@ -27,6 +27,7 @@ import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.MultilabelInstancesHeader;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 /**
  * Stream reader for ARFF files of multilabel data.
@@ -43,8 +44,7 @@ public class MultilabelArffFileStream extends ArffFileStream implements MultiTar
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption numLabelsOption = new IntOption("numLabels", 'l',
-            "The number of labels. e.g. n = 10 : the first 10 binary attributes are the labels; n = -10 the last 10 binary attributes are the labels.", -1, -1, Integer.MAX_VALUE);
+    public IntOption numLabelsOption = IntOption.createIntOption2(new IntOptionParameter2("numLabels", 'l', "The number of labels. e.g. n = 10 : the first 10 binary attributes are the labels; n = -10 the last 10 binary attributes are the labels.", -1, -1, Integer.MAX_VALUE));
 
     public MultilabelArffFileStream() {
     }

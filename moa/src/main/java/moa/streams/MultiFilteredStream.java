@@ -26,6 +26,7 @@ import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import moa.options.ClassOption;
 import com.github.javacliparser.ListOption;
+import com.github.javacliparser.ListOptionParameter;
 import com.github.javacliparser.Option;
 import moa.options.OptionHandler;
 import moa.streams.filters.StreamFilter;
@@ -52,10 +53,8 @@ public class MultiFilteredStream extends AbstractOptionHandler implements
             "Stream to filter.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public ListOption filtersOption = new ListOption("filters", 'f',
-            "Filters to apply.", new ClassOption("filter", ' ',
-            "Stream filter.", StreamFilter.class, "AddNoiseFilter"),
-            new Option[0], ',');
+    public ListOption filtersOption = ListOption.createListOption(new ListOptionParameter("filters", 'f', "Filters to apply.", new ClassOption("filter", ' ',
+	"Stream filter.", StreamFilter.class, "AddNoiseFilter"), new Option[0], ','));
 
     protected ExampleStream filterChain;
 

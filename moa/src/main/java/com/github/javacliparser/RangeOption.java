@@ -30,8 +30,12 @@ public class RangeOption extends StringOption {
 
     private static final long serialVersionUID = 1L;
 
-	public RangeOption(String name, char cliChar, String purpose, String defaultValue) {
-        super(name, cliChar, purpose, defaultValue);
+	public static RangeOption createRangeOption(RangeOptionParameter parameterObject) {
+		return new RangeOption(parameterObject);
+	}
+
+	private RangeOption(RangeOptionParameter parameterObject) {
+        super(new StringOptionParameter(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultValue));
     }
 
 	/*

@@ -35,12 +35,11 @@ public class ListOption extends AbstractOption {
 
     protected char separatorChar;
 
-    public ListOption(String name, char cliChar, String purpose,
-            Option expectedType, Option[] defaultList, char separatorChar) {
-        super(name, cliChar, purpose);
-        this.expectedType = expectedType;
-        this.defaultList = defaultList.clone();
-        this.separatorChar = separatorChar;
+    private ListOption(ListOptionParameter parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose);
+        this.expectedType = parameterObject.expectedType;
+        this.defaultList = parameterObject.defaultLists.clone();
+        this.separatorChar = parameterObject.separatorChar;
         resetToDefault();
     }
 
@@ -97,4 +96,8 @@ public class ListOption extends AbstractOption {
         }
         return sb.toString();
     }
+
+	public static ListOption createListOption(ListOptionParameter parameterObject) {
+		return new ListOption(parameterObject);
+	}
 }

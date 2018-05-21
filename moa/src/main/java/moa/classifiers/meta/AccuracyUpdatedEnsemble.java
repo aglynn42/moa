@@ -28,6 +28,8 @@ import moa.core.Measurement;
 import moa.core.ObjectRepository;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.tasks.TaskMonitor;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -50,20 +52,17 @@ public class AccuracyUpdatedEnsemble extends AbstractClassifier implements Multi
 	/**
 	 * Number of component classifiers.
 	 */
-	public IntOption memberCountOption = new IntOption("memberCount", 'n',
-			"The maximum number of classifiers in an ensemble.", 10, 1, Integer.MAX_VALUE);
+	public IntOption memberCountOption = IntOption.createIntOption2(new IntOptionParameter2("memberCount", 'n', "The maximum number of classifiers in an ensemble.", 10, 1, Integer.MAX_VALUE));
 
 	/**
 	 * Chunk size.
 	 */
-	public IntOption chunkSizeOption = new IntOption("chunkSize", 'c',
-			"The chunk size used for classifier creation and evaluation.", 500, 1, Integer.MAX_VALUE);
+	public IntOption chunkSizeOption = IntOption.createIntOption2(new IntOptionParameter2("chunkSize", 'c', "The chunk size used for classifier creation and evaluation.", 500, 1, Integer.MAX_VALUE));
 
 	/**
 	 * Determines the maximum size of model (evaluated after every chunk).
 	 */
-	public IntOption maxByteSizeOption = new IntOption("maxByteSize", 'm', "Maximum memory consumed by ensemble.",
-			33554432, 0, Integer.MAX_VALUE);
+	public IntOption maxByteSizeOption = IntOption.createIntOption2(new IntOptionParameter2("maxByteSize", 'm', "Maximum memory consumed by ensemble.", 33554432, 0, Integer.MAX_VALUE));
 
 	/**
 	 * The weights of stored classifiers. 

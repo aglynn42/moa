@@ -47,7 +47,7 @@ public class AddNoiseFilter extends AbstractStreamFilter {
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
+    public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
 
     public FloatOption attNoiseFractionOption = new FloatOption("attNoise",
             'a', "The fraction of attribute values to disturb.", 0.1, 0.0, 1.0);

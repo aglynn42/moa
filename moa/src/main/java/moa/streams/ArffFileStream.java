@@ -22,6 +22,7 @@ package moa.streams;
 import com.github.javacliparser.FileOption;
 import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instances;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import java.io.BufferedReader;
@@ -58,11 +59,7 @@ public class ArffFileStream extends AbstractOptionHandler implements
 
     public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'f', "ARFF file to load.", null, "arff", false));
 
-    public IntOption classIndexOption = new IntOption(
-            "classIndex",
-            'c',
-            "Class index of data. 0 for none or -1 for last attribute in file.",
-            -1, -1, Integer.MAX_VALUE);
+    public IntOption classIndexOption = IntOption.createIntOption2(new IntOptionParameter2("classIndex", 'c', "Class index of data. 0 for none or -1 for last attribute in file.", -1, -1, Integer.MAX_VALUE));
 
     protected Instances instances;
 

@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Queue;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 
 import moa.cluster.Cluster;
@@ -50,20 +51,13 @@ public class BICO extends AbstractClusterer {
 
 	private static final long serialVersionUID = 1L;
 
-	public IntOption numClustersOption = new IntOption("Cluster", 'k',
-			"Number of desired centers.", 5, 1, Integer.MAX_VALUE);
+	public IntOption numClustersOption = IntOption.createIntOption2(new IntOptionParameter2("Cluster", 'k', "Number of desired centers.", 5, 1, Integer.MAX_VALUE));
 
-	public IntOption numDimensionsOption = new IntOption("Dimensions", 'd',
-			"Number of the dimensions of the input points.", 10, 1,
-			Integer.MAX_VALUE);
+	public IntOption numDimensionsOption = IntOption.createIntOption2(new IntOptionParameter2("Dimensions", 'd', "Number of the dimensions of the input points.", 10, 1, Integer.MAX_VALUE));
 
-	public IntOption maxNumClusterFeaturesOption = new IntOption(
-			"MaxClusterFeatures", 'n', "Maximum size of the coreset.", 5 * 200, 1,
-			Integer.MAX_VALUE);
+	public IntOption maxNumClusterFeaturesOption = IntOption.createIntOption2(new IntOptionParameter2("MaxClusterFeatures", 'n', "Maximum size of the coreset.", 5 * 200, 1, Integer.MAX_VALUE));
 
-	public IntOption numProjectionsOption = new IntOption("Projections", 'p',
-			"Number of random projections used for the nearest neighbour search.",
-			10, 1, Integer.MAX_VALUE);
+	public IntOption numProjectionsOption = IntOption.createIntOption2(new IntOptionParameter2("Projections", 'p', "Number of random projections used for the nearest neighbour search.", 10, 1, Integer.MAX_VALUE));
 
 	protected int numClusters;
 	protected int numDimensions;

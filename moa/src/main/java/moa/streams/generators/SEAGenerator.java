@@ -35,6 +35,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
@@ -63,20 +64,15 @@ public class SEAGenerator extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption functionOption = new IntOption("function", 'f',
-            "Classification function used, as defined in the original paper.",
-            1, 1, 4);
+    public IntOption functionOption = IntOption.createIntOption2(new IntOptionParameter2("function", 'f', "Classification function used, as defined in the original paper.", 1, 1, 4));
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public FlagOption balanceClassesOption = new FlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
+    public FlagOption balanceClassesOption = FlagOption.createFlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
 
-    public IntOption numInstancesConcept = new IntOption("numInstancesConcept", 'n',
-            "The number of instances for each concept.", 0, 0, Integer.MAX_VALUE);
+    public IntOption numInstancesConcept = IntOption.createIntOption2(new IntOptionParameter2("numInstancesConcept", 'n', "The number of instances for each concept.", 0, 0, Integer.MAX_VALUE));
 
-    public IntOption noisePercentageOption = new IntOption("noisePercentage",
-            'p', "Percentage of noise to add to the data.", 10, 0, 100);
+    public IntOption noisePercentageOption = IntOption.createIntOption2(new IntOptionParameter2("noisePercentage", 'p', "Percentage of noise to add to the data.", 10, 0, 100));
 
     protected interface ClassFunction {
 

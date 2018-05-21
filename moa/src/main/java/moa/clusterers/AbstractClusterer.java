@@ -63,12 +63,12 @@ public abstract class AbstractClusterer extends AbstractOptionHandler
     
 	public AbstractClusterer() {
 		if (isRandomizable()) {
-			this.randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the Clusterer.", 1));
+			this.randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the Clusterer.", 1));
 		}
 
         if( implementsMicroClusterer()){
             this.evaluateMicroClusteringOption =
-                    new FlagOption(new FlagOptionParameter("evaluateMicroClustering", 'M', "Evaluate the underlying microclustering instead of the macro clustering"));
+                    FlagOption.createFlagOption(new FlagOptionParameter("evaluateMicroClustering", 'M', "Evaluate the underlying microclustering instead of the macro clustering"));
         }
 	}
 

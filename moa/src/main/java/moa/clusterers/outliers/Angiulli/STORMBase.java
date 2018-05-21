@@ -27,7 +27,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 
 public abstract class STORMBase extends MyBaseOutlierDetector {   
-    public FlagOption waitWinFullOption = new FlagOption(new FlagOptionParameter("waitWinFull", 'a', "Output outliers when windows is full."));
+    public FlagOption waitWinFullOption = FlagOption.createFlagOption(new FlagOptionParameter("waitWinFull", 'a', "Output outliers when windows is full."));
      
     protected static final Long FIRST_OBJ_ID = 1L;
     

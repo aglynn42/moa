@@ -28,6 +28,7 @@ import moa.core.Measurement;
 import moa.options.ClassOption;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
 import com.yahoo.labs.samoa.instances.Prediction;
 
@@ -55,9 +56,7 @@ implements MultiTargetRegressor, AMRulesFunction {
 
 	public ClassOption errorMeasurerOption;
 	
-	public IntOption randomSeedOption = new IntOption("randomSeedOption",
-			'r', "randomSeedOption", 
-			1,Integer.MIN_VALUE, Integer.MAX_VALUE);
+	public IntOption randomSeedOption = IntOption.createIntOption2(new IntOptionParameter2("randomSeedOption", 'r', "randomSeedOption", 1, Integer.MIN_VALUE, Integer.MAX_VALUE));
 
 	protected boolean hasStarted;
 

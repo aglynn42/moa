@@ -22,6 +22,8 @@ package moa.classifiers.meta;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -58,8 +60,7 @@ public class TemporallyAugmentedClassifier extends AbstractClassifier implements
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
     
-    public IntOption numOldLabelsOption = new IntOption("numOldLabels", 'n',
-            "The number of old labels to add to each example.", 1, 0, Integer.MAX_VALUE);
+    public IntOption numOldLabelsOption = IntOption.createIntOption2(new IntOptionParameter2("numOldLabels", 'n', "The number of old labels to add to each example.", 1, 0, Integer.MAX_VALUE));
     
     protected Classifier baseLearner;
     
@@ -67,7 +68,7 @@ public class TemporallyAugmentedClassifier extends AbstractClassifier implements
     
     protected Instances header;
 
-    public FlagOption labelDelayOption = new FlagOption(new FlagOptionParameter("labelDelay", 'd', "Labels arrive with Delay. Use predictions instead of true Labels."));
+    public FlagOption labelDelayOption = FlagOption.createFlagOption(new FlagOptionParameter("labelDelay", 'd', "Labels arrive with Delay. Use predictions instead of true Labels."));
     
     @Override
     public void resetLearningImpl() {

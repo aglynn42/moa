@@ -29,7 +29,10 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
+
 import moa.AbstractMOAObject;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.MultiClassClassifier;
@@ -103,9 +106,7 @@ public class HoeffdingTree extends AbstractClassifier implements MultiClassClass
         return "Hoeffding Tree or VFDT.";
     }
 
-    public IntOption maxByteSizeOption = new IntOption("maxByteSize", 'm',
-            "Maximum memory consumed by the tree.", 33554432, 0,
-            Integer.MAX_VALUE);
+    public IntOption maxByteSizeOption = IntOption.createIntOption2(new IntOptionParameter2("maxByteSize", 'm', "Maximum memory consumed by the tree.", 33554432, 0, Integer.MAX_VALUE));
 
     /*
      * public MultiChoiceOption numericEstimatorOption = new MultiChoiceOption(
@@ -126,16 +127,9 @@ public class HoeffdingTree extends AbstractClassifier implements MultiClassClass
             'd', "Nominal estimator to use.", DiscreteAttributeClassObserver.class,
             "NominalAttributeClassObserver");
 
-    public IntOption memoryEstimatePeriodOption = new IntOption(
-            "memoryEstimatePeriod", 'e',
-            "How many instances between memory consumption checks.", 1000000,
-            0, Integer.MAX_VALUE);
+    public IntOption memoryEstimatePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("memoryEstimatePeriod", 'e', "How many instances between memory consumption checks.", 1000000, 0, Integer.MAX_VALUE));
 
-    public IntOption gracePeriodOption = new IntOption(
-            "gracePeriod",
-            'g',
-            "The number of instances a leaf should observe between split attempts.",
-            200, 0, Integer.MAX_VALUE);
+    public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "The number of instances a leaf should observe between split attempts.", 200, 0, Integer.MAX_VALUE));
 
     public ClassOption splitCriterionOption = new ClassOption("splitCriterion",
             's', "Split criterion to use.", SplitCriterion.class,
@@ -151,14 +145,13 @@ public class HoeffdingTree extends AbstractClassifier implements MultiClassClass
             't', "Threshold below which a split will be forced to break ties.",
             0.05, 0.0, 1.0);
 
-public FlagOption binarySplitsOption = new FlagOption(new FlagOptionParameter("binarySplits", 'b', "Only allow binary splits."));
+public FlagOption binarySplitsOption = FlagOption.createFlagOption(new FlagOptionParameter("binarySplits", 'b', "Only allow binary splits."));
 
-    public FlagOption stopMemManagementOption = new FlagOption(
-            new FlagOptionParameter("stopMemManagement", 'z', "Stop growing as soon as memory limit is hit."));
+    public FlagOption stopMemManagementOption = FlagOption.createFlagOption(new FlagOptionParameter("stopMemManagement", 'z', "Stop growing as soon as memory limit is hit."));
 
-    public FlagOption removePoorAttsOption = new FlagOption(new FlagOptionParameter("removePoorAtts", 'r', "Disable poor attributes."));
+    public FlagOption removePoorAttsOption = FlagOption.createFlagOption(new FlagOptionParameter("removePoorAtts", 'r', "Disable poor attributes."));
 
-    public FlagOption noPrePruneOption = new FlagOption(new FlagOptionParameter("noPrePrune", 'p', "Disable pre-pruning."));
+    public FlagOption noPrePruneOption = FlagOption.createFlagOption(new FlagOptionParameter("noPrePrune", 'p', "Disable pre-pruning."));
 
     public static class FoundNode {
 
@@ -830,18 +823,13 @@ public FlagOption binarySplitsOption = new FlagOption(new FlagOptionParameter("b
         }
     }
 
-    public MultiChoiceOption leafpredictionOption = new MultiChoiceOption(
-            "leafprediction", 'l', "Leaf prediction to use.", new String[]{
-                "MC", "NB", "NBAdaptive"}, new String[]{
-                "Majority class",
-                "Naive Bayes",
-                "Naive Bayes Adaptive"}, 2);
+    public MultiChoiceOption leafpredictionOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("leafprediction", 'l', "Leaf prediction to use.", new String[]{
+	    "MC", "NB", "NBAdaptive"}, new String[]{
+	"Majority class",
+	"Naive Bayes",
+	"Naive Bayes Adaptive"}, 2));
 
-    public IntOption nbThresholdOption = new IntOption(
-            "nbThreshold",
-            'q',
-            "The number of instances a leaf should observe before permitting Naive Bayes.",
-            0, 0, Integer.MAX_VALUE);
+    public IntOption nbThresholdOption = IntOption.createIntOption2(new IntOptionParameter2("nbThreshold", 'q', "The number of instances a leaf should observe before permitting Naive Bayes.", 0, 0, Integer.MAX_VALUE));
 
     public static class LearningNodeNB extends ActiveLearningNode {
 

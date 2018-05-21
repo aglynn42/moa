@@ -19,6 +19,7 @@
 package moa.classifiers.core.driftdetection;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.FloatOption;
 import moa.core.ObjectRepository;
 import moa.tasks.TaskMonitor;
@@ -37,11 +38,7 @@ public class DDM extends AbstractChangeDetector {
     private static final long serialVersionUID = -3518369648142099719L;
 
     //private static final int DDM_MINNUMINST = 30;
-    public IntOption minNumInstancesOption = new IntOption(
-            "minNumInstances",
-            'n',
-            "The minimum number of instances before permitting detecting change.",
-            30, 0, Integer.MAX_VALUE);
+    public IntOption minNumInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("minNumInstances", 'n', "The minimum number of instances before permitting detecting change.", 30, 0, Integer.MAX_VALUE));
     
     public FloatOption warningLevelOption = new FloatOption(
             "warningLevel", 'w', "Warning Level.",

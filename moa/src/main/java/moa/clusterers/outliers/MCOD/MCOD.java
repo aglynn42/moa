@@ -40,8 +40,8 @@ import com.yahoo.labs.samoa.instances.Instance;
 
 
 public class MCOD extends MCODBase {
-    public FloatOption radiusOption = new FloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
-    public IntOption kOption = new IntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
+    public FloatOption radiusOption = FloatOption.createFloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
+    public IntOption kOption = IntOption.createIntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
     
     public MCOD()
     {

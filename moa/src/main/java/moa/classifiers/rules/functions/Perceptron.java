@@ -40,20 +40,17 @@ public class Perceptron extends AbstractClassifier implements AMRulesRegressorFu
 
 	private static final long serialVersionUID = 1L;
 
-	public FlagOption constantLearningRatioDecayOption = new FlagOption(
-			new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
+	public FlagOption constantLearningRatioDecayOption = FlagOption.createFlagOption(new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
 
-	public FloatOption learningRatioOption = new FloatOption(
-			new FloatOptionParameter("learningRatio", 'l', "Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025));
+	public FloatOption learningRatioOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatio", 'l', "Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025));
 
-	public FloatOption learningRateDecayOption = new FloatOption(
-			new FloatOptionParameter("learningRateDecay", 'm', " Learning Rate decay to use for training the Perceptron.", 0.001));
+	public FloatOption learningRateDecayOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRateDecay", 'm', " Learning Rate decay to use for training the Perceptron.", 0.001));
 
 	public FloatOption fadingFactorOption = new FloatOption(
 			"fadingFactor", 'e', 
 			"Fading factor for the Perceptron accumulated error", 0.99, 0, 1);
 	
-	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
+	public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
 	
 	private double nError;
 	protected double fadingFactor;

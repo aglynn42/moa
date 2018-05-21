@@ -50,7 +50,7 @@ public class BasicAUCImbalancedPerformanceEvaluator extends AbstractOptionHandle
 
 	private static final long serialVersionUID = 1L;
 
-	public FlagOption calculateAUC = new FlagOption(new FlagOptionParameter("calculateAUC", 'a', "Determines whether AUC should be calculated. To calculate AUC, "
+	public FlagOption calculateAUC = FlagOption.createFlagOption(new FlagOptionParameter("calculateAUC", 'a', "Determines whether AUC should be calculated. To calculate AUC, "
 			+ "predictions need to be remembered, therefore setting "
 			+ "this option for large streams can cause substantial "
 			+ "memory usage."));

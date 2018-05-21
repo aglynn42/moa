@@ -25,6 +25,8 @@ import moa.core.ObjectRepository;
 import moa.learners.Learner;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
 
@@ -50,18 +52,11 @@ public class LearnModel extends ClassificationMainTask {
             "Stream to learn from.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public IntOption maxInstancesOption = new IntOption("maxInstances", 'm',
-            "Maximum number of instances to train on per pass over the data.",
-            10000000, 0, Integer.MAX_VALUE);
+    public IntOption maxInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("maxInstances", 'm', "Maximum number of instances to train on per pass over the data.", 10000000, 0, Integer.MAX_VALUE));
 
-    public IntOption numPassesOption = new IntOption("numPasses", 'p',
-            "The number of passes to do over the data.", 1, 1,
-            Integer.MAX_VALUE);
+    public IntOption numPassesOption = IntOption.createIntOption2(new IntOptionParameter2("numPasses", 'p', "The number of passes to do over the data.", 1, 1, Integer.MAX_VALUE));
 
-    public IntOption memCheckFrequencyOption = new IntOption(
-            "memCheckFrequency", 'q',
-            "How many instances between memory bound checks.", 100000, 0,
-            Integer.MAX_VALUE);
+    public IntOption memCheckFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("memCheckFrequency", 'q', "How many instances between memory bound checks.", 100000, 0, Integer.MAX_VALUE));
 
     public LearnModel() {
     }

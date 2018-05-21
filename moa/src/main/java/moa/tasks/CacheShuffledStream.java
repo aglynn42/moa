@@ -26,6 +26,7 @@ import moa.core.ObjectRepository;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.CachedInstancesStream;
 import moa.streams.InstanceStream;
@@ -49,12 +50,9 @@ public class CacheShuffledStream extends AbstractTask {
             "Stream to cache and shuffle.", InstanceStream.class,
             "generators.RandomTreeGenerator");
 
-    public IntOption maximumCacheSizeOption = new IntOption("maximumCacheSize",
-            'm', "Maximum number of instances to cache.", 1000000, 1,
-            Integer.MAX_VALUE);
+    public IntOption maximumCacheSizeOption = IntOption.createIntOption2(new IntOptionParameter2("maximumCacheSize", 'm', "Maximum number of instances to cache.", 1000000, 1, Integer.MAX_VALUE));
 
-    public IntOption shuffleRandomSeedOption = new IntOption(
-            new IntOptionParameter("shuffleRandomSeed", 'r', "Seed for random shuffling of instances.", 1));
+    public IntOption shuffleRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("shuffleRandomSeed", 'r', "Seed for random shuffling of instances.", 1));
 
     @Override
     protected Object doTaskImpl(TaskMonitor monitor, ObjectRepository repository) {

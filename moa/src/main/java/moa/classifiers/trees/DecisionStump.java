@@ -22,6 +22,8 @@ package moa.classifiers.trees;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.MultiClassClassifier;
 import moa.classifiers.core.AttributeSplitSuggestion;
@@ -58,11 +60,9 @@ public class DecisionStump extends AbstractClassifier implements MultiClassClass
         return "Decision trees of one level.";
     }
     
-    public IntOption gracePeriodOption = new IntOption("gracePeriod", 'g',
-            "The number of instances to observe between model changes.", 1000,
-            0, Integer.MAX_VALUE);
+    public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "The number of instances to observe between model changes.", 1000, 0, Integer.MAX_VALUE));
 
-    public FlagOption binarySplitsOption = new FlagOption(new FlagOptionParameter("binarySplits", 'b', "Only allow binary splits."));
+    public FlagOption binarySplitsOption = FlagOption.createFlagOption(new FlagOptionParameter("binarySplits", 'b', "Only allow binary splits."));
 
     public ClassOption splitCriterionOption = new ClassOption("splitCriterion",
             'c', "Split criterion to use.", SplitCriterion.class,

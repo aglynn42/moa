@@ -64,9 +64,9 @@ public class ALPartitionEvaluationTask extends ALMainTask {
 			"Multi param task to be performed for each partition", 
 			ALMultiParamTask.class, "moa.tasks.meta.ALMultiParamTask");
 
-	public IntOption numPartitionsOption = new IntOption(new IntOptionParameter("numPartitions", 'k', "Number of data set partitions.", 10));
+	public IntOption numPartitionsOption = IntOption.createIntOption(new IntOptionParameter("numPartitions", 'k', "Number of data set partitions.", 10));
 
-	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "random seed which is used for partitioning of the stream.", 0));
+	public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "random seed which is used for partitioning of the stream.", 0));
 	
 	
 	private ArrayList<ALTaskThread> subtaskThreads = new ArrayList<>();

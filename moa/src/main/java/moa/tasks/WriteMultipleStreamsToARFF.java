@@ -29,7 +29,9 @@ import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.StringOption;
+import com.github.javacliparser.StringOptionParameter;
 
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
@@ -70,24 +72,19 @@ public class WriteMultipleStreamsToARFF extends AuxiliarMainTask
 
 	public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'a', "Destination ARFF file.", null, "arff", true));
 
-	public IntOption maxInstancesOption = new IntOption("maxInstances", 'm',
-			"Maximum number of instances to write to file.", 10000000, 0,
-			Integer.MAX_VALUE);
+	public IntOption maxInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("maxInstances", 'm', "Maximum number of instances to write to file.", 10000000, 0, Integer.MAX_VALUE));
 
-	public FlagOption suppressHeaderOption = new FlagOption(new FlagOptionParameter("suppressHeader", 'h', "Suppress header from output."));
+	public FlagOption suppressHeaderOption = FlagOption.createFlagOption(new FlagOptionParameter("suppressHeader", 'h', "Suppress header from output."));
 
-	public IntOption numStreamsOption = new IntOption("numStreams", 'n',
-			"Number of streams to generate and write to file.", 100, 0, Integer.MAX_VALUE);
+	public IntOption numStreamsOption = IntOption.createIntOption2(new IntOptionParameter2("numStreams", 'n', "Number of streams to generate and write to file.", 100, 0, Integer.MAX_VALUE));
 	
-	public FlagOption randomFlagOne = new FlagOption(new FlagOptionParameter("randomFlagOne", 'f', "Check in order to provide the first random option with different seeds."));
+	public FlagOption randomFlagOne = FlagOption.createFlagOption(new FlagOptionParameter("randomFlagOne", 'f', "Check in order to provide the first random option with different seeds."));
 	
-	public StringOption randomOneOption = new StringOption("randomOptionOne", '1',
-            "Random option to provide with different seed values.", "m");
+	public StringOption randomOneOption = StringOption.createStringOption(new StringOptionParameter("randomOptionOne", '1', "Random option to provide with different seed values.", "m"));
 	
-	public FlagOption randomFlagTwo = new FlagOption(new FlagOptionParameter("randomFlagTwo", 'F', "Check in order to provide the second random option with different seeds."));
+	public FlagOption randomFlagTwo = FlagOption.createFlagOption(new FlagOptionParameter("randomFlagTwo", 'F', "Check in order to provide the second random option with different seeds."));
 	
-	public StringOption randomTwoOption = new StringOption("randomOptionTwo", '2',
-            "Random option to provide with different seed values.", "i");
+	public StringOption randomTwoOption = StringOption.createStringOption(new StringOptionParameter("randomOptionTwo", '2', "Random option to provide with different seed values.", "i"));
 
 	protected InstanceStream stream;
 	

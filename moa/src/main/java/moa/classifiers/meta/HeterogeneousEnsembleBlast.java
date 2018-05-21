@@ -20,6 +20,7 @@
 package moa.classifiers.meta;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.classifiers.MultiClassClassifier;
 
@@ -58,9 +59,7 @@ public class HeterogeneousEnsembleBlast extends HeterogeneousEnsembleAbstract im
 
 	protected boolean[][] onlineHistory;
 
-	public IntOption windowSizeOption = new IntOption("windowSize", 'w',
-			"The window size over which Online Performance Estimation is done.", 1000,
-			1, Integer.MAX_VALUE);
+	public IntOption windowSizeOption = IntOption.createIntOption2(new IntOptionParameter2("windowSize", 'w', "The window size over which Online Performance Estimation is done.", 1000, 1, Integer.MAX_VALUE));
 
 	@Override
 	public void resetLearningImpl() {

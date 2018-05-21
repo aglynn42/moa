@@ -21,7 +21,10 @@ package moa.classifiers.trees.iadem;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
+
 import java.util.Arrays;
 
 import moa.classifiers.MultiClassClassifier;
@@ -48,31 +51,22 @@ public class Iadem2 extends AbstractClassifier implements MultiClassClassifier {
     public ClassOption numericEstimatorOption = new ClassOption("numericEstimator",
             'z', "Numeric estimator to use.", IademNumericAttributeObserver.class,
             "IademGaussianNumericAttributeClassObserver");
-    public IntOption gracePeriodOption = new IntOption("gracePeriod", 'n',
-            "The number of instances the tree should observe between splitting attempts.",
-            100, 1, Integer.MAX_VALUE);
-    public MultiChoiceOption splitCriterionOption = new MultiChoiceOption("splitCriterion", 's',
-            "Split criterion to use.", new String[]{
-                "entropy", "entropy_logVar", "entropy_logVar+Peso", "entropy_Peso", "beta1", "gamma1", "beta2", "gamma2", "beta4", "gamma4"}, new String[]{
-                "entropy", "entropy_logVar", "entropy_logVar+Peso", "entropy_Peso", "beta1", "gamma1", "beta2", "gamma2", "beta4", "gamma4"}, 0);
+    public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'n', "The number of instances the tree should observe between splitting attempts.", 100, 1, Integer.MAX_VALUE));
+    public MultiChoiceOption splitCriterionOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("splitCriterion", 's', "Split criterion to use.", new String[]{
+	    "entropy", "entropy_logVar", "entropy_logVar+Peso", "entropy_Peso", "beta1", "gamma1", "beta2", "gamma2", "beta4", "gamma4"}, new String[]{
+	"entropy", "entropy_logVar", "entropy_logVar+Peso", "entropy_Peso", "beta1", "gamma1", "beta2", "gamma2", "beta4", "gamma4"}, 0));
     public FloatOption splitConfidenceOption = new FloatOption("splitConfidence", 'c',
             "The allowable error in split decision, values closer to 0 will take longer to decide.",
             0.01, 0.0, 1.0);
-    public MultiChoiceOption splitTestsOption = new MultiChoiceOption("splitChoice", 'i',
-            "Methods for splitting leaf nodes.",
-            new String[]{
-                "onlyBinarySplit", "onlyMultiwaySplit", "bestSplit"}, new String[]{
-                "onlyBinary", "onlyMultiway", "bestSplit"},
-            2);
+    public MultiChoiceOption splitTestsOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("splitChoice", 'i', "Methods for splitting leaf nodes.", new String[]{
+	    "onlyBinarySplit", "onlyMultiwaySplit", "bestSplit"}, new String[]{
+	"onlyBinary", "onlyMultiway", "bestSplit"}, 2));
 
-    public MultiChoiceOption leafPredictionOption = new MultiChoiceOption("leafPrediction", 'b',
-            "Leaf prediction to use.", new String[]{
-                "MC", "NB", "NBKirkby", "WeightedVote"},
-            new String[]{"MC: Majority class.",
-                "NB: Naïve Bayes.",
-                "NBKirkby.",
-                "WeightedVote: Weighted vote between NB and MC."},
-            1);
+    public MultiChoiceOption leafPredictionOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("leafPrediction", 'b', "Leaf prediction to use.", new String[]{
+	    "MC", "NB", "NBKirkby", "WeightedVote"}, new String[]{"MC: Majority class.",
+	    "NB: Naïve Bayes.",
+	    "NBKirkby.",
+	    "WeightedVote: Weighted vote between NB and MC."}, 1));
     public ClassOption driftDetectionMethodOption = new ClassOption("driftDetectionMethod", 'd',
             "Drift detection method to use.", AbstractChangeDetector.class, "HDDM_A_Test");
 

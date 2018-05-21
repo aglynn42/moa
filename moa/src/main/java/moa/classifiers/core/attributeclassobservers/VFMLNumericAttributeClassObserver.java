@@ -32,6 +32,8 @@ import moa.core.DoubleVector;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.tasks.TaskMonitor;
 
 /**
@@ -66,8 +68,7 @@ public class VFMLNumericAttributeClassObserver extends AbstractOptionHandler
 
     protected List<Bin> binList = new ArrayList<Bin>();
 
-    public IntOption numBinsOption = new IntOption("numBins", 'n',
-        "The number of bins.", 10, 1, Integer.MAX_VALUE);
+    public IntOption numBinsOption = IntOption.createIntOption2(new IntOptionParameter2("numBins", 'n', "The number of bins.", 10, 1, Integer.MAX_VALUE));
 
 
     @Override

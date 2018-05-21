@@ -24,6 +24,8 @@ import moa.classifiers.AbstractClassifier;
 import moa.classifiers.MultiClassClassifier;
 import moa.core.Measurement;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.options.WEKAClassOption;
 import weka.classifiers.Classifier;
 import weka.classifiers.UpdateableClassifier;
@@ -53,16 +55,11 @@ public class WEKAClassifier
     public WEKAClassOption baseLearnerOption = new WEKAClassOption("baseLearner", 'l',
             "Classifier to train.", weka.classifiers.Classifier.class, "weka.classifiers.bayes.NaiveBayesUpdateable");
 
-    public IntOption widthOption = new IntOption("width",
-            'w', "Size of Window for training learner.", 0, 0, Integer.MAX_VALUE);
+    public IntOption widthOption = IntOption.createIntOption2(new IntOptionParameter2("width", 'w', "Size of Window for training learner.", 0, 0, Integer.MAX_VALUE));
 
-    public IntOption widthInitOption = new IntOption("widthInit",
-            'i', "Size of first Window for training learner.", 1000, 0, Integer.MAX_VALUE);
+    public IntOption widthInitOption = IntOption.createIntOption2(new IntOptionParameter2("widthInit", 'i', "Size of first Window for training learner.", 1000, 0, Integer.MAX_VALUE));
 
-    public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-            'f',
-            "How many instances between samples of the learning performance.",
-            0, 0, Integer.MAX_VALUE);
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 0, 0, Integer.MAX_VALUE));
 
     protected Classifier classifier;
 

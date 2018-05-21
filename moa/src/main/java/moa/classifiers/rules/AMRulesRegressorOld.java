@@ -75,6 +75,7 @@ import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 
 
 
@@ -88,16 +89,13 @@ public class AMRulesRegressorOld extends AbstractAMRules implements Regressor{
 	private static final long serialVersionUID = 5988040868275521928L;
 
 	
-	public FlagOption constantLearningRatioDecayOption = new FlagOption(
-			new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
+	public FlagOption constantLearningRatioDecayOption = FlagOption.createFlagOption(new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
 	
-	public FloatOption learningRatioOption = new FloatOption(
-			new FloatOptionParameter("learningRatio", 's', "Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025)); 
+	public FloatOption learningRatioOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatio", 's', "Constante Learning Ratio to use for training the Perceptrons in the leaves.", 0.025)); 
 	
-	public MultiChoiceOption predictionFunctionOption = new MultiChoiceOption(
-			"predictionFunctionOption", 'P', "The prediction function to use.", new String[]{
-					"Adaptative","Perceptron", "Target Mean"}, new String[]{
-					"Adaptative","Perceptron", "Target Mean"}, 0);
+	public MultiChoiceOption predictionFunctionOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("predictionFunctionOption", 'P', "The prediction function to use.", new String[]{
+			"Adaptative","Perceptron", "Target Mean"}, new String[]{
+	"Adaptative","Perceptron", "Target Mean"}, 0));
 	
 	public ClassOption votingTypeOption = new ClassOption("votingType",
 			'V', "Voting Type.", 

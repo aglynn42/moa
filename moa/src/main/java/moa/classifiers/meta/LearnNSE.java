@@ -21,7 +21,9 @@ package moa.classifiers.meta;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
 import java.util.ArrayList;
@@ -58,8 +60,7 @@ public class LearnNSE extends AbstractClassifier implements MultiClassClassifier
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "bayes.NaiveBayes");
 
-    public IntOption periodOption = new IntOption("period", 'p',
-            "Size of the environments.", 250, 1, Integer.MAX_VALUE);
+    public IntOption periodOption = IntOption.createIntOption2(new IntOptionParameter2("period", 'p', "Size of the environments.", 250, 1, Integer.MAX_VALUE));
 
     public FloatOption sigmoidSlopeOption = new FloatOption(
             "sigmoidSlope",
@@ -75,13 +76,10 @@ public class LearnNSE extends AbstractClassifier implements MultiClassClassifier
             + "periods taken into account during weighting.", 10, 0,
             Float.MAX_VALUE);
 
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 'e',
-            "Ensemble size.", 15, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 'e', "Ensemble size.", 15, 1, Integer.MAX_VALUE));
 
-    public MultiChoiceOption pruningStrategyOption = new MultiChoiceOption(
-            "pruningStrategy", 's', "Classifiers pruning strategy to be used.",
-            new String[]{"NO", "AGE", "ERROR"}, new String[]{
-                "Don't prune classifiers", "Age-based", "Error-based"}, 0);
+    public MultiChoiceOption pruningStrategyOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("pruningStrategy", 's', "Classifiers pruning strategy to be used.", new String[]{"NO", "AGE", "ERROR"}, new String[]{
+	    "Don't prune classifiers", "Age-based", "Error-based"}, 0));
 
     protected List<Classifier> ensemble;
     protected List<Double> ensembleWeights;

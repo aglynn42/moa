@@ -46,7 +46,7 @@ public class Perceptron extends AbstractClassifier  implements MultiClassClassif
         return "Perceptron classifier: Single perceptron classifier.";
     }
 
-    public FloatOption learningRatioOption = new FloatOption(new FloatOptionParameter("learningRatio", 'r', "Learning ratio", 1));
+    public FloatOption learningRatioOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatio", 'r', "Learning ratio", 1));
 
     protected double[][] weightAttribute;
 

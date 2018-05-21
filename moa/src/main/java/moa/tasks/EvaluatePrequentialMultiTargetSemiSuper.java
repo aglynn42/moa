@@ -26,6 +26,7 @@ import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.Option;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
@@ -95,23 +96,19 @@ public class EvaluatePrequentialMultiTargetSemiSuper extends MultiTargetMainTask
                 's',"Stream to learn from.", MultiTargetInstanceStream.class,"MultiTargetArffFileStream");
     public ClassOption evaluatorOption = new ClassOption("evaluator", 
                 'e',"Classification performance evaluation method.",MultiTargetPerformanceEvaluator.class,"BasicMultiTargetPerformanceEvaluator");
-    public IntOption instanceLimitOption = new IntOption("instanceLimit", 
-                'i',"Maximum number of instances to test/train on  (-1 = no limit).",100000000, -1, Integer.MAX_VALUE);
-    public IntOption timeLimitOption = new IntOption("timeLimit", 
-                't',"Maximum number of seconds to test/train for (-1 = no limit).", -1,-1, Integer.MAX_VALUE);
-    public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-                'f',"How many instances between samples of the learning performance.",100000, 0, Integer.MAX_VALUE);
-    public IntOption memCheckFrequencyOption = new IntOption("memCheckFrequency", 
-                'q',"How many instances between memory bound checks.", 100000, 0,Integer.MAX_VALUE);
+    public IntOption instanceLimitOption = IntOption.createIntOption2(new IntOptionParameter2("instanceLimit", 'i', "Maximum number of instances to test/train on  (-1 = no limit).", 100000000, -1, Integer.MAX_VALUE));
+    public IntOption timeLimitOption = IntOption.createIntOption2(new IntOptionParameter2("timeLimit", 't', "Maximum number of seconds to test/train for (-1 = no limit).", -1, -1, Integer.MAX_VALUE));
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 100000, 0, Integer.MAX_VALUE));
+    public IntOption memCheckFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("memCheckFrequency", 'q', "How many instances between memory bound checks.", 100000, 0, Integer.MAX_VALUE));
     public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
     public FileOption outputPredictionFileOption = new FileOption(new FileOptionParameter("outputPredictionFile", 'o', "File to append output predictions to.", null, "pred", true));
-    public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Size of Window", 1000)); //New for prequential method DEPRECATED
-    public FloatOption alphaOption = new FloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
-    public FloatOption unlabeledPercentage = new FloatOption(new FloatOptionParameter("WithoutTarget", 'z', "Without target percentage(%)", 50));
-    public FloatOption dbInitialModelPercentage = new FloatOption(new FloatOptionParameter("DBPercent", 'D', "Initial dataset (%)", 30));
-    public IntOption runSeed = new IntOption(new IntOptionParameter("Seed", 'r', "Number of predictions", 1));
-    public IntOption slidingWindowSize = new IntOption(new IntOptionParameter("slidingWindowSize", 'W', "slidingWindowSize", 1000));
-    public IntOption slidingWindowStep = new IntOption(new IntOptionParameter("slidingWindowStep", 'j', "slidingWindowStep", 1));
+    public IntOption widthOption = IntOption.createIntOption(new IntOptionParameter("width", 'w', "Size of Window", 1000)); //New for prequential method DEPRECATED
+    public FloatOption alphaOption = FloatOption.createFloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
+    public FloatOption unlabeledPercentage = FloatOption.createFloatOption(new FloatOptionParameter("WithoutTarget", 'z', "Without target percentage(%)", 50));
+    public FloatOption dbInitialModelPercentage = FloatOption.createFloatOption(new FloatOptionParameter("DBPercent", 'D', "Initial dataset (%)", 30));
+    public IntOption runSeed = IntOption.createIntOption(new IntOptionParameter("Seed", 'r', "Number of predictions", 1));
+    public IntOption slidingWindowSize = IntOption.createIntOption(new IntOptionParameter("slidingWindowSize", 'W', "slidingWindowSize", 1000));
+    public IntOption slidingWindowStep = IntOption.createIntOption(new IntOptionParameter("slidingWindowStep", 'j', "slidingWindowStep", 1));
     
     @Override
     public Class<?> getTaskResultType() {

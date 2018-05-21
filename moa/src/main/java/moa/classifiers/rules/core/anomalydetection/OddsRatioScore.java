@@ -29,6 +29,7 @@ import moa.tasks.TaskMonitor;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
 
@@ -53,11 +54,7 @@ public class OddsRatioScore extends AbstractAnomalyDetector {
 	private static final double MINPROB=0.01;
 	private static final double MAXPROB=1-MINPROB;
 
-	public IntOption minNumberInstancesOption = new IntOption(
-			"minNumberInstances",
-			'n',
-			"The minimum number of instances required to perform anomaly detection.",
-			30, 0, Integer.MAX_VALUE);
+	public IntOption minNumberInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("minNumberInstances", 'n', "The minimum number of instances required to perform anomaly detection.", 30, 0, Integer.MAX_VALUE));
 
 	public FloatOption thresholdOption = new FloatOption(
 			"threshold",

@@ -28,7 +28,9 @@ import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 
 /**
  * k Nearest Neighbor.<p>
@@ -44,16 +46,14 @@ public class kNN extends AbstractClassifier implements MultiClassClassifier {
 
     private static final long serialVersionUID = 1L;
 
-	public IntOption kOption = new IntOption( "k", 'k', "The number of neighbors", 10, 1, Integer.MAX_VALUE);
+	public IntOption kOption = IntOption.createIntOption2(new IntOptionParameter2("k", 'k', "The number of neighbors", 10, 1, Integer.MAX_VALUE));
 
-	public IntOption limitOption = new IntOption( "limit", 'w', "The maximum number of instances to store", 1000, 1, Integer.MAX_VALUE);
+	public IntOption limitOption = IntOption.createIntOption2(new IntOptionParameter2("limit", 'w', "The maximum number of instances to store", 1000, 1, Integer.MAX_VALUE));
 
-        public MultiChoiceOption nearestNeighbourSearchOption = new MultiChoiceOption(
-            "nearestNeighbourSearch", 'n', "Nearest Neighbour Search to use", new String[]{
-                "LinearNN", "KDTree"},
-            new String[]{"Brute force search algorithm for nearest neighbour search. ",
-                "KDTree search algorithm for nearest neighbour search"
-            }, 0);
+        public MultiChoiceOption nearestNeighbourSearchOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("nearestNeighbourSearch", 'n', "Nearest Neighbour Search to use", new String[]{
+		    "LinearNN", "KDTree"}, new String[]{"Brute force search algorithm for nearest neighbour search. ",
+		    "KDTree search algorithm for nearest neighbour search"
+		}, 0));
 
 
 	int C = 0;

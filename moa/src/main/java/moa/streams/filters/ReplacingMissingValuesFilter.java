@@ -22,6 +22,7 @@ package moa.streams.filters;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import java.util.Collections;
@@ -61,26 +62,18 @@ public class ReplacingMissingValuesFilter extends AbstractStreamFilter {
 
 	private static final long serialVersionUID = 1470772215201414815L;
 
-	public MultiChoiceOption numericReplacementStrategyOption = new MultiChoiceOption(
-			"numericReplacementStrategy", 's', "Replacement strategy for numeric attributes", 
-			new String[]{"Nothing", "LastKnownValue", "Mean", "Max", "Min", "Constant"},
-			new String[]{"Does nothing (doesn't replace missing values)",
-					     "Replaces with the last non missing value",
-					     "Replaces with mean of the processed instances so far",
-					     "Replaces with maximum of the processed instances so far",
-					     "Replaces with minimum of the processed instances so far",
-					     "Replaces with a constant value (default: zero)"}
-			, 0);
+	public MultiChoiceOption numericReplacementStrategyOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("numericReplacementStrategy", 's', "Replacement strategy for numeric attributes", new String[]{"Nothing", "LastKnownValue", "Mean", "Max", "Min", "Constant"}, new String[]{"Does nothing (doesn't replace missing values)",
+			     "Replaces with the last non missing value",
+			     "Replaces with mean of the processed instances so far",
+			     "Replaces with maximum of the processed instances so far",
+			     "Replaces with minimum of the processed instances so far",
+			     "Replaces with a constant value (default: zero)"}, 0));
 	
-	public MultiChoiceOption nominalReplacementStrategyOption = new MultiChoiceOption(
-			"nominalReplacementStrategy", 't', "Replacement strategy for nominal attributes", 
-			new String[]{"Nothing", "LastKnownValue", "Mode"},
-			new String[]{"Does nothing (doesn't replace missing values)",
-					     "Replaces with the last non missing value",
-					     "Replaces with the mode of the processed instances so far (most frequent value)"}
-			, 0);
+	public MultiChoiceOption nominalReplacementStrategyOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("nominalReplacementStrategy", 't', "Replacement strategy for nominal attributes", new String[]{"Nothing", "LastKnownValue", "Mode"}, new String[]{"Does nothing (doesn't replace missing values)",
+			     "Replaces with the last non missing value",
+			     "Replaces with the mode of the processed instances so far (most frequent value)"}, 0));
 
-	public FloatOption numericalConstantValueOption = new FloatOption(new FloatOptionParameter("numericalConstantValue", 'c', "Value used to replace missing values during the numerical constant strategy", 0.0));
+	public FloatOption numericalConstantValueOption = FloatOption.createFloatOption(new FloatOptionParameter("numericalConstantValue", 'c', "Value used to replace missing values during the numerical constant strategy", 0.0));
 	
 	protected int numAttributes = -1;
 	

@@ -36,6 +36,8 @@ import moa.options.ClassOption;
 import com.github.javacliparser.FileOption;
 import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -74,46 +76,32 @@ public class EvaluateInterleavedChunks extends ClassificationMainTask {
 	/**
 	 * Allows to define the maximum number of instances to test/train on  (-1 = no limit).
 	 */
-	public IntOption instanceLimitOption = new IntOption("instanceLimit", 'i',
-			"Maximum number of instances to test/train on  (-1 = no limit).",
-			100000000, -1, Integer.MAX_VALUE);
+	public IntOption instanceLimitOption = IntOption.createIntOption2(new IntOptionParameter2("instanceLimit", 'i', "Maximum number of instances to test/train on  (-1 = no limit).", 100000000, -1, Integer.MAX_VALUE));
 
 	/**
 	 * Allow to define the training/testing chunk size.
 	 */
-	public IntOption chunkSizeOption = new IntOption("chunkSize", 'c',
-			"Number of instances in a data chunk.",
-			1000, 1, Integer.MAX_VALUE);
+	public IntOption chunkSizeOption = IntOption.createIntOption2(new IntOptionParameter2("chunkSize", 'c', "Number of instances in a data chunk.", 1000, 1, Integer.MAX_VALUE));
 	
 	/**
 	 * Allows to define the maximum number of seconds to test/train for (-1 = no limit).
 	 */
-	public IntOption timeLimitOption = new IntOption("timeLimit", 't',
-			"Maximum number of seconds to test/train for (-1 = no limit).", -1,
-			-1, Integer.MAX_VALUE);
+	public IntOption timeLimitOption = IntOption.createIntOption2(new IntOptionParameter2("timeLimit", 't', "Maximum number of seconds to test/train for (-1 = no limit).", -1, -1, Integer.MAX_VALUE));
 
 	/**
 	 * Defines how often classifier parameters will be calculated.
 	 */
-	public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-			'f',
-			"How many instances between samples of the learning performance.",
-			100000, 0, Integer.MAX_VALUE);
+	public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 100000, 0, Integer.MAX_VALUE));
 
 	/**
 	 * Allows to define the memory limit for the created model.
 	 */
-	public IntOption maxMemoryOption = new IntOption("maxMemory", 'b',
-			"Maximum size of model (in bytes). -1 = no limit.", -1, -1,
-			Integer.MAX_VALUE);
+	public IntOption maxMemoryOption = IntOption.createIntOption2(new IntOptionParameter2("maxMemory", 'b', "Maximum size of model (in bytes). -1 = no limit.", -1, -1, Integer.MAX_VALUE));
 
 	/**
 	 * Allows to define the frequency of memory checks.
 	 */
-	public IntOption memCheckFrequencyOption = new IntOption(
-			"memCheckFrequency", 'q',
-			"How many instances between memory bound checks.", 100000, 0,
-			Integer.MAX_VALUE);
+	public IntOption memCheckFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("memCheckFrequency", 'q', "How many instances between memory bound checks.", 100000, 0, Integer.MAX_VALUE));
 
 	/**
 	 * Allows to define the output file name and location.

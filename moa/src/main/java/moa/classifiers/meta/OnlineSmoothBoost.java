@@ -21,6 +21,7 @@ package moa.classifiers.meta;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.Classifier;
@@ -55,8 +56,7 @@ public class OnlineSmoothBoost extends AbstractClassifier implements MultiClassC
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
 
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-            "The number of models to boost.", 10, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models to boost.", 10, 1, Integer.MAX_VALUE));
 
     //public FlagOption pureBoostOption = new FlagOption("pureBoost", 'p',
     //        "Boost with weights only; no poisson.");

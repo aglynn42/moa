@@ -30,6 +30,7 @@ import moa.core.Measurement;
 import moa.core.MiscUtils;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 /**
  * Bagging for evolving data streams using ADWIN.
@@ -92,8 +93,7 @@ public class OzaBagAdwin extends AbstractClassifier implements MultiClassClassif
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
 
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-            "The number of models in the bag.", 10, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models in the bag.", 10, 1, Integer.MAX_VALUE));
 
     protected Classifier[] ensemble;
 

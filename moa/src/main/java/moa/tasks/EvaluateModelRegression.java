@@ -25,6 +25,8 @@ import java.io.PrintStream;
 import com.github.javacliparser.FileOption;
 import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.classifiers.Classifier;
 import moa.classifiers.Regressor;
 import moa.core.Example;
@@ -67,9 +69,7 @@ public class EvaluateModelRegression extends RegressionMainTask {
             "BasicRegressionPerformanceEvaluator");
 
 
-    public IntOption maxInstancesOption = new IntOption("maxInstances", 'i',
-            "Maximum number of instances to test.", 1000000, 0,
-            Integer.MAX_VALUE);
+    public IntOption maxInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("maxInstances", 'i', "Maximum number of instances to test.", 1000000, 0, Integer.MAX_VALUE));
 
     public FileOption outputPredictionFileOption = new FileOption(new FileOptionParameter("outputPredictionFile", 'o', "File to append output predictions to.", null, "pred", true));
 

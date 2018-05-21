@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.javacliparser.FloatOption;
-import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.ListOption;
+import com.github.javacliparser.ListOptionParameter;
 import com.github.javacliparser.Option;
 import com.github.javacliparser.Options;
 
@@ -79,15 +79,11 @@ public class ALMultiParamTask extends ALMainTask {
 					new String[]{"default varied parameter name"}, 
 					0);
 	
-	public ListOption variedParamValuesOption = new ListOption(
-			"variedParamValues", 'v',
-			"List of parameter values to train classifiers for.",
-			new FloatOption(new FloatOptionParameter("value", ' ', "Parameter value.", 0.0)), 
-			new FloatOption[]{
-					new FloatOption(new FloatOptionParameter("", ' ', "", 0.1)),
-					new FloatOption(new FloatOptionParameter("", ' ', "", 0.2)),
-					new FloatOption(new FloatOptionParameter("", ' ', "", 0.5))
-			}, ',');
+	public ListOption variedParamValuesOption = ListOption.createListOption(new ListOptionParameter("variedParamValues", 'v', "List of parameter values to train classifiers for.", FloatOption.createFloatOption(new FloatOptionParameter("value", ' ', "Parameter value.", 0.0)), new FloatOption[]{
+			FloatOption.createFloatOption(new FloatOptionParameter("", ' ', "", 0.1)),
+			FloatOption.createFloatOption(new FloatOptionParameter("", ' ', "", 0.2)),
+			FloatOption.createFloatOption(new FloatOptionParameter("", ' ', "", 0.5))
+	}, ','));
 	
 	
 	private ArrayList<ALPrequentialEvaluationTask> subtasks = new ArrayList<>();

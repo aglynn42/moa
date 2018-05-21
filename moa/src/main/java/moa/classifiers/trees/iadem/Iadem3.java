@@ -20,6 +20,7 @@
 package moa.classifiers.trees.iadem;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -46,13 +47,9 @@ public class Iadem3 extends Iadem2 implements MultiClassClassifier {
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption maxNestingLevelOption = new IntOption("maxNestingLevel", 'p',
-            "Maximum level of nesting for alternative subtrees (-1 => unbounded).",
-            1, -1, Integer.MAX_VALUE);
+    public IntOption maxNestingLevelOption = IntOption.createIntOption2(new IntOptionParameter2("maxNestingLevel", 'p', "Maximum level of nesting for alternative subtrees (-1 => unbounded).", 1, -1, Integer.MAX_VALUE));
 
-    public IntOption maxSubtreesPerNodeOption = new IntOption("maxSubtreesPerNode", 'w',
-            "Maximum number of alternative subtrees per split node (-1 => unbounded).",
-            1, -1, Integer.MAX_VALUE);
+    public IntOption maxSubtreesPerNodeOption = IntOption.createIntOption2(new IntOptionParameter2("maxSubtreesPerNode", 'w', "Maximum number of alternative subtrees per split node (-1 => unbounded).", 1, -1, Integer.MAX_VALUE));
 
     protected final boolean restartAtDrift = true;
 

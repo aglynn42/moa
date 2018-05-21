@@ -20,6 +20,8 @@ package moa.classifiers.meta;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -57,9 +59,7 @@ public class PairedLearners extends AbstractClassifier implements MultiClassClas
     public ClassOption reactiveLearnerOption = new ClassOption("reactiveLearner", 
             'r', "Reactive learner", Classifier.class, "bayes.NaiveBayes");
 
-    public IntOption windowSizeOption = new IntOption("windowSize", 
-            'w', "Window size for the reactive learner", 
-            12, 1, Integer.MAX_VALUE);
+    public IntOption windowSizeOption = IntOption.createIntOption2(new IntOptionParameter2("windowSize", 'w', "Window size for the reactive learner", 12, 1, Integer.MAX_VALUE));
 
     public FloatOption thresholdOption = new FloatOption("threshold",
             't', "Threashold for creating a new stable learner",

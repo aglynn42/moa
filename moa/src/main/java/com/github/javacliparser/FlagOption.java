@@ -27,9 +27,13 @@ public class FlagOption extends AbstractOption {
 
     private static final long serialVersionUID = 1L;
 
-    protected boolean isSet = false;
+    public static FlagOption createFlagOption(FlagOptionParameter parameterObject) {
+		return new FlagOption(parameterObject);
+	}
 
-    public FlagOption(FlagOptionParameter parameterObject) {
+	protected boolean isSet = false;
+
+    private FlagOption(FlagOptionParameter parameterObject) {
         super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose);
     }
 

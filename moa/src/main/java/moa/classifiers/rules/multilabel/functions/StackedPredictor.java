@@ -51,25 +51,19 @@ MultiTargetRegressor, AMRulesFunction {
 
 
 	// Parameters and options
-	public FlagOption constantLearningRatioDecayOption = new FlagOption(
-			new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
+	public FlagOption constantLearningRatioDecayOption = FlagOption.createFlagOption(new FlagOptionParameter("learningRatio_Decay_set_constant", 'd', "Learning Ratio Decay in Perceptron set to be constant. (The next parameter)."));
 
-	public FloatOption learningRatioOption = new FloatOption(
-			new FloatOptionParameter("learningRatio", 'l', "Learning Ratio to use for training the 1st layer.", 0.025));
+	public FloatOption learningRatioOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatio", 'l', "Learning Ratio to use for training the 1st layer.", 0.025));
 
-	public FloatOption learningRatio2ndLayerOption = new FloatOption(
-			new FloatOptionParameter("learningRatio2ndLayer", 'n', "Learning Ratio to use in the second layer.", 0.001));
+	public FloatOption learningRatio2ndLayerOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRatio2ndLayer", 'n', "Learning Ratio to use in the second layer.", 0.001));
 
-	public FloatOption learningRateDecayOption = new FloatOption(
-			new FloatOptionParameter("learningRateDecay", 'm', " Learning Rate decay to use for training the 1st layer.", 0.001));
+	public FloatOption learningRateDecayOption = FloatOption.createFloatOption(new FloatOptionParameter("learningRateDecay", 'm', " Learning Rate decay to use for training the 1st layer.", 0.001));
 
-	public FlagOption skipStackingOption = new FlagOption(
-			new FlagOptionParameter("skipStackingOption", 's', "Predicts the outputs of the first layer (no dependence among output is computed)"));
+	public FlagOption skipStackingOption = FlagOption.createFlagOption(new FlagOptionParameter("skipStackingOption", 's', "Predicts the outputs of the first layer (no dependence among output is computed)"));
 
-	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
+	public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
 
-	public FlagOption printWeightsOption = new FlagOption(
-			new FlagOptionParameter("printWeights", 'p', "Outputs the 2nd layer weights as measurements."));
+	public FlagOption printWeightsOption = FlagOption.createFlagOption(new FlagOptionParameter("printWeights", 'p', "Outputs the 2nd layer weights as measurements."));
 
 
 	/*

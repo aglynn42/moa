@@ -33,6 +33,7 @@ import moa.options.ClassOption;
 import moa.streams.InstanceStream;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -49,9 +50,7 @@ import com.yahoo.labs.samoa.instances.Prediction;
 
 public class BasicMultiLabelLearner extends AbstractMultiLabelLearner{
 	
-	public IntOption randomSeedOption = new IntOption("randomSeedOption",
-			'r', "randomSeedOption", 
-			1,Integer.MIN_VALUE, Integer.MAX_VALUE);
+	public IntOption randomSeedOption = IntOption.createIntOption2(new IntOptionParameter2("randomSeedOption", 'r', "randomSeedOption", 1, Integer.MIN_VALUE, Integer.MAX_VALUE));
 
 	public BasicMultiLabelLearner() {
 		super.randomSeedOption=randomSeedOption;

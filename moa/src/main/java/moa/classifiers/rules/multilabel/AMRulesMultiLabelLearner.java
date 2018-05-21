@@ -53,6 +53,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.MultiLabelInstance;
 import com.yahoo.labs.samoa.instances.MultiLabelPrediction;
 import com.yahoo.labs.samoa.instances.Prediction;
@@ -86,15 +87,13 @@ public abstract class AMRulesMultiLabelLearner extends AbstractMultiLabelLearner
 	public FloatOption tieThresholdOption = new FloatOption("tieThreshold",
 			't', "Hoeffding Bound Parameter. Threshold below which a split will be forced to break ties.",
 			0.05, 0.0, 1.0);
-	public IntOption gracePeriodOption = new IntOption("gracePeriod",
-			'g', "Hoeffding Bound Parameter. The number of instances a leaf should observe between split attempts.",
-			200, 1, Integer.MAX_VALUE);
+	public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "Hoeffding Bound Parameter. The number of instances a leaf should observe between split attempts.", 200, 1, Integer.MAX_VALUE));
 
 	public ClassOption learnerOption;
 
-	public FlagOption unorderedRulesOption = new FlagOption(new FlagOptionParameter("setUnorderedRulesOn", 'U', "unorderedRules."));
+	public FlagOption unorderedRulesOption = FlagOption.createFlagOption(new FlagOptionParameter("setUnorderedRulesOn", 'U', "unorderedRules."));
 	
-	public FlagOption dropOldRuleAfterExpansionOption = new FlagOption(new FlagOptionParameter("dropOldRuleAfterExpansion", 'D', "Drop old rule if it expanded (by default the rule is kept for the set of outputs not selected for expansion.)"));
+	public FlagOption dropOldRuleAfterExpansionOption = FlagOption.createFlagOption(new FlagOptionParameter("dropOldRuleAfterExpansion", 'D', "Drop old rule if it expanded (by default the rule is kept for the set of outputs not selected for expansion.)"));
 
 	public ClassOption changeDetector = new ClassOption("changeDetector",
 			'H', "Change Detector.", 
@@ -124,11 +123,7 @@ public abstract class AMRulesMultiLabelLearner extends AbstractMultiLabelLearner
 			NominalStatisticsObserver.class,
 			"MultiLabelNominalAttributeObserver");
 
-	public IntOption VerbosityOption = new IntOption(
-			"verbosity",
-			'v',
-			"Output Verbosity Control Level. 1 (Less) to 5 (More)",
-			1, 1, 5);
+	public IntOption VerbosityOption = IntOption.createIntOption2(new IntOptionParameter2("verbosity", 'v', "Output Verbosity Control Level. 1 (Less) to 5 (More)", 1, 1, 5));
 
 	public ClassOption outputSelectorOption = new ClassOption("outputSelector",
 			'O', "Output attributes selector", 
@@ -141,9 +136,7 @@ public abstract class AMRulesMultiLabelLearner extends AbstractMultiLabelLearner
 			InputAttributesSelector.class,
 			//"MeritThreshold");
 			SelectAllInputs.class.getName());
-	public IntOption randomSeedOption = new IntOption("randomSeedOption",
-			'r', "randomSeedOption", 
-			1,Integer.MIN_VALUE, Integer.MAX_VALUE);
+	public IntOption randomSeedOption = IntOption.createIntOption2(new IntOptionParameter2("randomSeedOption", 'r', "randomSeedOption", 1, Integer.MIN_VALUE, Integer.MAX_VALUE));
 	
 	public ClassOption featureRankingOption = new ClassOption("featureRanking",
 			'F', "Feature ranking algorithm.", 

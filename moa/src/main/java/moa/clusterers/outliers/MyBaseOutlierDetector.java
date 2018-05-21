@@ -74,7 +74,7 @@ public abstract class MyBaseOutlierDetector extends AbstractClusterer {
         }
     }
     
-    public IntOption windowSizeOption = new IntOption(new IntOptionParameter("windowSize", 'w', "Size of the window.", 1000));
+    public IntOption windowSizeOption = IntOption.createIntOption(new IntOptionParameter("windowSize", 'w', "Size of the window.", 1000));
     
     public OutlierNotifier outlierNotifier = null;   
     

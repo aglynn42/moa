@@ -23,8 +23,8 @@ public class RBFFilter extends AbstractStreamFilter {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected InstancesHeader dataset;
-	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
-	public IntOption numLatentOption = new IntOption(new IntOptionParameter("numLatent", 'h', "Number of latent variables in the projected space.", 1));
+	public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random noise.", 1));
+	public IntOption numLatentOption = IntOption.createIntOption(new IntOptionParameter("numLatent", 'h', "Number of latent variables in the projected space.", 1));
 	protected Random random;
 	protected double c[];
 	protected double r[];

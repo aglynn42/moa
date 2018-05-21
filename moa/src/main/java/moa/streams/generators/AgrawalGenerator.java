@@ -37,6 +37,7 @@ import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
@@ -72,19 +73,16 @@ public class AgrawalGenerator extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption functionOption = new IntOption("function", 'f',
-            "Classification function used, as defined in the original paper.",
-            1, 1, 10);
+    public IntOption functionOption = IntOption.createIntOption2(new IntOptionParameter2("function", 'f', "Classification function used, as defined in the original paper.", 1, 1, 10));
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     public FloatOption peturbFractionOption = new FloatOption("peturbFraction",
             'p',
             "The amount of peturbation (noise) introduced to numeric values.",
             0.05, 0.0, 1.0);
 
-    public FlagOption balanceClassesOption = new FlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
+    public FlagOption balanceClassesOption = FlagOption.createFlagOption(new FlagOptionParameter("balanceClasses", 'b', "Balance the number of instances of each class."));
 
     protected interface ClassFunction {
 

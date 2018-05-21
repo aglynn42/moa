@@ -25,7 +25,10 @@ import com.github.javacliparser.FileOption;
 import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
+
 import moa.classifiers.Classifier;
 import moa.classifiers.MultiClassClassifier;
 import moa.core.*;
@@ -83,42 +86,27 @@ public class EvaluatePrequentialDelayedCV extends ClassificationMainTask {
             LearningPerformanceEvaluator.class,
             "WindowClassificationPerformanceEvaluator");
 
-        public IntOption delayLengthOption = new IntOption("delay", 'k',
-            "Number of instances before test instance is used for training",
-            1000, 1, Integer.MAX_VALUE);
+        public IntOption delayLengthOption = IntOption.createIntOption2(new IntOptionParameter2("delay", 'k', "Number of instances before test instance is used for training", 1000, 1, Integer.MAX_VALUE));
      
-    public IntOption instanceLimitOption = new IntOption("instanceLimit", 'i',
-            "Maximum number of instances to test/train on  (-1 = no limit).",
-            100000000, -1, Integer.MAX_VALUE);
+    public IntOption instanceLimitOption = IntOption.createIntOption2(new IntOptionParameter2("instanceLimit", 'i', "Maximum number of instances to test/train on  (-1 = no limit).", 100000000, -1, Integer.MAX_VALUE));
 
-    public IntOption timeLimitOption = new IntOption("timeLimit", 't',
-            "Maximum number of seconds to test/train for (-1 = no limit).", -1,
-            -1, Integer.MAX_VALUE);
+    public IntOption timeLimitOption = IntOption.createIntOption2(new IntOptionParameter2("timeLimit", 't', "Maximum number of seconds to test/train for (-1 = no limit).", -1, -1, Integer.MAX_VALUE));
 
-    public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-            'f',
-            "How many instances between samples of the learning performance.",
-            100000, 0, Integer.MAX_VALUE);
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 100000, 0, Integer.MAX_VALUE));
 
-    public IntOption memCheckFrequencyOption = new IntOption(
-            "memCheckFrequency", 'q',
-            "How many instances between memory bound checks.", 100000, 0,
-            Integer.MAX_VALUE);
+    public IntOption memCheckFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("memCheckFrequency", 'q', "How many instances between memory bound checks.", 100000, 0, Integer.MAX_VALUE));
 
     public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
-    public IntOption numFoldsOption = new IntOption("numFolds", 'w',
-            "The number of folds (e.g. distributed models) to be used.", 10, 1, Integer.MAX_VALUE);
+    public IntOption numFoldsOption = IntOption.createIntOption2(new IntOptionParameter2("numFolds", 'w', "The number of folds (e.g. distributed models) to be used.", 10, 1, Integer.MAX_VALUE));
 
-    public MultiChoiceOption validationMethodologyOption = new MultiChoiceOption(
-            "validationMethodology", 'a', "Validation methodology to use.", new String[]{
-            "Cross-Validation", "Bootstrap-Validation", "Split-Validation"},
-            new String[]{"k-fold distributed Cross Validation",
-                    "k-fold distributed Bootstrap Validation",
-                    "k-fold distributed Split Validation"
-            }, 0);
+    public MultiChoiceOption validationMethodologyOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("validationMethodology", 'a', "Validation methodology to use.", new String[]{
+	"Cross-Validation", "Bootstrap-Validation", "Split-Validation"}, new String[]{"k-fold distributed Cross Validation",
+	        "k-fold distributed Bootstrap Validation",
+	        "k-fold distributed Split Validation"
+	}, 0));
 
-    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the task.", 1));
+    public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the task.", 1));
 
     // Buffer of instances to use for training. 
     // Note: It is a list of lists because it stores instances per learner, e.g.

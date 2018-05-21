@@ -32,7 +32,10 @@ import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.Callable;
@@ -94,23 +97,17 @@ public class AdaptiveRandomForest extends AbstractClassifier implements MultiCla
             "Random Forest Tree.", ARFHoeffdingTree.class,
             "ARFHoeffdingTree -e 2000000 -g 50 -c 0.01");
 
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-        "The number of trees.", 10, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of trees.", 10, 1, Integer.MAX_VALUE));
     
-    public MultiChoiceOption mFeaturesModeOption = new MultiChoiceOption("mFeaturesMode", 'o', 
-        "Defines how m, defined by mFeaturesPerTreeSize, is interpreted. M represents the total number of features.",
-        new String[]{"Specified m (integer value)", "sqrt(M)+1", "M-(sqrt(M)+1)",
-            "Percentage (M * (m / 100))"},
-        new String[]{"SpecifiedM", "SqrtM1", "MSqrtM1", "Percentage"}, 1);
+    public MultiChoiceOption mFeaturesModeOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("mFeaturesMode", 'o', "Defines how m, defined by mFeaturesPerTreeSize, is interpreted. M represents the total number of features.", new String[]{"Specified m (integer value)", "sqrt(M)+1", "M-(sqrt(M)+1)",
+	    "Percentage (M * (m / 100))"}, new String[]{"SpecifiedM", "SqrtM1", "MSqrtM1", "Percentage"}, 1));
     
-    public IntOption mFeaturesPerTreeSizeOption = new IntOption("mFeaturesPerTreeSize", 'm',
-        "Number of features allowed considered for each split. Negative values corresponds to M - m", 2, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    public IntOption mFeaturesPerTreeSizeOption = IntOption.createIntOption2(new IntOptionParameter2("mFeaturesPerTreeSize", 'm', "Number of features allowed considered for each split. Negative values corresponds to M - m", 2, Integer.MIN_VALUE, Integer.MAX_VALUE));
     
     public FloatOption lambdaOption = new FloatOption("lambda", 'a',
         "The lambda parameter for bagging.", 6.0, 1.0, Float.MAX_VALUE);
 
-    public IntOption numberOfJobsOption = new IntOption("numberOfJobs", 'j',
-        "Total number of concurrent jobs used for processing (-1 = as much as possible, 0 = do not use multithreading)", 1, -1, Integer.MAX_VALUE);
+    public IntOption numberOfJobsOption = IntOption.createIntOption2(new IntOptionParameter2("numberOfJobs", 'j', "Total number of concurrent jobs used for processing (-1 = as much as possible, 0 = do not use multithreading)", 1, -1, Integer.MAX_VALUE));
     
     public ClassOption driftDetectionMethodOption = new ClassOption("driftDetectionMethod", 'x',
         "Change detector for drifts and its parameters", ChangeDetector.class, "ADWINChangeDetector -a 1.0E-5");
@@ -118,11 +115,11 @@ public class AdaptiveRandomForest extends AbstractClassifier implements MultiCla
     public ClassOption warningDetectionMethodOption = new ClassOption("warningDetectionMethod", 'p',
         "Change detector for warnings (start training bkg learner)", ChangeDetector.class, "ADWINChangeDetector -a 1.0E-4");
     
-    public FlagOption disableWeightedVote = new FlagOption(new FlagOptionParameter("disableWeightedVote", 'w', "Should use weighted voting?"));
+    public FlagOption disableWeightedVote = FlagOption.createFlagOption(new FlagOptionParameter("disableWeightedVote", 'w', "Should use weighted voting?"));
     
-    public FlagOption disableDriftDetectionOption = new FlagOption(new FlagOptionParameter("disableDriftDetection", 'u', "Should use drift detection? If disabled then bkg learner is also disabled"));
+    public FlagOption disableDriftDetectionOption = FlagOption.createFlagOption(new FlagOptionParameter("disableDriftDetection", 'u', "Should use drift detection? If disabled then bkg learner is also disabled"));
 
-    public FlagOption disableBackgroundLearnerOption = new FlagOption(new FlagOptionParameter("disableBackgroundLearner", 'q', "Should use bkg learner? If disabled then reset tree immediately."));
+    public FlagOption disableBackgroundLearnerOption = FlagOption.createFlagOption(new FlagOptionParameter("disableBackgroundLearner", 'q', "Should use bkg learner? If disabled then reset tree immediately."));
     
     protected static final int FEATURES_M = 0;
     protected static final int FEATURES_SQRT = 1;

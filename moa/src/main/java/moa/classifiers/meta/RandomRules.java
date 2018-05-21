@@ -24,6 +24,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
@@ -41,11 +42,7 @@ import moa.streams.InstanceStream;
 
 public class RandomRules extends AbstractClassifier implements Regressor {
 
-	public IntOption VerbosityOption = new IntOption(
-			"verbosity",
-			'v',
-			"Output Verbosity Control Level. 1 (Less) to 2 (More)",
-			1, 1, 2);
+	public IntOption VerbosityOption = IntOption.createIntOption2(new IntOptionParameter2("verbosity", 'v', "Output Verbosity Control Level. 1 (Less) to 2 (More)", 1, 1, 2));
 	
 	@Override
 	public String getPurposeString() {
@@ -56,13 +53,12 @@ public class RandomRules extends AbstractClassifier implements Regressor {
 
 	public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l', "Classifier to train.", Classifier.class, "rules.AMRulesRegressor"); 
 
-	public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-			"The number of models in the bag.", 10, 1, Integer.MAX_VALUE);
+	public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models in the bag.", 10, 1, Integer.MAX_VALUE));
 
 	public FloatOption numAttributesPercentageOption = new FloatOption("numAttributesPercentage", 'n',
 			"The number of attributes to use per model.", 63.2, 0, 100); 
 
-	public FlagOption useBaggingOption = new FlagOption(new FlagOptionParameter("useBagging", 'p', "Use Bagging."));
+	public FlagOption useBaggingOption = FlagOption.createFlagOption(new FlagOptionParameter("useBagging", 'p', "Use Bagging."));
 
 	protected Classifier[] ensemble;
 

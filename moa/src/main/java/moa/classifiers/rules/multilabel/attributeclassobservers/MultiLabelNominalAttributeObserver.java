@@ -50,7 +50,7 @@ public class MultiLabelNominalAttributeObserver extends AbstractOptionHandler
 	/**
 	 * 
 	 */
-	protected FlagOption addUndeclaredValuesOption = new FlagOption(new FlagOptionParameter("addUndeclaredValues", 'a', "Add to the domain values not declared? If false, the value is not used."));
+	protected FlagOption addUndeclaredValuesOption = FlagOption.createFlagOption(new FlagOptionParameter("addUndeclaredValues", 'a', "Add to the domain values not declared? If false, the value is not used."));
 	protected HashMap<Integer, DoubleVector[]> statisticsByNominalValue;
 	
 	

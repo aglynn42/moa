@@ -35,6 +35,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
@@ -64,14 +65,11 @@ public class LEDGenerator extends AbstractOptionHandler implements
         {1, 1, 0, 1, 1, 1, 1}, {1, 0, 1, 0, 0, 1, 0},
         {1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 0, 1, 1}};
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public IntOption noisePercentageOption = new IntOption("noisePercentage",
-            'n', "Percentage of noise to add to the data.", 10, 0, 100);
+    public IntOption noisePercentageOption = IntOption.createIntOption2(new IntOptionParameter2("noisePercentage", 'n', "Percentage of noise to add to the data.", 10, 0, 100));
 
-    public FlagOption suppressIrrelevantAttributesOption = new FlagOption(
-            new FlagOptionParameter("suppressIrrelevantAttributes", 's', "Reduce the data to only contain 7 relevant binary attributes."));
+    public FlagOption suppressIrrelevantAttributesOption = FlagOption.createFlagOption(new FlagOptionParameter("suppressIrrelevantAttributes", 's', "Reduce the data to only contain 7 relevant binary attributes."));
 
     protected InstancesHeader streamHeader;
 

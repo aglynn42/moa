@@ -37,46 +37,42 @@ import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 
 
 public class RandomAMRulesOld extends AbstractClassifier implements Regressor {
 
-	public IntOption VerbosityOption = new IntOption(
-			"verbosity",
-			'v',
-			"Output Verbosity Control Level. 1 (Less) to 2 (More)",
-			1, 1, 2);
+	public IntOption VerbosityOption = IntOption.createIntOption2(new IntOptionParameter2("verbosity", 'v', "Output Verbosity Control Level. 1 (Less) to 2 (More)", 1, 1, 2));
 	
 	private static final long serialVersionUID = 1L;
 
 	public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l', "Classifier to train.", AbstractAMRules.class, AMRulesRegressorOld.class.getName()); 
 
-	public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-			"The number of models in the bag.", 10, 1, Integer.MAX_VALUE);
+	public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models in the bag.", 10, 1, Integer.MAX_VALUE));
 
 	public FloatOption numAttributesPercentageOption = new FloatOption("numAttributesPercentage", 'n',
 			"The number of attributes to use per model.", 63.2, 0, 100); 
 
-	public FlagOption useBaggingOption = new FlagOption(new FlagOptionParameter("useBagging", 'p', "Use Bagging."));
+	public FlagOption useBaggingOption = FlagOption.createFlagOption(new FlagOptionParameter("useBagging", 'p', "Use Bagging."));
 	
 	public ClassOption votingFunctionOption = new ClassOption("votingFunction",
 			'V', "Voting Function.", 
 			ErrorWeightedVote.class,
 			"UniformWeightedVote");
 
-	public MultiChoiceOption votingTypeOption = new MultiChoiceOption(
-			"votingTypeOption", 'C', "Select whether the base learner error is computed as the overall error os only the error of the rules that cover the example.", new String[]{
-					"Overall","Only rules covered"}, new String[]{
-					"Overall","Covered"}, 0);
+	public MultiChoiceOption votingTypeOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("votingTypeOption", 'C', "Select whether the base learner error is computed as the overall error os only the error of the rules that cover the example.", new String[]{
+			"Overall","Only rules covered"}, new String[]{
+	"Overall","Covered"}, 0));
 	
 	public FloatOption fadingErrorFactorOption = new FloatOption(
 			"fadingErrorFactor", 'e', 
 			"Fading error factor for the accumulated error", 0.99, 0, 1);
 	
-	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
+	public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));
 	protected AbstractAMRules[] ensemble;
 	protected double[] sumError;
 	protected double[] nError;

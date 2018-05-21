@@ -25,6 +25,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,12 +60,12 @@ public class AnyOutCore extends ClusTree {
 	private int oScoreK;
 	private int confK;
 
-	public IntOption trainingSetSizeOption = new IntOption("TrainingSetSize", 't', "Training Set Size.", 1000, 0, 10000);
+	public IntOption trainingSetSizeOption = IntOption.createIntOption2(new IntOptionParameter2("TrainingSetSize", 't', "Training Set Size.", 1000, 0, 10000));
 	//public FlagOption UseBulkLoadingOption = new FlagOption("UseBulkLoading", 'b', "Use Bulkloading or traditional learning.");
-	public IntOption oScoreKOption = new IntOption("OScorek", 'o', "Size of Oscore aggregate.", 2, 1, 10);
-	public IntOption confKOption = new IntOption("Confidencek", 'c', "Size of confidence aggregate.", 2, 1, 10);
-	public IntOption confidenceChoiceOption = new IntOption("confidence", 'd', "Confidence Measure.", 4, 1, 6);
-	public FlagOption UseMeanScoreOption = new FlagOption(new FlagOptionParameter("UseMeanScore", 'm', "Use Mean score or Density score."));
+	public IntOption oScoreKOption = IntOption.createIntOption2(new IntOptionParameter2("OScorek", 'o', "Size of Oscore aggregate.", 2, 1, 10));
+	public IntOption confKOption = IntOption.createIntOption2(new IntOptionParameter2("Confidencek", 'c', "Size of confidence aggregate.", 2, 1, 10));
+	public IntOption confidenceChoiceOption = IntOption.createIntOption2(new IntOptionParameter2("confidence", 'd', "Confidence Measure.", 4, 1, 6));
+	public FlagOption UseMeanScoreOption = FlagOption.createFlagOption(new FlagOptionParameter("UseMeanScore", 'm', "Use Mean score or Density score."));
 	public FloatOption threshholdOption = new FloatOption("Threshold", 'z', "Threshold", 0.07, 0, 1);
 	
 	public AnyOutCore() {

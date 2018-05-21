@@ -4,6 +4,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.cluster.Clustering;
 import moa.clusterers.AbstractClusterer;
@@ -24,17 +25,15 @@ Clustering Algorithms for Data Streams. ALENEX 2010: 173-187
 
 public class StreamKM extends AbstractClusterer {
 
-	public IntOption sizeCoresetOption = new IntOption(new IntOptionParameter("sizeCoreset", 's', "Size of the coreset (m).", 10000));
+	public IntOption sizeCoresetOption = IntOption.createIntOption(new IntOptionParameter("sizeCoreset", 's', "Size of the coreset (m).", 10000));
 
-	public IntOption numClustersOption = new IntOption(
-			new IntOptionParameter("numClusters", 'k', "Number of clusters to compute.", 5));
+	public IntOption numClustersOption = IntOption.createIntOption(new IntOptionParameter("numClusters", 'k', "Number of clusters to compute.", 5));
 
-	public IntOption lengthOption = new IntOption("length",
-			'l', "Length of the data stream (n).", 100000, 0, Integer.MAX_VALUE);
+	public IntOption lengthOption = IntOption.createIntOption2(new IntOptionParameter2("length", 'l', "Length of the data stream (n).", 100000, 0, Integer.MAX_VALUE));
 
-	public FlagOption evaluateOption = new FlagOption(new FlagOptionParameter("evaluateFinalOnly", 'e', "If true, only the final clustering is evaluated."));
+	public FlagOption evaluateOption = FlagOption.createFlagOption(new FlagOptionParameter("evaluateFinalOnly", 'e', "If true, only the final clustering is evaluated."));
 
-	public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));	
+	public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for random behaviour of the classifier.", 1));	
 
 	protected MTRandom clustererRandom;
 	protected Point[] centresStreamingCoreset;

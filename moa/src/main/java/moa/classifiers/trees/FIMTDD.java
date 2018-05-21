@@ -30,6 +30,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.options.ClassOption;
 import moa.AbstractMOAObject;
@@ -73,9 +74,7 @@ public class FIMTDD extends AbstractClassifier implements Regressor {
 			"splitCriterion", 's', "Split criterion to use.",
 			SplitCriterion.class, "moa.classifiers.core.splitcriteria.VarianceReductionSplitCriterion");
 
-	public IntOption gracePeriodOption = new IntOption(
-			"gracePeriod", 'g', "Number of instances a leaf should observe between split attempts.",
-			200, 0, Integer.MAX_VALUE);
+	public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "Number of instances a leaf should observe between split attempts.", 200, 0, Integer.MAX_VALUE));
 
 	public FloatOption splitConfidenceOption = new FloatOption(
 			"splitConfidence", 'c', "Allowed error in split decision, values close to 0 will take long to decide.",
@@ -89,24 +88,17 @@ public class FIMTDD extends AbstractClassifier implements Regressor {
 			"PageHinckleyAlpha", 'a', "Alpha value to use in the Page Hinckley change detection tests.",
 			0.005, 0.0, 1.0);
 
-	public IntOption PageHinckleyThresholdOption = new IntOption(
-			"PageHinckleyThreshold", 'h', "Threshold value used in the Page Hinckley change detection tests.",
-			50, 0, Integer.MAX_VALUE);
+	public IntOption PageHinckleyThresholdOption = IntOption.createIntOption2(new IntOptionParameter2("PageHinckleyThreshold", 'h', "Threshold value used in the Page Hinckley change detection tests.", 50, 0, Integer.MAX_VALUE));
 
 	public FloatOption alternateTreeFadingFactorOption = new FloatOption(
 			"alternateTreeFadingFactor", 'f', "Fading factor used to decide if an alternate tree should replace an original.",
 			0.995, 0.0, 1.0);
 
-	public IntOption alternateTreeTMinOption = new IntOption(
-			"alternateTreeTMin", 'y', "Tmin value used to decide if an alternate tree should replace an original.",
-			150, 0, Integer.MAX_VALUE);
+	public IntOption alternateTreeTMinOption = IntOption.createIntOption2(new IntOptionParameter2("alternateTreeTMin", 'y', "Tmin value used to decide if an alternate tree should replace an original.", 150, 0, Integer.MAX_VALUE));
 
-	public IntOption alternateTreeTimeOption = new IntOption(
-			"alternateTreeTime", 'u', "The number of instances used to decide if an alternate tree should be discarded.",
-			1500, 0, Integer.MAX_VALUE);
+	public IntOption alternateTreeTimeOption = IntOption.createIntOption2(new IntOptionParameter2("alternateTreeTime", 'u', "The number of instances used to decide if an alternate tree should be discarded.", 1500, 0, Integer.MAX_VALUE));
 
-	public FlagOption regressionTreeOption = new FlagOption(
-			new FlagOptionParameter("regressionTree", 'e', "Build a regression tree instead of a model tree."));
+	public FlagOption regressionTreeOption = FlagOption.createFlagOption(new FlagOptionParameter("regressionTree", 'e', "Build a regression tree instead of a model tree."));
 
 	public FloatOption learningRatioOption = new FloatOption(
 			"learningRatio", 'l', "Learning ratio to used for training the Perceptrons in the leaves.",
@@ -116,8 +108,7 @@ public class FIMTDD extends AbstractClassifier implements Regressor {
 			"learningRatioDecayFactor", 'd', "Learning rate decay factor (not used when learning rate is constant).",
 			0.001, 0, 1.00);
 
-	public FlagOption learningRatioConstOption = new FlagOption(
-			new FlagOptionParameter("learningRatioConst", 'p', "Keep learning rate constant instead of decaying."));
+	public FlagOption learningRatioConstOption = FlagOption.createFlagOption(new FlagOptionParameter("learningRatioConst", 'p', "Keep learning rate constant instead of decaying."));
 
 	//endregion ================ OPTIONS ================
 

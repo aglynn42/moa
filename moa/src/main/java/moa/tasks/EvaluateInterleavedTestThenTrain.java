@@ -38,6 +38,7 @@ import com.github.javacliparser.FileOption;
 import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
@@ -65,31 +66,20 @@ public class EvaluateInterleavedTestThenTrain extends ClassificationMainTask {
             "Stream to learn from.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public IntOption randomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'r', "Seed for random generation of instances.", 1));
+    public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'r', "Seed for random generation of instances.", 1));
 
     public ClassOption evaluatorOption = new ClassOption("evaluator", 'e',
             "Classification performance evaluation method.",
             LearningPerformanceEvaluator.class,
             "BasicClassificationPerformanceEvaluator");
 
-    public IntOption instanceLimitOption = new IntOption("instanceLimit", 'i',
-            "Maximum number of instances to test/train on  (-1 = no limit).",
-            100000000, -1, Integer.MAX_VALUE);
+    public IntOption instanceLimitOption = IntOption.createIntOption2(new IntOptionParameter2("instanceLimit", 'i', "Maximum number of instances to test/train on  (-1 = no limit).", 100000000, -1, Integer.MAX_VALUE));
 
-    public IntOption timeLimitOption = new IntOption("timeLimit", 't',
-            "Maximum number of seconds to test/train for (-1 = no limit).", -1,
-            -1, Integer.MAX_VALUE);
+    public IntOption timeLimitOption = IntOption.createIntOption2(new IntOptionParameter2("timeLimit", 't', "Maximum number of seconds to test/train for (-1 = no limit).", -1, -1, Integer.MAX_VALUE));
 
-    public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-            'f',
-            "How many instances between samples of the learning performance.",
-            100000, 0, Integer.MAX_VALUE);
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 100000, 0, Integer.MAX_VALUE));
 
-    public IntOption memCheckFrequencyOption = new IntOption(
-            "memCheckFrequency", 'q',
-            "How many instances between memory bound checks.", 100000, 0,
-            Integer.MAX_VALUE);
+    public IntOption memCheckFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("memCheckFrequency", 'q', "How many instances between memory bound checks.", 100000, 0, Integer.MAX_VALUE));
 
     public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv reslts to.", null, "csv", true));
 

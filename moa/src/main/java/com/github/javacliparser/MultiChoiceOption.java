@@ -27,7 +27,11 @@ public class MultiChoiceOption extends AbstractOption {
 
     private static final long serialVersionUID = 1L;
 
-    protected String[] optionLabels;
+    public static MultiChoiceOption createMultiChoiceOption(MultiChoiceOptionParameter parameterObject) {
+		return new MultiChoiceOption(parameterObject);
+	}
+
+	protected String[] optionLabels;
 
     protected String[] optionDescriptions;
 
@@ -35,16 +39,14 @@ public class MultiChoiceOption extends AbstractOption {
 
     protected int chosenOptionIndex;
 
-    public MultiChoiceOption(String name, char cliChar, String purpose,
-            String[] optionLabels, String[] optionDescriptions,
-            int defaultOptionIndex) {
-        super(name, cliChar, purpose);
-        if (optionLabels.length != optionDescriptions.length) {
+    protected MultiChoiceOption(MultiChoiceOptionParameter parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose);
+        if (parameterObject.optionLabels.length != parameterObject.optionDescriptions.length) {
             throw new IllegalArgumentException("Labels/descriptions mismatch.");
         }
-        this.optionLabels = optionLabels.clone();
-        this.optionDescriptions = optionDescriptions.clone();
-        this.defaultOptionIndex = defaultOptionIndex;
+        this.optionLabels = parameterObject.optionLabels.clone();
+        this.optionDescriptions = parameterObject.optionDescriptions.clone();
+        this.defaultOptionIndex = parameterObject.defaultOptionIndex;
         resetToDefault();
     }
 

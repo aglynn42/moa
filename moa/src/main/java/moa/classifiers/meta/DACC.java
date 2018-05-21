@@ -22,6 +22,7 @@ package moa.classifiers.meta;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.Classifier;
@@ -78,9 +79,7 @@ public class DACC extends AbstractClassifier implements MultiClassClassifier {
     /**
      * Combination functions: MAX and WVD (MAX leads to a faster reactivity to the change, WVD is more robust to noise) 
      */
-    public MultiChoiceOption combinationOption= new MultiChoiceOption("cmb", 'c', "The combination function.",
-            new String[]{"MAX","WVD"} , new String[] {"Maximum","Weighted Vote of the best"},
-            0);
+    public MultiChoiceOption combinationOption= MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("cmb", 'c', "The combination function.", new String[]{"MAX","WVD"}, new String[] {"Maximum","Weighted Vote of the best"}, 0));
     /**
      * Ensemble of classifiers
      */

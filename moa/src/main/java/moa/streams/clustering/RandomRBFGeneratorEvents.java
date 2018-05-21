@@ -43,6 +43,7 @@ import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
@@ -58,16 +59,13 @@ public class RandomRBFGeneratorEvents extends ClusteringStream {
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption modelRandomSeedOption = new IntOption(new IntOptionParameter("modelRandomSeed", 'm', "Seed for random generation of model.", 1));
+    public IntOption modelRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("modelRandomSeed", 'm', "Seed for random generation of model.", 1));
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-                    new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 5));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 5));
 
-    public IntOption numClusterOption = new IntOption("numCluster", 'K',
-                    "The average number of centroids in the model.", 5, 1, Integer.MAX_VALUE);
+    public IntOption numClusterOption = IntOption.createIntOption2(new IntOptionParameter2("numCluster", 'K', "The average number of centroids in the model.", 5, 1, Integer.MAX_VALUE));
 
-    public IntOption numClusterRangeOption = new IntOption("numClusterRange", 'k',
-                    "Deviation of the number of centroids in the model.", 3, 0, Integer.MAX_VALUE);
+    public IntOption numClusterRangeOption = IntOption.createIntOption2(new IntOptionParameter2("numClusterRange", 'k', "Deviation of the number of centroids in the model.", 3, 0, Integer.MAX_VALUE));
 
     public FloatOption kernelRadiiOption = new FloatOption("kernelRadius", 'R',
                     "The average radii of the centroids in the model.", 0.07, 0, 1);
@@ -79,23 +77,20 @@ public class RandomRBFGeneratorEvents extends ClusteringStream {
                     "Offset of the average weight a cluster has. Value of 0 means all cluster " +
                     "contain the same amount of points.", 0, 0, 1);
 
-    public IntOption speedOption = new IntOption("speed", 'V',
-                    "Kernels move a predefined distance of 0.01 every X points", 500, 1, Integer.MAX_VALUE);
+    public IntOption speedOption = IntOption.createIntOption2(new IntOptionParameter2("speed", 'V', "Kernels move a predefined distance of 0.01 every X points", 500, 1, Integer.MAX_VALUE));
 
-    public IntOption speedRangeOption = new IntOption("speedRange", 'v',
-                    "Speed/Velocity point offset", 0, 0, Integer.MAX_VALUE);
+    public IntOption speedRangeOption = IntOption.createIntOption2(new IntOptionParameter2("speedRange", 'v', "Speed/Velocity point offset", 0, 0, Integer.MAX_VALUE));
 
     public FloatOption noiseLevelOption = new FloatOption("noiseLevel", 'N',
                     "Noise level", 0.1, 0, 1);
 
-    public FlagOption noiseInClusterOption = new FlagOption(new FlagOptionParameter("noiseInCluster", 'n', "Allow noise to be placed within a cluster"));
+    public FlagOption noiseInClusterOption = FlagOption.createFlagOption(new FlagOptionParameter("noiseInCluster", 'n', "Allow noise to be placed within a cluster"));
 
-    public IntOption eventFrequencyOption = new IntOption("eventFrequency", 'E',
-                    "Event frequency. Enable at least one of the events below and set numClusterRange!", 30000, 0, Integer.MAX_VALUE);
+    public IntOption eventFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("eventFrequency", 'E', "Event frequency. Enable at least one of the events below and set numClusterRange!", 30000, 0, Integer.MAX_VALUE));
 
-    public FlagOption eventMergeSplitOption = new FlagOption(new FlagOptionParameter("eventMergeSplitOption", 'M', "Enable merging and splitting of clusters. Set eventFrequency and numClusterRange!"));
+    public FlagOption eventMergeSplitOption = FlagOption.createFlagOption(new FlagOptionParameter("eventMergeSplitOption", 'M', "Enable merging and splitting of clusters. Set eventFrequency and numClusterRange!"));
 
-    public FlagOption eventDeleteCreateOption = new FlagOption(new FlagOptionParameter("eventDeleteCreate", 'C', "Enable emering and disapperaing of clusters. Set eventFrequency and numClusterRange!"));
+    public FlagOption eventDeleteCreateOption = FlagOption.createFlagOption(new FlagOptionParameter("eventDeleteCreate", 'C', "Enable emering and disapperaing of clusters. Set eventFrequency and numClusterRange!"));
 
     
     private double merge_threshold = 0.7;

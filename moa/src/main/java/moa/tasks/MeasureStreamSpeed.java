@@ -25,6 +25,8 @@ import moa.core.TimingUtils;
 import moa.evaluation.LearningEvaluation;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.streams.ExampleStream;
 import moa.streams.InstanceStream;
 
@@ -47,8 +49,7 @@ public class MeasureStreamSpeed extends AuxiliarMainTask {
             "Stream to measure.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public IntOption generateSizeOption = new IntOption("generateSize", 'g',
-            "Number of examples.", 10000000, 0, Integer.MAX_VALUE);
+    public IntOption generateSizeOption = IntOption.createIntOption2(new IntOptionParameter2("generateSize", 'g', "Number of examples.", 10000000, 0, Integer.MAX_VALUE));
 
     @Override
     protected Object doMainTask(TaskMonitor monitor, ObjectRepository repository) {

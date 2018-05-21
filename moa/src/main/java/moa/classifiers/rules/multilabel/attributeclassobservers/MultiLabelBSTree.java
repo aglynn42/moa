@@ -32,6 +32,7 @@ import moa.options.AbstractOptionHandler;
 import moa.tasks.TaskMonitor;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 /**
  * Binary search tree for AMRules splitting points determination
@@ -44,7 +45,7 @@ public class MultiLabelBSTree extends AbstractOptionHandler implements NumericSt
 	/**
 	 * 
 	 */
-	public IntOption maxNodesOption = new IntOption("maxNodesOption", 'z', "Maximum number of nodes", 50, 0, Integer.MAX_VALUE);
+	public IntOption maxNodesOption = IntOption.createIntOption2(new IntOptionParameter2("maxNodesOption", 'z', "Maximum number of nodes", 50, 0, Integer.MAX_VALUE));
 	protected int maxNodes;
 	protected int numNodes;
 

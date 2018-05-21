@@ -27,15 +27,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import moa.core.ObjectRepository;
+import moa.tasks.Plot.LegendLocation;
+import moa.tasks.Plot.LegendType;
+import moa.tasks.Plot.PlotStyle;
+import moa.tasks.Plot.Terminal;
+
 import com.github.javacliparser.FileOption;
 import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.ListOption;
+import com.github.javacliparser.ListOptionParameter;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.github.javacliparser.StringOption;
+import com.github.javacliparser.StringOptionParameter;
 
 /**
  * A task allowing to create and plot gnuplot scripts.
@@ -54,8 +63,7 @@ public class Plot extends MainTask {
     /**
      * Path to gunplot's binary directory, for example C:\Tools\Gnuplot\binary.
      */
-    public StringOption gnuplotPathOption = new StringOption("gnuplotPath", 'e',
-	    "Directory of the gnuplot executable. For example \"C:\\Tools\\Gnuplot\\binary\".", "");
+    public StringOption gnuplotPathOption = StringOption.createStringOption(new StringOptionParameter("gnuplotPath", 'e', "Directory of the gnuplot executable. For example \"C:\\Tools\\Gnuplot\\binary\".", ""));
 
     
     /**
@@ -67,136 +75,101 @@ public class Plot extends MainTask {
      * Comma separated list of input *csv files. The file paths can be absolute
      * or relative to the executing directory (moa.jar directory).
      */
-    public ListOption inputFilesOption = new ListOption(
-	    "inputFiles",
-	    'i',
-	    "File names or file paths of csv inputs. Values should be seperated by commas.",
-	    new StringOption("inputFile", ' ', "Input file.", "algorithm.csv"),
-	    new StringOption[] {
-		    new StringOption("", ' ', "", "algorithm1.csv"),
-		    new StringOption("", ' ', "", "algorithm2.csv"),
-		    new StringOption("", ' ', "", "algorithm3.csv") }, ',');
+    public ListOption inputFilesOption = ListOption.createListOption(new ListOptionParameter("inputFiles", 'i', "File names or file paths of csv inputs. Values should be seperated by commas.", StringOption.createStringOption(new StringOptionParameter("inputFile", ' ', "Input file.", "algorithm.csv")), new StringOption[] {
+	    StringOption.createStringOption(new StringOptionParameter("", ' ', "", "algorithm1.csv")),
+	    StringOption.createStringOption(new StringOptionParameter("", ' ', "", "algorithm2.csv")),
+	    StringOption.createStringOption(new StringOptionParameter("", ' ', "", "algorithm3.csv")) }, ','));
 
     /**
      * Comma separated list of aliases for the input *csv files. If a legend is
      * added to the plot, aliases will be presented in the legend.
      */
-    public ListOption fileAliasesOption = new ListOption(
-	    "aliases",
-	    'a',
-	    "Aliases for files stated in the inputFiles parameter. Aliases will be presented in the plot's legend.",
-	    new StringOption("alias", ' ', "File alias.", "MyAlg"),
-	    new StringOption[] { new StringOption("", ' ', "", "OZABag"),
-		    new StringOption("", ' ', "", "HOT"),
-		    new StringOption("", ' ', "", "AWE") }, ',');
+    public ListOption fileAliasesOption = ListOption.createListOption(new ListOptionParameter("aliases", 'a', "Aliases for files stated in the inputFiles parameter. Aliases will be presented in the plot's legend.", StringOption.createStringOption(new StringOptionParameter("alias", ' ', "File alias.", "MyAlg")), new StringOption[] { StringOption.createStringOption(new StringOptionParameter("", ' ', "", "OZABag")),
+	    StringOption.createStringOption(new StringOptionParameter("", ' ', "", "HOT")),
+	    StringOption.createStringOption(new StringOptionParameter("", ' ', "", "AWE")) }, ','));
 
     /**
      * Gnuplot terminal - postscript, png, pdf etc.
      */
-    public MultiChoiceOption outputTypeOption = new MultiChoiceOption(
-	    "outputType", 't', "Gnuplot output terminal.", Terminal
-		    .getStringValues(), Terminal.getDescriptions(), 8);
+    public MultiChoiceOption outputTypeOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("outputType", 't', "Gnuplot output terminal.", Terminal
+	    .getStringValues(), Terminal.getDescriptions(), 8));
 
     /**
      * Type of plot - dots, points, lines ets.
      */
-    public MultiChoiceOption plotStyleOption = new MultiChoiceOption(
-	    "plotStyle", 'p', "Plot style.", PlotStyle.getStringValues(),
-	    PlotStyle.getDescriptions(), 2);
+    public MultiChoiceOption plotStyleOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("plotStyle", 'p', "Plot style.", PlotStyle.getStringValues(), PlotStyle.getDescriptions(), 2));
 
     /**
      * Index of the csv column from which values for the x-axis should be taken.
      */
-    public IntOption xColumnOption = new IntOption(
-	    new IntOptionParameter("xColumn", 'x', "Index of the csv column from which values for the x-axis should be taken.", 1));
+    public IntOption xColumnOption = IntOption.createIntOption(new IntOptionParameter("xColumn", 'x', "Index of the csv column from which values for the x-axis should be taken.", 1));
 
     /**
      * Title of the plots' x-axis.
      */
-    public StringOption xTitleOption = new StringOption("xTitle", 'm',
-	    "Title of the plots' x-axis.", "Processed instances");
+    public StringOption xTitleOption = StringOption.createStringOption(new StringOptionParameter("xTitle", 'm', "Title of the plots' x-axis.", "Processed instances"));
 
     /**
      * Units displayed next to x-axis values.
      */
-    public StringOption xUnitOption = new StringOption("xUnit", 'g',
-	    "Units displayed next to x-axis values.", "");
+    public StringOption xUnitOption = StringOption.createStringOption(new StringOptionParameter("xUnit", 'g', "Units displayed next to x-axis values.", ""));
 
     /**
      * Index of the csv column from which values for the y-axis should be taken.
      */
-    public IntOption yColumnOption = new IntOption(
-	    new IntOptionParameter("yColumn", 'y', "Index of the column from which values for the y-axis should be taken", 9));
+    public IntOption yColumnOption = IntOption.createIntOption(new IntOptionParameter("yColumn", 'y', "Index of the column from which values for the y-axis should be taken", 9));
 
     /**
      * Title of the plots' y-axis.
      */
-    public StringOption yTitleOption = new StringOption("yTitle", 'n',
-	    "Title of the plots' y-axis.", "Accuracy");
+    public StringOption yTitleOption = StringOption.createStringOption(new StringOptionParameter("yTitle", 'n', "Title of the plots' y-axis.", "Accuracy"));
 
     /**
      * Units displayed next to y-axis values.
      */
-    public StringOption yUnitOption = new StringOption("yUnit", 'u',
-	    "Units displayed next to y-axis values.", "%");
+    public StringOption yUnitOption = StringOption.createStringOption(new StringOptionParameter("yUnit", 'u', "Units displayed next to y-axis values.", "%"));
 
     /**
      * Plotted line width.
      */
-    public IntOption lineWidthOption = new IntOption(new IntOptionParameter("lineWidth", 'w', "Determines the thickness of plotted lines", 2));
+    public IntOption lineWidthOption = IntOption.createIntOption(new IntOptionParameter("lineWidth", 'w', "Determines the thickness of plotted lines", 2));
 
     /**
      * Interval between plotted data points.
      */
-    public IntOption pointIntervalOption = new IntOption(
-	    "pointInterval",
-	    'v',
-	    "Determines the inteval between plotted data points. Used for LINESPOINTS plots only.",
-	    0, 0, Integer.MAX_VALUE);
+    public IntOption pointIntervalOption = IntOption.createIntOption2(new IntOptionParameter2("pointInterval", 'v', "Determines the inteval between plotted data points. Used for LINESPOINTS plots only.", 0, 0, Integer.MAX_VALUE));
     /**
      * Determines whether to smooth the plot with bezier curves.
      */
-    public FlagOption smoothOption = new FlagOption(new FlagOptionParameter("smooth", 's', "Determines whether to smooth the plot with bezier curves."));
+    public FlagOption smoothOption = FlagOption.createFlagOption(new FlagOptionParameter("smooth", 's', "Determines whether to smooth the plot with bezier curves."));
     /**
      * Determines whether to delete gnuplot scripts after plotting.
      */
-    public FlagOption deleteScriptsOption = new FlagOption(new FlagOptionParameter("deleteScripts", 'd', "Determines whether to delete gnuplot scripts after plotting."));
+    public FlagOption deleteScriptsOption = FlagOption.createFlagOption(new FlagOptionParameter("deleteScripts", 'd', "Determines whether to delete gnuplot scripts after plotting."));
 
     /**
      * Legend (key) location on the plot.
      */
-    public MultiChoiceOption legendLocationOption = new MultiChoiceOption(
-	    "legendLocation", 'l', "Legend (key) location on the plot.",
-	    LegendLocation.getStringValues(), LegendLocation.getDescriptions(),
-	    8);
+    public MultiChoiceOption legendLocationOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("legendLocation", 'l', "Legend (key) location on the plot.", LegendLocation.getStringValues(), LegendLocation.getDescriptions(), 8));
 
     /**
      * Legend elements' alignment.
      */
-    public MultiChoiceOption legendTypeOption = new MultiChoiceOption(
-	    "legendType", 'k', "Legend elements' alignment.", LegendType
-		    .getStringValues(), LegendType.getDescriptions(), 1);
+    public MultiChoiceOption legendTypeOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("legendType", 'k', "Legend elements' alignment.", LegendType
+	    .getStringValues(), LegendType.getDescriptions(), 1));
 
     /**
      * Addition pre-plot gunplot commands. For example "set tics out" will
      * change the default tic option and force outward facing tics. See the
      * gnuplot manual for more commands.
      */
-    public StringOption additionalSetOption = new StringOption(
-	    "additionalCommands",
-	    'c',
-	    "Additional commands that should be added to the gnuplot script before the plot command. For example \"set tics out\" will change the default tic option and force outward facing tics. See the gnuplot manual for more commands.",
-	    " ");
+    public StringOption additionalSetOption = StringOption.createStringOption(new StringOptionParameter("additionalCommands", 'c', "Additional commands that should be added to the gnuplot script before the plot command. For example \"set tics out\" will change the default tic option and force outward facing tics. See the gnuplot manual for more commands.", " "));
 
     /**
      * Additional plot options. For example \"[] [0:]\" will force the y-axis to
      * start from 0. See the gnuplot manual for more options.
      */
-    public StringOption additionalPlotOption = new StringOption(
-	    "additionalPlotOptions",
-	    'z',
-	    "Additional options that should be added to the gnuplot script in the plot statement. For example \"[] [0:]\" will force the y-axis to start from 0. See the gnuplot manual for more options.",
-	    " ");
+    public StringOption additionalPlotOption = StringOption.createStringOption(new StringOptionParameter("additionalPlotOptions", 'z', "Additional options that should be added to the gnuplot script in the plot statement. For example \"[] [0:]\" will force the y-axis to start from 0. See the gnuplot manual for more options.", " "));
 
     /**
      * Plot output terminal.

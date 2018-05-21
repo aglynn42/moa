@@ -48,6 +48,7 @@ import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.ExampleStream;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -90,44 +91,30 @@ public class EvaluatePrequentialDelayed extends ClassificationMainTask {
             LearningPerformanceEvaluator.class,
             "WindowClassificationPerformanceEvaluator");
 
-    public IntOption delayLengthOption = new IntOption("delay", 'k',
-            "Number of instances before test instance is used for training",
-            1000, 1, Integer.MAX_VALUE);
+    public IntOption delayLengthOption = IntOption.createIntOption2(new IntOptionParameter2("delay", 'k', "Number of instances before test instance is used for training", 1000, 1, Integer.MAX_VALUE));
     
-    public IntOption initialWindowSizeOption = new IntOption("initialTrainingWindow", 'p',
-        "Number of instances used for training in the beginning of the stream.",
-        1000, 0, Integer.MAX_VALUE);
+    public IntOption initialWindowSizeOption = IntOption.createIntOption2(new IntOptionParameter2("initialTrainingWindow", 'p', "Number of instances used for training in the beginning of the stream.", 1000, 0, Integer.MAX_VALUE));
     
-    public FlagOption trainOnInitialWindowOption = new FlagOption(new FlagOptionParameter("trainOnInitialWindow", 'm', "Whether to train or not using instances in the initial window."));
+    public FlagOption trainOnInitialWindowOption = FlagOption.createFlagOption(new FlagOptionParameter("trainOnInitialWindow", 'm', "Whether to train or not using instances in the initial window."));
     
-    public FlagOption trainInBatches = new FlagOption(new FlagOptionParameter("trainInBatches", 'b', "If set training will not be interleaved with testing. "));
+    public FlagOption trainInBatches = FlagOption.createFlagOption(new FlagOptionParameter("trainInBatches", 'b', "If set training will not be interleaved with testing. "));
     
-    public IntOption instanceLimitOption = new IntOption("instanceLimit", 'i',
-            "Maximum number of instances to test/train on  (-1 = no limit).",
-            100000000, -1, Integer.MAX_VALUE);
+    public IntOption instanceLimitOption = IntOption.createIntOption2(new IntOptionParameter2("instanceLimit", 'i', "Maximum number of instances to test/train on  (-1 = no limit).", 100000000, -1, Integer.MAX_VALUE));
 
-    public IntOption timeLimitOption = new IntOption("timeLimit", 't',
-            "Maximum number of seconds to test/train for (-1 = no limit).", -1,
-            -1, Integer.MAX_VALUE);
+    public IntOption timeLimitOption = IntOption.createIntOption2(new IntOptionParameter2("timeLimit", 't', "Maximum number of seconds to test/train for (-1 = no limit).", -1, -1, Integer.MAX_VALUE));
     
-    public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-            'f',
-            "How many instances between samples of the learning performance.",
-            100000, 0, Integer.MAX_VALUE);
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 100000, 0, Integer.MAX_VALUE));
     
-    public IntOption memCheckFrequencyOption = new IntOption(
-            "memCheckFrequency", 'q',
-            "How many instances between memory bound checks.", 100000, 0,
-            Integer.MAX_VALUE);
+    public IntOption memCheckFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("memCheckFrequency", 'q', "How many instances between memory bound checks.", 100000, 0, Integer.MAX_VALUE));
 
     public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv results to.", null, "csv", true));
 
     public FileOption outputPredictionFileOption = new FileOption(new FileOptionParameter("outputPredictionFile", 'o', "File to append output predictions to.", null, "pred", true));
 
     //New for prequential method DEPRECATED
-    public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Size of Window", 1000));
+    public IntOption widthOption = IntOption.createIntOption(new IntOptionParameter("width", 'w', "Size of Window", 1000));
 
-    public FloatOption alphaOption = new FloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
+    public FloatOption alphaOption = FloatOption.createFloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
 
     // Buffer of instances to use for training. 
     protected LinkedList<Example> trainInstances;

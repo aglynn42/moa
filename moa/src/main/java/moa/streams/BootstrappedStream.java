@@ -52,7 +52,7 @@ public class BootstrappedStream extends AbstractOptionHandler implements
     public ClassOption streamOption = new ClassOption("stream", 's',
             "Stream to filter.", MultiTargetInstanceStream.class,
             MultiTargetArffFileStream.class.getName());
-    public IntOption randomSeedOption = new IntOption(new IntOptionParameter("randomSeed", 'r', "Seed for the random generator", 1));
+    public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "Seed for the random generator", 1));
     
     protected MultiTargetInstanceStream originalStream;
     protected int waitingToSend;

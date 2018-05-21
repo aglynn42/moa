@@ -35,6 +35,7 @@ import moa.core.Measurement;
 import moa.options.ClassOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 
 /**
  * Active learning setting for evolving data streams.
@@ -91,19 +92,15 @@ public class ALUncertainty extends AbstractClassifier implements ALClassifier {
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "drift.SingleClassifierDrift");
 
-    public MultiChoiceOption activeLearningStrategyOption = new MultiChoiceOption(
-            "activeLearningStrategy", 'd', "Active Learning Strategy to use.",
-            new String[]{
-                    "FixedUncertainty",
-                    "VarUncertainty",
-                    "RandVarUncertainty",
-                    "SelSampling"},
-            new String[]{
-                    "Fixed uncertainty strategy",
-                    "Uncertainty strategy with variable threshold",
-                    "Uncertainty strategy with randomized variable threshold",
-                    "Selective Sampling"}, 
-            0);
+    public MultiChoiceOption activeLearningStrategyOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("activeLearningStrategy", 'd', "Active Learning Strategy to use.", new String[]{
+	        "FixedUncertainty",
+	        "VarUncertainty",
+	        "RandVarUncertainty",
+	        "SelSampling"}, new String[]{
+	        "Fixed uncertainty strategy",
+	        "Uncertainty strategy with variable threshold",
+	        "Uncertainty strategy with randomized variable threshold",
+	        "Selective Sampling"}, 0));
 
     public FloatOption budgetOption = new FloatOption("budget",
             'b', "Budget to use.",

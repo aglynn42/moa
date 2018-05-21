@@ -75,13 +75,13 @@ public class BasicClassificationPerformanceEvaluator extends AbstractOptionHandl
 
     private double totalWeightObserved;
 
-    public FlagOption precisionRecallOutputOption = new FlagOption(new FlagOptionParameter("precisionRecallOutput", 'o', "Outputs average precision, recall and F1 scores."));
+    public FlagOption precisionRecallOutputOption = FlagOption.createFlagOption(new FlagOptionParameter("precisionRecallOutput", 'o', "Outputs average precision, recall and F1 scores."));
     
-    public FlagOption precisionPerClassOption = new FlagOption(new FlagOptionParameter("precisionPerClass", 'p', "Report precision per class."));
+    public FlagOption precisionPerClassOption = FlagOption.createFlagOption(new FlagOptionParameter("precisionPerClass", 'p', "Report precision per class."));
 
-    public FlagOption recallPerClassOption = new FlagOption(new FlagOptionParameter("recallPerClass", 'r', "Report recall per class."));
+    public FlagOption recallPerClassOption = FlagOption.createFlagOption(new FlagOptionParameter("recallPerClass", 'r', "Report recall per class."));
 
-    public FlagOption f1PerClassOption = new FlagOption(new FlagOptionParameter("f1PerClass", 'f', "Report F1 per class."));
+    public FlagOption f1PerClassOption = FlagOption.createFlagOption(new FlagOptionParameter("f1PerClass", 'f', "Report F1 per class."));
 
     @Override
     public void reset() {

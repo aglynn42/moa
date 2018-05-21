@@ -22,6 +22,7 @@ package moa.classifiers.rules.core.attributeclassobservers;
 import moa.classifiers.core.attributeclassobservers.FIMTDDNumericAttributeClassObserver;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 
 public class FIMTDDNumericAttributeClassLimitObserver extends FIMTDDNumericAttributeClassObserver {
@@ -31,7 +32,7 @@ public class FIMTDDNumericAttributeClassLimitObserver extends FIMTDDNumericAttri
 	 */
 	private static final long serialVersionUID = 1L;
 	protected int maxNodes;
-	public IntOption maxNodesOption = new IntOption("maxNodesOption", 'z', "Maximum number of nodes", 50, 0, Integer.MAX_VALUE);
+	public IntOption maxNodesOption = IntOption.createIntOption2(new IntOptionParameter2("maxNodesOption", 'z', "Maximum number of nodes", 50, 0, Integer.MAX_VALUE));
     
 
 	protected int numNodes;

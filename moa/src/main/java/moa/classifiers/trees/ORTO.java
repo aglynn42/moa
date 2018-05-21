@@ -28,7 +28,9 @@ import java.util.List;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 
 import moa.classifiers.Regressor;
 import moa.classifiers.core.AttributeSplitSuggestion;
@@ -54,17 +56,9 @@ public class ORTO extends FIMTDD implements Regressor {
 
 	//region ================ OPTIONS ================
 
-	public IntOption maxTreesOption = new IntOption(
-			"maxTrees",
-			'm',
-			"The maximum number of trees contained in the option tree.",
-			10, 1, Integer.MAX_VALUE);
+	public IntOption maxTreesOption = IntOption.createIntOption2(new IntOptionParameter2("maxTrees", 'm', "The maximum number of trees contained in the option tree.", 10, 1, Integer.MAX_VALUE));
 
-	public IntOption maxOptionLevelOption = new IntOption(
-			"maxOptionLevel",
-			'x',
-			"The maximal depth at which option nodes can be created.",
-			10, 0, Integer.MAX_VALUE);
+	public IntOption maxOptionLevelOption = IntOption.createIntOption2(new IntOptionParameter2("maxOptionLevel", 'x', "The maximal depth at which option nodes can be created.", 10, 0, Integer.MAX_VALUE));
 
 	public FloatOption optionDecayFactorOption = new FloatOption(
 			"optionDecayFactor",
@@ -72,11 +66,7 @@ public class ORTO extends FIMTDD implements Regressor {
 			"The option decay factor that determines how many options can be selected at a given level.",
 			0.9, 0.0, 1.0);
 
-	public MultiChoiceOption optionNodeAggregationOption = new MultiChoiceOption(
-			"optionNodeAggregation",
-			'o',
-			"The aggregation method used to combine predictions in option nodes.", 
-			new String[]{"average", "bestTree"}, new String[]{"Average", "Best tree"}, 0);
+	public MultiChoiceOption optionNodeAggregationOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("optionNodeAggregation", 'o', "The aggregation method used to combine predictions in option nodes.", new String[]{"average", "bestTree"}, new String[]{"Average", "Best tree"}, 0));
 
 	public FloatOption optionFadingFactorOption = new FloatOption(
 			"optionFadingFactor",

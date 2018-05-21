@@ -30,6 +30,8 @@ import moa.core.GreenwaldKhannaQuantileSummary;
 import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.tasks.TaskMonitor;
 
 /**
@@ -46,8 +48,7 @@ public class GreenwaldKhannaNumericAttributeClassObserver extends AbstractOption
 
     protected AutoExpandVector<GreenwaldKhannaQuantileSummary> attValDistPerClass = new AutoExpandVector<GreenwaldKhannaQuantileSummary>();
 
-    public IntOption numTuplesOption = new IntOption("numTuples", 'n',
-        "The number of tuples.", 10, 1, Integer.MAX_VALUE);
+    public IntOption numTuplesOption = IntOption.createIntOption2(new IntOptionParameter2("numTuples", 'n', "The number of tuples.", 10, 1, Integer.MAX_VALUE));
 
     @Override
     public void observeAttributeClass(double attVal, int classVal, double weight) {

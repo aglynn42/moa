@@ -23,6 +23,7 @@ import java.util.Random;
 import moa.core.InstanceExample;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.FloatOption;
 import com.yahoo.labs.samoa.instances.Instance;
 
@@ -44,8 +45,7 @@ public class RandomRBFGeneratorDrift extends RandomRBFGenerator {
     public FloatOption speedChangeOption = new FloatOption("speedChange", 's',
             "Speed of change of centroids in the model.", 0, 0, Float.MAX_VALUE);
 
-    public IntOption numDriftCentroidsOption = new IntOption("numDriftCentroids", 'k',
-            "The number of centroids with drift.", 50, 0, Integer.MAX_VALUE);
+    public IntOption numDriftCentroidsOption = IntOption.createIntOption2(new IntOptionParameter2("numDriftCentroids", 'k', "The number of centroids with drift.", 50, 0, Integer.MAX_VALUE));
 
     protected double[][] speedCentroids;
 

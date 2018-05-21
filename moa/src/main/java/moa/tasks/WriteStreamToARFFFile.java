@@ -31,6 +31,7 @@ import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.InstanceImpl;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.streams.InstanceStream;
@@ -56,11 +57,9 @@ public class WriteStreamToARFFFile extends AuxiliarMainTask {
 
     public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'f', "Destination ARFF file.", null, "arff", true));
 
-    public IntOption maxInstancesOption = new IntOption("maxInstances", 'm',
-            "Maximum number of instances to write to file.", 10000000, 0,
-            Integer.MAX_VALUE);
+    public IntOption maxInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("maxInstances", 'm', "Maximum number of instances to write to file.", 10000000, 0, Integer.MAX_VALUE));
 
-    public FlagOption suppressHeaderOption = new FlagOption(new FlagOptionParameter("suppressHeader", 'h', "Suppress header from output."));
+    public FlagOption suppressHeaderOption = FlagOption.createFlagOption(new FlagOptionParameter("suppressHeader", 'h', "Suppress header from output."));
 
     @Override
     protected Object doMainTask(TaskMonitor monitor, ObjectRepository repository) {

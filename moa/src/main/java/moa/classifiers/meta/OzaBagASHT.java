@@ -26,6 +26,7 @@ import moa.classifiers.trees.ASHoeffdingTree;
 import moa.core.DoubleVector;
 import moa.core.MiscUtils;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -96,15 +97,13 @@ public class OzaBagASHT extends AbstractClassifier implements MultiClassClassifi
         return "Bagging using trees of different size.";
     }
     
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-        "The number of models in the bag.", 10, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models in the bag.", 10, 1, Integer.MAX_VALUE));
     
-    public IntOption firstClassifierSizeOption = new IntOption("firstClassifierSize", 'f',
-            "The size of first classifier in the bag.", 1, 1, Integer.MAX_VALUE);
+    public IntOption firstClassifierSizeOption = IntOption.createIntOption2(new IntOptionParameter2("firstClassifierSize", 'f', "The size of first classifier in the bag.", 1, 1, Integer.MAX_VALUE));
 
-    public FlagOption useWeightOption = new FlagOption(new FlagOptionParameter("useWeight", 'u', "Enable weight classifiers."));
+    public FlagOption useWeightOption = FlagOption.createFlagOption(new FlagOptionParameter("useWeight", 'u', "Enable weight classifiers."));
 
-    public FlagOption resetTreesOption = new FlagOption(new FlagOptionParameter("resetTrees", 'e', "Reset trees when size is higher than the max."));
+    public FlagOption resetTreesOption = FlagOption.createFlagOption(new FlagOptionParameter("resetTrees", 'e', "Reset trees when size is higher than the max."));
 
         public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
     		"ASHoeffdingTree to train.", ASHoeffdingTree.class,

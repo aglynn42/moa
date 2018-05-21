@@ -20,6 +20,8 @@ package moa.classifiers.core.driftdetection;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.core.ObjectRepository;
 import moa.tasks.TaskMonitor;
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class SeqDrift2ChangeDetector extends AbstractChangeDetector {
     public FloatOption deltaSeqDrift2Option = new FloatOption("deltaSeq2Drift", 'd',
             "Delta of SeqDrift2 change detection",0.01, 0.0, 1.0);
     
-    public IntOption blockSeqDrift2Option = new IntOption("blockSeqDrift2Option",'b',"Block size of SeqDrift2 change detector", 200, 100, 10000);
+    public IntOption blockSeqDrift2Option = IntOption.createIntOption2(new IntOptionParameter2("blockSeqDrift2Option", 'b', "Block size of SeqDrift2 change detector", 200, 100, 10000));
 
     @Override
     public void input(double inputValue) {

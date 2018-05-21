@@ -52,7 +52,7 @@ public class WindowAUCImbalancedPerformanceEvaluator extends
 
 	private static final long serialVersionUID = 1L;
 
-	public IntOption widthOption = new IntOption(new IntOptionParameter("width", 'w', "Size of Window", 500));
+	public IntOption widthOption = IntOption.createIntOption(new IntOptionParameter("width", 'w', "Size of Window", 500));
 
 	protected double totalObservedInstances = 0;
 	private Estimator aucEstimator;

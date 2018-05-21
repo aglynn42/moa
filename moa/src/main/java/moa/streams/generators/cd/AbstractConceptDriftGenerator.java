@@ -23,6 +23,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
@@ -52,13 +53,11 @@ public abstract class AbstractConceptDriftGenerator extends AbstractOptionHandle
     }
     private static final long serialVersionUID = 1L;
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public FlagOption notBinaryStreamOption = new FlagOption(new FlagOptionParameter("notBinaryStream", 'b', "Don't convert to a binary stream of 0 and 1."));
+    public FlagOption notBinaryStreamOption = FlagOption.createFlagOption(new FlagOptionParameter("notBinaryStream", 'b', "Don't convert to a binary stream of 0 and 1."));
 
-    public IntOption numInstancesConceptOption = new IntOption("numInstancesConcept", 'p',
-            "The number of instances for each concept.", 500, 0, Integer.MAX_VALUE);
+    public IntOption numInstancesConceptOption = IntOption.createIntOption2(new IntOptionParameter2("numInstancesConcept", 'p', "The number of instances for each concept.", 500, 0, Integer.MAX_VALUE));
 
     protected InstancesHeader streamHeader;
 

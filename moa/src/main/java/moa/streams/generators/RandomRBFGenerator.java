@@ -35,6 +35,7 @@ import moa.core.ObjectRepository;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
@@ -55,19 +56,15 @@ public class RandomRBFGenerator extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption modelRandomSeedOption = new IntOption(new IntOptionParameter("modelRandomSeed", 'r', "Seed for random generation of model.", 1));
+    public IntOption modelRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("modelRandomSeed", 'r', "Seed for random generation of model.", 1));
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public IntOption numClassesOption = new IntOption("numClasses", 'c',
-            "The number of classes to generate.", 2, 2, Integer.MAX_VALUE);
+    public IntOption numClassesOption = IntOption.createIntOption2(new IntOptionParameter2("numClasses", 'c', "The number of classes to generate.", 2, 2, Integer.MAX_VALUE));
 
-    public IntOption numAttsOption = new IntOption("numAtts", 'a',
-            "The number of attributes to generate.", 10, 0, Integer.MAX_VALUE);
+    public IntOption numAttsOption = IntOption.createIntOption2(new IntOptionParameter2("numAtts", 'a', "The number of attributes to generate.", 10, 0, Integer.MAX_VALUE));
 
-    public IntOption numCentroidsOption = new IntOption("numCentroids", 'n',
-            "The number of centroids in the model.", 50, 1, Integer.MAX_VALUE);
+    public IntOption numCentroidsOption = IntOption.createIntOption2(new IntOptionParameter2("numCentroids", 'n', "The number of centroids in the model.", 50, 1, Integer.MAX_VALUE));
 
     protected static class Centroid implements Serializable {
 

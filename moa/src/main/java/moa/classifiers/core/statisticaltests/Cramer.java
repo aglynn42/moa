@@ -33,7 +33,9 @@ import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.yahoo.labs.samoa.instances.ArffLoader;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.io.FileNotFoundException;
@@ -58,14 +60,9 @@ public class Cramer extends AbstractOptionHandler implements StatisticalTest {
             "The confidence level to use in the Cramer test.",
             0.95, 0, 1);
 
-    public IntOption replicatesOption = new IntOption("replicates", 'r',
-            "Number of replications.", 1000, 1,
-            Integer.MAX_VALUE);
+    public IntOption replicatesOption = IntOption.createIntOption2(new IntOptionParameter2("replicates", 'r', "Number of replications.", 1000, 1, Integer.MAX_VALUE));
 
-    public MultiChoiceOption kernelOption = new MultiChoiceOption("kernel", 'f',
-            "Kernel function to use.", new String[]{"CRAMER", "BAHR", "LOG", "FRAC A", "FRAC B"},
-            new String[]{"CRAMER", "BAHR", "LOG", "FRAC A", "FRAC B"},
-            0);
+    public MultiChoiceOption kernelOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("kernel", 'f', "Kernel function to use.", new String[]{"CRAMER", "BAHR", "LOG", "FRAC A", "FRAC B"}, new String[]{"CRAMER", "BAHR", "LOG", "FRAC A", "FRAC B"}, 0));
 
     public FloatOption maxMOption = new FloatOption(
             "maxM",
@@ -73,9 +70,7 @@ public class Cramer extends AbstractOptionHandler implements StatisticalTest {
             "Maximum M.",
             Math.pow(2, 14), 1, Float.MAX_VALUE);
 
-    public IntOption kOption = new IntOption("k", 'k',
-            "K value.", 160, 1,
-            Integer.MAX_VALUE);
+    public IntOption kOption = IntOption.createIntOption2(new IntOptionParameter2("k", 'k', "K value.", 160, 1, Integer.MAX_VALUE));
 
     public static final int CRAMER = 0;
     public static final int BAHR = 1;

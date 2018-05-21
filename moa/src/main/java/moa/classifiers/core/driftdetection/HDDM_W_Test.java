@@ -21,6 +21,8 @@ package moa.classifiers.core.driftdetection;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
+
 import moa.core.ObjectRepository;
 import moa.tasks.TaskMonitor;
 
@@ -58,12 +60,9 @@ public class HDDM_W_Test extends AbstractChangeDetector {
     public FloatOption lambdaOption = new FloatOption("lambda",
             'm', "Controls how much weight is given to more recent data compared to older data. Smaller values mean less weight given to recent data.",
             0.050, 0, 1);
-    public MultiChoiceOption oneSidedTestOption = new MultiChoiceOption(
-            "typeOfTest", 't',
-            "Monitors error increments and decrements (two-sided) or only increments (one-sided)", new String[]{
-        "One-sided", "Two-sided"}, new String[]{
-        "One-sided", "Two-sided"},
-            0);
+    public MultiChoiceOption oneSidedTestOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("typeOfTest", 't', "Monitors error increments and decrements (two-sided) or only increments (one-sided)", new String[]{
+      "One-sided", "Two-sided"}, new String[]{
+	"One-sided", "Two-sided"}, 0));
     
 
     public static class SampleInfo {

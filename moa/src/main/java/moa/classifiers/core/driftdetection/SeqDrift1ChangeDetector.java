@@ -20,6 +20,8 @@ package moa.classifiers.core.driftdetection;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.core.ObjectRepository;
 import moa.tasks.TaskMonitor;
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class SeqDrift1ChangeDetector extends AbstractChangeDetector {
     public FloatOption deltaWarningOption = new FloatOption("deltaWarningOption", 
             'w', "Delta of SeqDrift1 change detector to declare warning state",0.1, 0.0, 1.0);
     
-    public IntOption blockSeqDriftOption = new IntOption("blockSeqDrift1Option",'b',"Block size of SeqDrift1 change detector", 200, 100, 10000);
+    public IntOption blockSeqDriftOption = IntOption.createIntOption2(new IntOptionParameter2("blockSeqDrift1Option", 'b', "Block size of SeqDrift1 change detector", 200, 100, 10000));
 
     @Override
     public void input(double inputValue) {

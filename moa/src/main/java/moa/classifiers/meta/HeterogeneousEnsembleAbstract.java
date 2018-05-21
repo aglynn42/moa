@@ -26,7 +26,9 @@ import java.util.List;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.ListOption;
+import com.github.javacliparser.ListOptionParameter;
 import com.github.javacliparser.Option;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
@@ -71,30 +73,21 @@ public abstract class HeterogeneousEnsembleAbstract extends AbstractClassifier i
 
 	private static final long serialVersionUID = 1L;
 
-	public ListOption baselearnersOption = new ListOption("baseClassifiers", 'b',
-			"The classifiers the ensemble consists of.",
-			new ClassOption("learner", ' ', "", Classifier.class,
-					"trees.HoeffdingTree"),
-			new Option[] {
-					new ClassOption("", ' ', "", Classifier.class, "bayes.NaiveBayes"),
-					new ClassOption("", ' ', "", Classifier.class,
-							"functions.Perceptron"),
-					new ClassOption("", ' ', "", Classifier.class, "functions.SGD"),
-					new ClassOption("", ' ', "", Classifier.class, "lazy.kNN"),
-					new ClassOption("", ' ', "", Classifier.class,
-							"trees.HoeffdingTree") },
-			',');
+	public ListOption baselearnersOption = ListOption.createListOption(new ListOptionParameter("baseClassifiers", 'b', "The classifiers the ensemble consists of.", new ClassOption("learner", ' ', "", Classifier.class,
+			"trees.HoeffdingTree"), new Option[] {
+			new ClassOption("", ' ', "", Classifier.class, "bayes.NaiveBayes"),
+			new ClassOption("", ' ', "", Classifier.class,
+					"functions.Perceptron"),
+			new ClassOption("", ' ', "", Classifier.class, "functions.SGD"),
+			new ClassOption("", ' ', "", Classifier.class, "lazy.kNN"),
+			new ClassOption("", ' ', "", Classifier.class,
+					"trees.HoeffdingTree") }, ','));
 
-	public IntOption gracePerionOption = new IntOption("gracePeriod", 'g',
-			"How many instances before we reevalate the best classifier", 1, 1,
-			Integer.MAX_VALUE);
+	public IntOption gracePerionOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "How many instances before we reevalate the best classifier", 1, 1, Integer.MAX_VALUE));
 
-	public IntOption activeClassifiersOption = new IntOption("activeClassifiers",
-			'k', "The number of active classifiers (used for voting)", 1, 1,
-			Integer.MAX_VALUE);
+	public IntOption activeClassifiersOption = IntOption.createIntOption2(new IntOptionParameter2("activeClassifiers", 'k', "The number of active classifiers (used for voting)", 1, 1, Integer.MAX_VALUE));
 
-	public FlagOption weightClassifiersOption = new FlagOption(
-			new FlagOptionParameter("weightClassifiers", 'p', "Uses online performance estimation to weight the classifiers"));
+	public FlagOption weightClassifiersOption = FlagOption.createFlagOption(new FlagOptionParameter("weightClassifiers", 'p', "Uses online performance estimation to weight the classifiers"));
 
 	protected Classifier[] ensemble;
 

@@ -20,6 +20,7 @@
 package moa.classifiers.core.statisticaltests;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -41,9 +42,7 @@ public class KNN extends AbstractOptionHandler implements StatisticalTest {
     private List<Instance> sample1i;
     private List<Instance> sample2i;
 
-    public IntOption kValueOption = new IntOption("kValue", 'k',
-            "K value of the K nearest neighbours algorithm.", 5, 1,
-            Integer.MAX_VALUE);
+    public IntOption kValueOption = IntOption.createIntOption2(new IntOptionParameter2("kValue", 'k', "K value of the K nearest neighbours algorithm.", 5, 1, Integer.MAX_VALUE));
 
     private double[] compute(double[][] set, int d, int n1, int n2) throws InterruptedException {
         double n = n1 + n2;

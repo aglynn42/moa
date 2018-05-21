@@ -58,11 +58,11 @@ public class RecurrentConceptDriftStream extends ConceptDriftStream {
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption widthRecurrenceOption = new IntOption(new IntOptionParameter("widthRecurrence", 'x', "Number of instances during which new concept is used", 100));
+    public IntOption widthRecurrenceOption = IntOption.createIntOption(new IntOptionParameter("widthRecurrence", 'x', "Number of instances during which new concept is used", 100));
     
-    public IntOption stabPeriodOption = new IntOption(new IntOptionParameter("stabPeriod", 'y', "Number of instances between drifts", 200));     
+    public IntOption stabPeriodOption = IntOption.createIntOption(new IntOptionParameter("stabPeriod", 'y', "Number of instances between drifts", 200));     
     
-    public IntOption numRepOption = new IntOption(new IntOptionParameter("numRep", 'z', "Number of instances between drifts", 4)); 
+    public IntOption numRepOption = IntOption.createIntOption(new IntOptionParameter("numRep", 'z', "Number of instances between drifts", 4)); 
 
     @Override
     public void prepareForUseImpl(TaskMonitor monitor,

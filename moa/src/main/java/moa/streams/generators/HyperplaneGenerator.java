@@ -23,6 +23,7 @@ import java.util.Random;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.core.FastVector;
 import moa.core.InstanceExample;
@@ -52,26 +53,20 @@ public class HyperplaneGenerator extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public IntOption numClassesOption = new IntOption("numClasses", 'c',
-            "The number of classes to generate.", 2, 2, Integer.MAX_VALUE);
+    public IntOption numClassesOption = IntOption.createIntOption2(new IntOptionParameter2("numClasses", 'c', "The number of classes to generate.", 2, 2, Integer.MAX_VALUE));
 
-    public IntOption numAttsOption = new IntOption("numAtts", 'a',
-            "The number of attributes to generate.", 10, 0, Integer.MAX_VALUE);
+    public IntOption numAttsOption = IntOption.createIntOption2(new IntOptionParameter2("numAtts", 'a', "The number of attributes to generate.", 10, 0, Integer.MAX_VALUE));
 
-    public IntOption numDriftAttsOption = new IntOption("numDriftAtts", 'k',
-            "The number of attributes with drift.", 2, 0, Integer.MAX_VALUE);
+    public IntOption numDriftAttsOption = IntOption.createIntOption2(new IntOptionParameter2("numDriftAtts", 'k', "The number of attributes with drift.", 2, 0, Integer.MAX_VALUE));
 
     public FloatOption magChangeOption = new FloatOption("magChange", 't',
             "Magnitude of the change for every example", 0.0, 0.0, 1.0);
 
-    public IntOption noisePercentageOption = new IntOption("noisePercentage",
-            'n', "Percentage of noise to add to the data.", 5, 0, 100);
+    public IntOption noisePercentageOption = IntOption.createIntOption2(new IntOptionParameter2("noisePercentage", 'n', "Percentage of noise to add to the data.", 5, 0, 100));
 
-    public IntOption sigmaPercentageOption = new IntOption("sigmaPercentage",
-            's', "Percentage of probability that the direction of change is reversed.", 10, 0, 100);
+    public IntOption sigmaPercentageOption = IntOption.createIntOption2(new IntOptionParameter2("sigmaPercentage", 's', "Percentage of probability that the direction of change is reversed.", 10, 0, 100));
 
     protected InstancesHeader streamHeader;
 

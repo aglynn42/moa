@@ -35,17 +35,16 @@ public class IntOption extends AbstractOption {
 
     protected int maxVal;
 
-    public IntOption(IntOptionParameter parameterObject) {
-        this(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultVal, Integer.MIN_VALUE,
-                Integer.MAX_VALUE);
+    private IntOption(IntOptionParameter parameterObject) {
+        this(new IntOptionParameter2(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultVal, Integer.MIN_VALUE,
+				Integer.MAX_VALUE));
     }
 
-    public IntOption(String name, char cliChar, String purpose, int defaultVal,
-            int minVal, int maxVal) {
-        super(name, cliChar, purpose);
-        this.defaultVal = defaultVal;
-        this.minVal = minVal;
-        this.maxVal = maxVal;
+    private IntOption(IntOptionParameter2 parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose);
+        this.defaultVal = parameterObject.defaultVal;
+        this.minVal = parameterObject.minVal;
+        this.maxVal = parameterObject.maxVal;
         resetToDefault();
     }
 
@@ -97,6 +96,14 @@ public class IntOption extends AbstractOption {
     public static String intToCLIString(int i) {
         return Integer.toString(i);
     }
+
+	public static IntOption createIntOption(IntOptionParameter parameterObject) {
+		return new IntOption(parameterObject);
+	}
+
+	public static IntOption createIntOption2(IntOptionParameter2 parameterObject) {
+		return new IntOption(parameterObject);
+	}
 
     //@Override
     //public JComponent getEditComponent() {

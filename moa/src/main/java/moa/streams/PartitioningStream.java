@@ -48,14 +48,11 @@ public class PartitioningStream extends AbstractOptionHandler  implements Exampl
             "Stream which is used for partitioning.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public IntOption partitionIndexOption = new IntOption(
-            new IntOptionParameter("partitionIndex", 'i', "The index of the partition, which should be used as output.", 0));
+    public IntOption partitionIndexOption = IntOption.createIntOption(new IntOptionParameter("partitionIndex", 'i', "The index of the partition, which should be used as output.", 0));
 
-    public IntOption numPartitionsOption = new IntOption(
-            new IntOptionParameter("numPartitions", 'n', "The number of total streams the base stream is split into.", 1));
+    public IntOption numPartitionsOption = IntOption.createIntOption(new IntOptionParameter("numPartitions", 'n', "The number of total streams the base stream is split into.", 1));
     
-    public IntOption randomSeedOption = new IntOption(
-            new IntOptionParameter("randomSeed", 'r', "The seed which is used (all other partitions should use the same one to guarentee).", 0));
+    public IntOption randomSeedOption = IntOption.createIntOption(new IntOptionParameter("randomSeed", 'r', "The seed which is used (all other partitions should use the same one to guarentee).", 0));
 	
     protected ExampleStream baseStream;
     protected int partitionIndex;

@@ -22,6 +22,7 @@ package moa.classifiers.meta;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
 import moa.classifiers.Classifier;
@@ -56,8 +57,7 @@ public class ADACC extends DACC implements MultiClassClassifier {
     /**
      * Evaluation window for the stability index computation  
      */
-    public IntOption tauSizeOption = new IntOption("tau", 't',
-            "The size of the evaluation window for the meta-learning.", 100, 1, 10000);
+    public IntOption tauSizeOption = IntOption.createIntOption2(new IntOptionParameter2("tau", 't', "The size of the evaluation window for the meta-learning.", 100, 1, 10000));
     /**
      * Threshold for the stability index
      */

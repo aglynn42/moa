@@ -20,6 +20,8 @@ package moa.classifiers.core.driftdetection;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.core.ObjectRepository;
 import moa.tasks.TaskMonitor;
 
@@ -36,11 +38,7 @@ public class EWMAChartDM extends AbstractChangeDetector {
     private static final long serialVersionUID = -3518369648142099719L;
 
     //private static final int DDM_MINNUMINST = 30;
-    public IntOption minNumInstancesOption = new IntOption(
-            "minNumInstances",
-            'n',
-            "The minimum number of instances before permitting detecting change.",
-            30, 0, Integer.MAX_VALUE);
+    public IntOption minNumInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("minNumInstances", 'n', "The minimum number of instances before permitting detecting change.", 30, 0, Integer.MAX_VALUE));
 
     public FloatOption lambdaOption = new FloatOption("lambda", 'l',
             "Lambda parameter of the EWMA Chart Method", 0.2, 0.0, Float.MAX_VALUE);

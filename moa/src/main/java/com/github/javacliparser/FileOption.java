@@ -34,7 +34,7 @@ public class FileOption extends StringOption {
     protected boolean isOutputFile;
 
     public FileOption(FileOptionParameter parameterObject) {
-        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultFileName);
+        super(new StringOptionParameter(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.defaultFileName));
         this.defaultFileExtension = parameterObject.defaultExtension;
         this.isOutputFile = parameterObject.isOutput;
     }

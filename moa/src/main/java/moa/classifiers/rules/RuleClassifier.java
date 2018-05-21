@@ -45,7 +45,9 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 
 
@@ -163,28 +165,21 @@ public class RuleClassifier extends AbstractClassifier implements MultiClassClas
 				"The threshold value.",
 				0.10, 0.0, 1.0);
 		
-	 public IntOption anomalyNumInstThresholdOption = new IntOption(
-				"anomalyThreshold",
-				'i',
-				"The threshold value to be used in the anomaly detection.",
-				15, 0, Integer.MAX_VALUE);
+	 public IntOption anomalyNumInstThresholdOption = IntOption.createIntOption2(new IntOptionParameter2("anomalyThreshold", 'i', "The threshold value to be used in the anomaly detection.", 15, 0, Integer.MAX_VALUE));
 	  
-	 public IntOption gracePeriodOption = new IntOption(
-		        "gracePeriod",'g', "The number of instances a leaf should observe between split attempts.",
-		         200, 0, Integer.MAX_VALUE);
+	 public IntOption gracePeriodOption = IntOption.createIntOption2(new IntOptionParameter2("gracePeriod", 'g', "The number of instances a leaf should observe between split attempts.", 200, 0, Integer.MAX_VALUE));
 	  
-	 public MultiChoiceOption predictionFunctionOption = new MultiChoiceOption(
-	            "predictionFunctionOption", 'z', "The prediction function to use.", new String[]{
-	            "firstHit", "weightedSum", "weightedMax"}, new String[]{
-	            "first Hit",  "weighted Sum", "weighted Max"}, 0);
+	 public MultiChoiceOption predictionFunctionOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("predictionFunctionOption", 'z', "The prediction function to use.", new String[]{
+	"firstHit", "weightedSum", "weightedMax"}, new String[]{
+	"first Hit",  "weighted Sum", "weighted Max"}, 0));
 	  
-	 public FlagOption orderedRulesOption = new FlagOption(new FlagOptionParameter("orderedRules", 'r', "orderedRules."));
+	 public FlagOption orderedRulesOption = FlagOption.createFlagOption(new FlagOptionParameter("orderedRules", 'r', "orderedRules."));
 	  
-	public FlagOption anomalyDetectionOption = new FlagOption(new FlagOptionParameter("anomalyDetection", 'u', "anomaly Detection."));
+	public FlagOption anomalyDetectionOption = FlagOption.createFlagOption(new FlagOptionParameter("anomalyDetection", 'u', "anomaly Detection."));
 	
-	public FlagOption Supervised = new FlagOption(new FlagOptionParameter("supervised", 'n', "supervised."));
+	public FlagOption Supervised = FlagOption.createFlagOption(new FlagOptionParameter("supervised", 'n', "supervised."));
 	
-	public FlagOption Unsupervised = new FlagOption(new FlagOptionParameter("unsupervised", 'm', "unsupervised."));
+	public FlagOption Unsupervised = FlagOption.createFlagOption(new FlagOptionParameter("unsupervised", 'm', "unsupervised."));
 		
 		
 	  

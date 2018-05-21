@@ -29,6 +29,7 @@ import moa.core.Measurement;
 import moa.options.ClassOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 /**
  * Online Coordinate boosting for two classes evolving data streams. 
@@ -66,8 +67,7 @@ public class OCBoost extends AbstractClassifier implements MultiClassClassifier 
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
 
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-            "The number of models to boost.", 10, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models to boost.", 10, 1, Integer.MAX_VALUE));
 
     public FloatOption smoothingOption = new FloatOption("smoothingParameter", 'e',
             "Smoothing parameter.", 0.5, 0.0, 100.0);

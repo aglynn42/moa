@@ -31,6 +31,7 @@ package moa.classifiers.core.driftdetection;
 
 import moa.core.ObjectRepository;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.FloatOption;
 import moa.tasks.TaskMonitor;
 import weka.core.Statistics;
@@ -38,9 +39,7 @@ import weka.core.Statistics;
 public class STEPD extends AbstractChangeDetector {
     private static final long serialVersionUID = -3518369648142099719L;
     
-    public IntOption windowSizeOption = new IntOption("windowSize", 
-            'r', "Recent Window Size.",
-            30, 0, 1000);
+    public IntOption windowSizeOption = IntOption.createIntOption2(new IntOptionParameter2("windowSize", 'r', "Recent Window Size.", 30, 0, 1000));
         
     public FloatOption alphaDriftOption = new FloatOption("alphaDrift",
             'o', "Drift Significance Level.", 0.003, 0.0, 1.0);

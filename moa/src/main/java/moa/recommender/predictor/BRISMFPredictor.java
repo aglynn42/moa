@@ -27,6 +27,8 @@ import moa.options.ClassOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.recommender.data.RecommenderData;
 import moa.tasks.TaskMonitor;
 
@@ -62,19 +64,13 @@ public class BRISMFPredictor extends AbstractOptionHandler implements RatingPred
 
     protected moa.recommender.rc.predictor.impl.BRISMFPredictor rp;
     
-    public IntOption featuresOption = new IntOption("features",
-            'f',
-            "How many features to use.",
-            20, 0, Integer.MAX_VALUE);
+    public IntOption featuresOption = IntOption.createIntOption2(new IntOptionParameter2("features", 'f', "How many features to use.", 20, 0, Integer.MAX_VALUE));
     
-    public FloatOption lRateOption = new FloatOption(new FloatOptionParameter("lRate", 'r', "lRate", 0.001));
+    public FloatOption lRateOption = FloatOption.createFloatOption(new FloatOptionParameter("lRate", 'r', "lRate", 0.001));
     
-    public FloatOption rFactorOption = new FloatOption(new FloatOptionParameter("rFactor", 'a', "rFactor", 0.01));
+    public FloatOption rFactorOption = FloatOption.createFloatOption(new FloatOptionParameter("rFactor", 'a', "rFactor", 0.01));
     
-    public IntOption iterationsOption = new IntOption("iterations",
-            'i',
-            "How many iterations to use.",
-            100, 0, Integer.MAX_VALUE);
+    public IntOption iterationsOption = IntOption.createIntOption2(new IntOptionParameter2("iterations", 'i', "How many iterations to use.", 100, 0, Integer.MAX_VALUE));
 
     public ClassOption dataOption = new ClassOption("data", 'd',
             "Data", RecommenderData.class, "moa.recommender.data.MemRecommenderData");

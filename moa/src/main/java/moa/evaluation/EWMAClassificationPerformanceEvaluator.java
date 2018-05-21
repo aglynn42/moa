@@ -45,7 +45,7 @@ public class EWMAClassificationPerformanceEvaluator extends BasicClassificationP
 
     private static final long serialVersionUID = 1L;
 
-    public FloatOption alphaOption = new FloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
+    public FloatOption alphaOption = FloatOption.createFloatOption(new FloatOptionParameter("alpha", 'a', "Fading factor or exponential smoothing factor", .01));
 
     @Override
     protected Estimator newEstimator() {

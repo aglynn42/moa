@@ -20,6 +20,8 @@
 package moa.classifiers.trees;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.classifiers.bayes.NaiveBayes;
 import moa.classifiers.core.attributeclassobservers.AttributeClassObserver;
 import moa.core.Utils;
@@ -46,9 +48,7 @@ public class ARFHoeffdingTree extends HoeffdingTree {
 
     private static final long serialVersionUID = 1L;
     
-    public IntOption subspaceSizeOption = new IntOption("subspaceSizeSize", 'k',
-            "Number of features per subset for each node split. Negative values = #features - k", 
-            2, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    public IntOption subspaceSizeOption = IntOption.createIntOption2(new IntOptionParameter2("subspaceSizeSize", 'k', "Number of features per subset for each node split. Negative values = #features - k", 2, Integer.MIN_VALUE, Integer.MAX_VALUE));
     
     @Override
     public String getPurposeString() {

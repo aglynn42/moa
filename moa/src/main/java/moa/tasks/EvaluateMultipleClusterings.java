@@ -24,6 +24,7 @@ import com.github.javacliparser.FileOptionParameter;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.MOAObject;
 import moa.clusterers.AbstractClusterer;
@@ -61,25 +62,23 @@ public class EvaluateMultipleClusterings extends AuxiliarMainTask {
             "Base stream to learn from (must use FileStream).",  ClusteringStream.class,
             "FileStream");
 
-	public IntOption numStreamsOption = new IntOption("numStreams", 'n',
-			"The number of streams to iterate through (must be named according to WriteMultipleStreamsToARFF format.",
-			100, 2, Integer.MAX_VALUE);
+	public IntOption numStreamsOption = IntOption.createIntOption2(new IntOptionParameter2("numStreams", 'n', "The number of streams to iterate through (must be named according to WriteMultipleStreamsToARFF format.", 100, 2, Integer.MAX_VALUE));
 
-	public FlagOption generalEvalOption = new FlagOption(new FlagOptionParameter("General", 'g', "GPrecision, GRecall, Redundancy, numCluster, numClasses"));
+	public FlagOption generalEvalOption = FlagOption.createFlagOption(new FlagOptionParameter("General", 'g', "GPrecision, GRecall, Redundancy, numCluster, numClasses"));
    
-    public FlagOption f1Option = new FlagOption(new FlagOptionParameter("F1", 'f', "F1-P, F1-R, Purity."));
+    public FlagOption f1Option = FlagOption.createFlagOption(new FlagOptionParameter("F1", 'f', "F1-P, F1-R, Purity."));
     
-    public FlagOption entropyOption = new FlagOption(new FlagOptionParameter("Entropy", 'e', "GT cross entropy, FC cross entropy, Homogeneity, Completeness, V-Measure, VarInformation."));
+    public FlagOption entropyOption = FlagOption.createFlagOption(new FlagOptionParameter("Entropy", 'e', "GT cross entropy, FC cross entropy, Homogeneity, Completeness, V-Measure, VarInformation."));
     
-    public FlagOption cmmOption = new FlagOption(new FlagOptionParameter("CMM", 'c', "CMM, CMM Basic, CMM Missed, CMM Misplaced, CMM Noise, CA Seperability, CA Noise, CA Model."));
+    public FlagOption cmmOption = FlagOption.createFlagOption(new FlagOptionParameter("CMM", 'c', "CMM, CMM Basic, CMM Missed, CMM Misplaced, CMM Noise, CA Seperability, CA Noise, CA Model."));
 
-    public FlagOption ssqOption = new FlagOption(new FlagOptionParameter("SSQ", 'q', "SSQ."));
+    public FlagOption ssqOption = FlagOption.createFlagOption(new FlagOptionParameter("SSQ", 'q', "SSQ."));
     
-    public FlagOption separationOption = new FlagOption(new FlagOptionParameter("Separation", 'p', "BSS, BSS-GT, BSS-Ratio."));
+    public FlagOption separationOption = FlagOption.createFlagOption(new FlagOptionParameter("Separation", 'p', "BSS, BSS-GT, BSS-Ratio."));
     
-    public FlagOption silhouetteOption = new FlagOption(new FlagOptionParameter("Silhouette", 'h', "SilhCoeff."));
+    public FlagOption silhouetteOption = FlagOption.createFlagOption(new FlagOptionParameter("Silhouette", 'h', "SilhCoeff."));
     
-    public FlagOption statisticalOption = new FlagOption(new FlagOptionParameter("Statistical", 't', "van Dongen, Rand statistic."));
+    public FlagOption statisticalOption = FlagOption.createFlagOption(new FlagOptionParameter("Statistical", 't', "van Dongen, Rand statistic."));
 
 	
 	public FileOption dumpFileOption = new FileOption(new FileOptionParameter("dumpFile", 'd', "File to append intermediate csv reslts to.", "dumpClustering.csv", "csv", true));

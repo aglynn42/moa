@@ -25,6 +25,8 @@ import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import moa.core.ObjectRepository;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.tasks.TaskMonitor;
 
 /**
@@ -42,8 +44,7 @@ public class LEDGeneratorDrift extends LEDGenerator {
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption numberAttributesDriftOption = new IntOption("numberAttributesDrift",
-            'd', "Number of attributes with drift.", 1, 0, 7);
+    public IntOption numberAttributesDriftOption = IntOption.createIntOption2(new IntOptionParameter2("numberAttributesDrift", 'd', "Number of attributes with drift.", 1, 0, 7));
 
     protected int[] numberAttribute;
 

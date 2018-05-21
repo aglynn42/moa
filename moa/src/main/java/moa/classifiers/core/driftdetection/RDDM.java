@@ -39,15 +39,14 @@ package moa.classifiers.core.driftdetection;
 
 import moa.core.ObjectRepository;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.FloatOption;
 import moa.tasks.TaskMonitor;
 
 public class RDDM extends AbstractChangeDetector {
     private static final long serialVersionUID = -489867468386968209L;
 
-    public IntOption minNumInstancesOption = new IntOption("minNumInstances", 
-            'n', "Minimum number of instances before monitoring changes.",
-            129, 0, Integer.MAX_VALUE);
+    public IntOption minNumInstancesOption = IntOption.createIntOption2(new IntOptionParameter2("minNumInstances", 'n', "Minimum number of instances before monitoring changes.", 129, 0, Integer.MAX_VALUE));
 
     public FloatOption warningLevelOption = new FloatOption("warningLevel", 
             'w', "Warning Level.",
@@ -57,17 +56,11 @@ public class RDDM extends AbstractChangeDetector {
             'o', "Drift Level.",
             2.258, 1.0, 5.0);
 
-    public IntOption maxSizeConceptOption = new IntOption("maxSizeConcept", 
-            'x', "Maximum Size of Concept.",
-            40000, 1, Integer.MAX_VALUE);
+    public IntOption maxSizeConceptOption = IntOption.createIntOption2(new IntOptionParameter2("maxSizeConcept", 'x', "Maximum Size of Concept.", 40000, 1, Integer.MAX_VALUE));
 
-    public IntOption minSizeStableConceptOption = new IntOption("minSizeStableConcept", 
-            'y', "Minimum Size of Stable Concept.",
-            7000, 1, 20000);
+    public IntOption minSizeStableConceptOption = IntOption.createIntOption2(new IntOptionParameter2("minSizeStableConcept", 'y', "Minimum Size of Stable Concept.", 7000, 1, 20000));
             
-    public IntOption warnLimitOption = new IntOption("warnLimit", 
-            'z', "Warning Limit of instances",
-            1400, 1, 20000);
+    public IntOption warnLimitOption = IntOption.createIntOption2(new IntOptionParameter2("warnLimit", 'z', "Warning Limit of instances", 1400, 1, 20000));
 
     private int minNumInstances;
     private double warningLevel;

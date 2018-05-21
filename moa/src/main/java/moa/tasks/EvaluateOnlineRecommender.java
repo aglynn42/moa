@@ -25,6 +25,8 @@ import moa.evaluation.LearningEvaluation;
 import moa.evaluation.preview.LearningCurve;
 import moa.options.ClassOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
+
 import moa.recommender.dataset.Dataset;
 import moa.recommender.predictor.RatingPredictor;
 import moa.recommender.rc.data.RecommenderData;
@@ -59,10 +61,7 @@ public class EvaluateOnlineRecommender extends AuxiliarMainTask {
             "Rating Predictor to evaluate on.", RatingPredictor.class,
             "moa.recommender.predictor.BRISMFPredictor");
     
-    public IntOption sampleFrequencyOption = new IntOption("sampleFrequency",
-            'f',
-            "How many instances between samples of the learning performance.",
-            100, 0, Integer.MAX_VALUE);
+    public IntOption sampleFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("sampleFrequency", 'f', "How many instances between samples of the learning performance.", 100, 0, Integer.MAX_VALUE));
 
     public EvaluateOnlineRecommender() {
     }

@@ -27,14 +27,17 @@ public class StringOption extends AbstractOption {
 
     private static final long serialVersionUID = 1L;
 
-    protected String currentVal;
+    public static StringOption createStringOption(StringOptionParameter parameterObject) {
+		return new StringOption(parameterObject);
+	}
+
+	protected String currentVal;
 
     protected String defaultVal;
 
-    public StringOption(String name, char cliChar, String purpose,
-            String defaultVal) {
-        super(name, cliChar, purpose);
-        this.defaultVal = defaultVal;
+    protected StringOption(StringOptionParameter parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose);
+        this.defaultVal = parameterObject.defaultVal;
         resetToDefault();
     }
 

@@ -49,10 +49,10 @@ public class ApproxSTORM extends STORMBase {
         }
     }
     
-    public FloatOption radiusOption = new FloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
-    public IntOption kOption = new IntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
-    public IntOption queryFreqOption = new IntOption(new IntOptionParameter("queryFreq", 'q', "Query frequency.", 1));
-    public FloatOption pOption = new FloatOption(new FloatOptionParameter("p", 'p', "Parameter p.", 0.1));
+    public FloatOption radiusOption = FloatOption.createFloatOption(new FloatOptionParameter("radius", 'r', "Search radius.", 0.1));
+    public IntOption kOption = IntOption.createIntOption(new IntOptionParameter("k", 't', "Parameter k.", 50));
+    public IntOption queryFreqOption = IntOption.createIntOption(new IntOptionParameter("queryFreq", 'q', "Query frequency.", 1));
+    public FloatOption pOption = FloatOption.createFloatOption(new FloatOptionParameter("p", 'p', "Parameter p.", 0.1));
     
     Set<ISBNode> safe_inliers; // list of safe inliers
     int m_FractWindowSize;  

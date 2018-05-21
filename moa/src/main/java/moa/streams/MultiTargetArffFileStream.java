@@ -30,6 +30,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader; 
 import com.github.javacliparser.RangeOption;  // jesse
+import com.github.javacliparser.RangeOptionParameter;
+
 import moa.core.InputStreamProgressMonitor;
 import moa.core.InstanceExample;
 import moa.core.ObjectRepository;
@@ -54,11 +56,7 @@ public class MultiTargetArffFileStream extends AbstractOptionHandler implements
 
     public FileOption arffFileOption = new FileOption(new FileOptionParameter("arffFile", 'f', "ARFF file to load.", null, "arff", false));
 
-    public RangeOption outputAttributesOption = new RangeOption(
-            "outputAttributes",
-            'c',
-            "Output attributes:  n for first n attributes,  -n for last n attributes  For example, 2 for the two first attributes, -2 for the two last attributes.",
-			"-1");
+    public RangeOption outputAttributesOption = RangeOption.createRangeOption(new RangeOptionParameter("outputAttributes", 'c', "Output attributes:  n for first n attributes,  -n for last n attributes  For example, 2 for the two first attributes, -2 for the two last attributes.", "-1"));
 
     protected Instances instances;
 

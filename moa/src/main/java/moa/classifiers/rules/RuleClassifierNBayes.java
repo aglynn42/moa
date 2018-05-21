@@ -26,6 +26,7 @@ import java.util.Collections;
 import moa.classifiers.bayes.NaiveBayes;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 
 /**
@@ -52,11 +53,7 @@ public class RuleClassifierNBayes extends RuleClassifier {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public IntOption nbThresholdOption = new IntOption(
-			"nbThreshold",
-            'q',
-            "The number of instances a leaf should observe before permitting Naive Bayes.",
-            0, 0, Integer.MAX_VALUE);
+	public IntOption nbThresholdOption = IntOption.createIntOption2(new IntOptionParameter2("nbThreshold", 'q', "The number of instances a leaf should observe before permitting Naive Bayes.", 0, 0, Integer.MAX_VALUE));
 	
 	@Override
 	public double[] getVotesForInstance(Instance inst) {

@@ -25,6 +25,7 @@ import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
@@ -58,10 +59,10 @@ import moa.clusterers.kmeanspm.CoresetKMeans;
 public class SAMkNN extends AbstractClassifier implements MultiClassClassifier {
     private static final long serialVersionUID = 1L;
 
-    public IntOption kOption = new IntOption( "k", 'k', "The number of neighbors", 5, 1, Integer.MAX_VALUE);
+    public IntOption kOption = IntOption.createIntOption2(new IntOptionParameter2("k", 'k', "The number of neighbors", 5, 1, Integer.MAX_VALUE));
 
-    public IntOption limitOption = new IntOption( "limit", 'w', "The maximum number of instances to store", 5000, 1, Integer.MAX_VALUE);
-    public IntOption minSTMSizeOption = new IntOption( "minSTMSize", 'm', "The minimum number of instances in the STM", 50, 1, Integer.MAX_VALUE);
+    public IntOption limitOption = IntOption.createIntOption2(new IntOptionParameter2("limit", 'w', "The maximum number of instances to store", 5000, 1, Integer.MAX_VALUE));
+    public IntOption minSTMSizeOption = IntOption.createIntOption2(new IntOptionParameter2("minSTMSize", 'm', "The minimum number of instances in the STM", 50, 1, Integer.MAX_VALUE));
 
     public FloatOption relativeLTMSizeOption = new FloatOption(
             "relativeLTMSize",
@@ -69,7 +70,7 @@ public class SAMkNN extends AbstractClassifier implements MultiClassClassifier {
             "The allowed LTM size relative to the total limit.",
             0.4, 0.0, 1.0);
 
-    public FlagOption recalculateSTMErrorOption = new FlagOption(new FlagOptionParameter("recalculateError", 'r', "Recalculates the error rate of the STM for size adaption (Costly operation). Otherwise, an approximation is used."));
+    public FlagOption recalculateSTMErrorOption = FlagOption.createFlagOption(new FlagOptionParameter("recalculateError", 'r', "Recalculates the error rate of the STM for size adaption (Costly operation). Otherwise, an approximation is used."));
 	private int maxClassValue = 0;
 
     @Override

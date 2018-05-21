@@ -36,6 +36,7 @@ import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
+import com.github.javacliparser.IntOptionParameter2;
 
 import moa.streams.InstanceStream;
 import moa.tasks.TaskMonitor;
@@ -56,35 +57,21 @@ public class RandomTreeGenerator extends AbstractOptionHandler implements
 
     private static final long serialVersionUID = 1L;
 
-    public IntOption treeRandomSeedOption = new IntOption(new IntOptionParameter("treeRandomSeed", 'r', "Seed for random generation of tree.", 1));
+    public IntOption treeRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("treeRandomSeed", 'r', "Seed for random generation of tree.", 1));
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
-    public IntOption numClassesOption = new IntOption("numClasses", 'c',
-            "The number of classes to generate.", 2, 2, Integer.MAX_VALUE);
+    public IntOption numClassesOption = IntOption.createIntOption2(new IntOptionParameter2("numClasses", 'c', "The number of classes to generate.", 2, 2, Integer.MAX_VALUE));
 
-    public IntOption numNominalsOption = new IntOption("numNominals", 'o',
-            "The number of nominal attributes to generate.", 5, 0,
-            Integer.MAX_VALUE);
+    public IntOption numNominalsOption = IntOption.createIntOption2(new IntOptionParameter2("numNominals", 'o', "The number of nominal attributes to generate.", 5, 0, Integer.MAX_VALUE));
 
-    public IntOption numNumericsOption = new IntOption("numNumerics", 'u',
-            "The number of numeric attributes to generate.", 5, 0,
-            Integer.MAX_VALUE);
+    public IntOption numNumericsOption = IntOption.createIntOption2(new IntOptionParameter2("numNumerics", 'u', "The number of numeric attributes to generate.", 5, 0, Integer.MAX_VALUE));
 
-    public IntOption numValsPerNominalOption = new IntOption(
-            "numValsPerNominal", 'v',
-            "The number of values to generate per nominal attribute.", 5, 2,
-            Integer.MAX_VALUE);
+    public IntOption numValsPerNominalOption = IntOption.createIntOption2(new IntOptionParameter2("numValsPerNominal", 'v', "The number of values to generate per nominal attribute.", 5, 2, Integer.MAX_VALUE));
 
-    public IntOption maxTreeDepthOption = new IntOption("maxTreeDepth", 'd',
-            "The maximum depth of the tree concept.", 5, 0, Integer.MAX_VALUE);
+    public IntOption maxTreeDepthOption = IntOption.createIntOption2(new IntOptionParameter2("maxTreeDepth", 'd', "The maximum depth of the tree concept.", 5, 0, Integer.MAX_VALUE));
 
-    public IntOption firstLeafLevelOption = new IntOption(
-            "firstLeafLevel",
-            'l',
-            "The first level of the tree above maxTreeDepth that can have leaves.",
-            3, 0, Integer.MAX_VALUE);
+    public IntOption firstLeafLevelOption = IntOption.createIntOption2(new IntOptionParameter2("firstLeafLevel", 'l', "The first level of the tree above maxTreeDepth that can have leaves.", 3, 0, Integer.MAX_VALUE));
 
     public FloatOption leafFractionOption = new FloatOption("leafFraction",
             'f',

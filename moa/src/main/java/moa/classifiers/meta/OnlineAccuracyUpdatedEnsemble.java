@@ -23,6 +23,7 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.Classifier;
@@ -52,8 +53,7 @@ public class OnlineAccuracyUpdatedEnsemble extends AbstractClassifier implements
 	/**
 	 * Number of component classifiers.
 	 */
-	public IntOption memberCountOption = new IntOption("memberCount", 'n',
-			"The maximum number of classifiers in an ensemble.", 10, 1, Integer.MAX_VALUE);
+	public IntOption memberCountOption = IntOption.createIntOption2(new IntOptionParameter2("memberCount", 'n', "The maximum number of classifiers in an ensemble.", 10, 1, Integer.MAX_VALUE));
 
 	/**
 	 * Chunk size.
@@ -64,18 +64,17 @@ public class OnlineAccuracyUpdatedEnsemble extends AbstractClassifier implements
 	/**
 	 * Determines the maximum size of model (evaluated after every chunk).
 	 */
-	public IntOption maxByteSizeOption = new IntOption("maxByteSize", 'm', "Maximum memory consumed by ensemble.",
-			33554432, 0, Integer.MAX_VALUE);
+	public IntOption maxByteSizeOption = IntOption.createIntOption2(new IntOptionParameter2("maxByteSize", 'm', "Maximum memory consumed by ensemble.", 33554432, 0, Integer.MAX_VALUE));
 	
 	/**
 	 * Determines whether additional information should be sent to the output.
 	 */
-	public FlagOption verboseOption = new FlagOption(new FlagOptionParameter("verbose", 'v', "When checked the algorithm outputs additional information about component classifier weights."));
+	public FlagOption verboseOption = FlagOption.createFlagOption(new FlagOptionParameter("verbose", 'v', "When checked the algorithm outputs additional information about component classifier weights."));
 	
 	/**
 	 * Determines whether additional information should be sent to the output.
 	 */
-	public FlagOption linearOption = new FlagOption(new FlagOptionParameter("linearFunction", 'f', "When checked the algorithm uses a linear weighting function."));
+	public FlagOption linearOption = FlagOption.createFlagOption(new FlagOptionParameter("linearFunction", 'f', "When checked the algorithm uses a linear weighting function."));
 
 	
 	/**

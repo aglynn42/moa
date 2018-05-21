@@ -21,6 +21,7 @@ package moa.classifiers.meta;
 
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.yahoo.labs.samoa.instances.Instance;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -89,25 +90,15 @@ public class RCD extends SingleClassifierDrift {
             "The minimum percentual similarity between distributions (p-value).",
             0.01, 0, 1);
 
-    public IntOption bufferSizeOption = new IntOption("bufferSize", 'b',
-            "The size of the buffer that represents the distributions.", 400,
-            1, Integer.MAX_VALUE);
+    public IntOption bufferSizeOption = IntOption.createIntOption2(new IntOptionParameter2("bufferSize", 'b', "The size of the buffer that represents the distributions.", 400, 1, Integer.MAX_VALUE));
 
-    public IntOption testFrequencyOption = new IntOption("testFrequency",
-            't', "In the testing phase, test for best stored classifier after how many instances.",
-            400, 1, Integer.MAX_VALUE);
+    public IntOption testFrequencyOption = IntOption.createIntOption2(new IntOptionParameter2("testFrequency", 't', "In the testing phase, test for best stored classifier after how many instances.", 400, 1, Integer.MAX_VALUE));
 
-    public IntOption classifiersSizeOption = new IntOption("classifiersSize",
-            'c', "The maximum amount of classifiers to store. 0 means unlimited.", 15, 0,
-            Integer.MAX_VALUE);
+    public IntOption classifiersSizeOption = IntOption.createIntOption2(new IntOptionParameter2("classifiersSize", 'c', "The maximum amount of classifiers to store. 0 means unlimited.", 15, 0, Integer.MAX_VALUE));
 
-    public IntOption threadSizeOption = new IntOption("threadSize",
-            'm', "The thread pool size, indicating how many simultaneous tests are allowed.", 4, 1,
-            Integer.MAX_VALUE);
+    public IntOption threadSizeOption = IntOption.createIntOption2(new IntOptionParameter2("threadSize", 'm', "The thread pool size, indicating how many simultaneous tests are allowed.", 4, 1, Integer.MAX_VALUE));
 
-    public IntOption quantityClassifiersTestOption = new IntOption("quantityClassifiersTest",
-            'q', "Quantity of identified classifiers to check.", 1, 1,
-            Integer.MAX_VALUE);
+    public IntOption quantityClassifiersTestOption = IntOption.createIntOption2(new IntOptionParameter2("quantityClassifiersTest", 'q', "Quantity of identified classifiers to check.", 1, 1, Integer.MAX_VALUE));
 
     private List<ClassifierKS> classifiers;
 

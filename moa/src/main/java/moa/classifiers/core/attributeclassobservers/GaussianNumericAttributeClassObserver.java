@@ -34,6 +34,7 @@ import moa.core.DoubleVector;
 import moa.core.GaussianEstimator;
 import moa.options.AbstractOptionHandler;
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 
 /**
  * Class for observing the class data distribution for a numeric attribute using gaussian estimators.
@@ -54,8 +55,7 @@ public class GaussianNumericAttributeClassObserver extends AbstractOptionHandler
 
     protected AutoExpandVector<GaussianEstimator> attValDistPerClass = new AutoExpandVector<GaussianEstimator>();
 
-    public IntOption numBinsOption = new IntOption("numBins", 'n',
-            "The number of bins.", 10, 1, Integer.MAX_VALUE);
+    public IntOption numBinsOption = IntOption.createIntOption2(new IntOptionParameter2("numBins", 'n', "The number of bins.", 10, 1, Integer.MAX_VALUE));
 
     @Override
     public void observeAttributeClass(double attVal, int classVal, double weight) {

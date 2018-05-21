@@ -33,13 +33,12 @@ public class ClassOption extends AbstractClassOption {
 
     private static final long serialVersionUID = 1L;
 
-    public ClassOption(ClassOptionParameter parameterObject) {
+    private ClassOption(ClassOptionParameter parameterObject) {
         super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.requiredType, parameterObject.defaultCLIString);
     }
 
-    public ClassOption(String name, char cliChar, String purpose,
-            Class<?> requiredType, String defaultCLIString, String nullString) {
-        super(name, cliChar, purpose, requiredType, defaultCLIString, nullString);
+    private ClassOption(ClassOptionParameter2 parameterObject) {
+        super(parameterObject.name, parameterObject.cliChar, parameterObject.purpose, parameterObject.requiredType, parameterObject.defaultCLIString, parameterObject.nullString);
     }
 
     @Override
@@ -187,6 +186,14 @@ public class ClassOption extends AbstractClassOption {
         }
         return classInstance;
     }
+
+	public static ClassOption createClassOption(ClassOptionParameter parameterObject) {
+		return new ClassOption(parameterObject);
+	}
+
+	public static ClassOption createClassOption(ClassOptionParameter2 parameterObject) {
+		return new ClassOption(parameterObject);
+	}
 
     //@Override
     //public JComponent getEditComponent() {

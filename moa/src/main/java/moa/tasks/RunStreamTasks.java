@@ -23,6 +23,8 @@ package moa.tasks;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FloatOptionParameter;
 import com.github.javacliparser.StringOption;
+import com.github.javacliparser.StringOptionParameter;
+
 import moa.MOAObject;
 import moa.core.ObjectRepository;
 import moa.options.ClassOption;
@@ -46,14 +48,13 @@ public class RunStreamTasks extends ConceptDriftMainTask {
     public ClassOption taskOption = new ClassOption("task", 't',
             "Task to do.", Task.class, "EvaluatePrequential -l active.ActiveClassifier -i 1000000 -d temp.txt");
 
-    public StringOption streamParameterOption = new StringOption("streamParameter", 'p',
-            "Stream parameter to vary.", "b");
+    public StringOption streamParameterOption = StringOption.createStringOption(new StringOptionParameter("streamParameter", 'p', "Stream parameter to vary.", "b"));
 
-    public FloatOption firstValueOption = new FloatOption(new FloatOptionParameter("firstValue", 'f', "First value", 0.0));
+    public FloatOption firstValueOption = FloatOption.createFloatOption(new FloatOptionParameter("firstValue", 'f', "First value", 0.0));
 
-    public FloatOption lastValueOption = new FloatOption(new FloatOptionParameter("lastValue", 'l', "Last value", 1.0));
+    public FloatOption lastValueOption = FloatOption.createFloatOption(new FloatOptionParameter("lastValue", 'l', "Last value", 1.0));
 
-    public FloatOption incrementValueOption = new FloatOption(new FloatOptionParameter("incrementValue", 'i', "Increment value", 0.1));
+    public FloatOption incrementValueOption = FloatOption.createFloatOption(new FloatOptionParameter("incrementValue", 'i', "Increment value", 0.1));
 
     @Override
     public Class<?> getTaskResultType() {

@@ -21,6 +21,7 @@ package moa.streams;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.IntOptionParameter;
 import com.github.javacliparser.StringOption;
+import com.github.javacliparser.StringOptionParameter;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Instances;
 import com.yahoo.labs.samoa.instances.InstancesHeader;
@@ -61,16 +62,13 @@ public class ImbalancedStream extends AbstractOptionHandler implements
             "Stream to imbalance.", ExampleStream.class,
             "generators.RandomTreeGenerator");
 
-    public StringOption classRatioOption = new StringOption("classRatio", 'c',
-            "Determine the ratio of each class in the output stream. " +
-                    "The ratio of each class should be given as a real number " +
-                    "between 0 and 1, each followed by a semicolon, and their sum should be equal to 1. " +
-                    "The default value of \"0.9;0.1\" stands for an output stream with approximately 90% " +
-                    "of the instances belonging to the first class and 10% to the second class.",
-            "0.9;0.1");
+    public StringOption classRatioOption = StringOption.createStringOption(new StringOptionParameter("classRatio", 'c', "Determine the ratio of each class in the output stream. " +
+	        "The ratio of each class should be given as a real number " +
+	        "between 0 and 1, each followed by a semicolon, and their sum should be equal to 1. " +
+	        "The default value of \"0.9;0.1\" stands for an output stream with approximately 90% " +
+	        "of the instances belonging to the first class and 10% to the second class.", "0.9;0.1"));
 
-    public IntOption instanceRandomSeedOption = new IntOption(
-            new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
+    public IntOption instanceRandomSeedOption = IntOption.createIntOption(new IntOptionParameter("instanceRandomSeed", 'i', "Seed for random generation of instances.", 1));
 
     protected ExampleStream originalStream    = null;
     protected Instances     instancesBuffer[] = null;

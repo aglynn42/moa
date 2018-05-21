@@ -20,6 +20,7 @@
 package moa.classifiers.meta;
 
 import com.github.javacliparser.IntOption;
+import com.github.javacliparser.IntOptionParameter2;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FlagOptionParameter;
@@ -27,6 +28,8 @@ import com.github.javacliparser.FlagOptionParameter;
 import moa.classifiers.MultiClassClassifier;
 import moa.options.ClassOption;
 import com.github.javacliparser.MultiChoiceOption;
+import com.github.javacliparser.MultiChoiceOptionParameter;
+
 import moa.classifiers.core.driftdetection.ADWIN;
 import moa.classifiers.AbstractClassifier;
 import moa.classifiers.Classifier;
@@ -60,8 +63,7 @@ public class LeveragingBag extends AbstractClassifier implements MultiClassClass
     public ClassOption baseLearnerOption = new ClassOption("baseLearner", 'l',
             "Classifier to train.", Classifier.class, "trees.HoeffdingTree");
 
-    public IntOption ensembleSizeOption = new IntOption("ensembleSize", 's',
-            "The number of models in the bag.", 10, 1, Integer.MAX_VALUE);
+    public IntOption ensembleSizeOption = IntOption.createIntOption2(new IntOptionParameter2("ensembleSize", 's', "The number of models in the bag.", 10, 1, Integer.MAX_VALUE));
 
     public FloatOption weightShrinkOption = new FloatOption("weightShrink", 'w',
             "The number to use to compute the weight of new instances.", 6, 0.0, Float.MAX_VALUE);
@@ -70,17 +72,15 @@ public class LeveragingBag extends AbstractClassifier implements MultiClassClass
             "Delta of Adwin change detection", 0.002, 0.0, 1.0);
 
     // Leveraging Bagging MC: uses this option to use Output Codes
-    public FlagOption outputCodesOption = new FlagOption(new FlagOptionParameter("outputCodes", 'o', "Use Output Codes to use binary classifiers."));
+    public FlagOption outputCodesOption = FlagOption.createFlagOption(new FlagOptionParameter("outputCodes", 'o', "Use Output Codes to use binary classifiers."));
 
-    public MultiChoiceOption leveraginBagAlgorithmOption = new MultiChoiceOption(
-            "leveraginBagAlgorithm", 'm', "Leveraging Bagging to use.", new String[]{
-                "LeveragingBag", "LeveragingBagME", "LeveragingBagHalf", "LeveragingBagWT", "LeveragingSubag"},
-            new String[]{"Leveraging Bagging for evolving data streams using ADWIN",
-                "Leveraging Bagging ME using weight 1 if misclassified, otherwise error/(1-error)",
-                "Leveraging Bagging Half using resampling without replacement half of the instances",
-                "Leveraging Bagging WT without taking out all instances.",
-                "Leveraging Subagging using resampling without replacement."
-            }, 0);
+    public MultiChoiceOption leveraginBagAlgorithmOption = MultiChoiceOption.createMultiChoiceOption(new MultiChoiceOptionParameter("leveraginBagAlgorithm", 'm', "Leveraging Bagging to use.", new String[]{
+	    "LeveragingBag", "LeveragingBagME", "LeveragingBagHalf", "LeveragingBagWT", "LeveragingSubag"}, new String[]{"Leveraging Bagging for evolving data streams using ADWIN",
+	    "Leveraging Bagging ME using weight 1 if misclassified, otherwise error/(1-error)",
+	    "Leveraging Bagging Half using resampling without replacement half of the instances",
+	    "Leveraging Bagging WT without taking out all instances.",
+	    "Leveraging Subagging using resampling without replacement."
+	}, 0));
 
     protected Classifier[] ensemble;
 
